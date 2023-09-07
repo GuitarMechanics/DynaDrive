@@ -52,40 +52,74 @@
             this.mt3Toggle = new MetroFramework.Controls.MetroToggle();
             this.mt4Toggle = new MetroFramework.Controls.MetroToggle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.diffLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.currentLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.currentLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.currentLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.diffLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.diffLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.currentLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.diffLabel1 = new MetroFramework.Controls.MetroLabel();
             this.targetLabel1 = new MetroFramework.Controls.MetroLabel();
             this.targetLabel2 = new MetroFramework.Controls.MetroLabel();
             this.targetLabel3 = new MetroFramework.Controls.MetroLabel();
             this.targetLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.currentLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.currentLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.currentLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.currentLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.diffLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.diffLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.diffLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.diffLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
-            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.mtCenterBtn = new MetroFramework.Controls.MetroButton();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.mt4StepDnBtn = new MetroFramework.Controls.MetroButton();
+            this.mt3StepDnBtn = new MetroFramework.Controls.MetroButton();
+            this.mt2StepDnBtn = new MetroFramework.Controls.MetroButton();
+            this.mt2StepUpBtn = new MetroFramework.Controls.MetroButton();
+            this.mt1StepDnBtn = new MetroFramework.Controls.MetroButton();
+            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
+            this.mt1StepUpBtn = new MetroFramework.Controls.MetroButton();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
+            this.mt3StepUpBtn = new MetroFramework.Controls.MetroButton();
+            this.mt4StepUpBtn = new MetroFramework.Controls.MetroButton();
+            this.dirGoBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.mt1DirectTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.mt2DirectTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.mt3DirectTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.mt4DirectTxtBox = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
-            this.dirGoBtn = new MetroFramework.Controls.MetroButton();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
+            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             Setup = new MetroFramework.Controls.MetroTabPage();
             this.tableLayoutPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // Setup
+            // 
+            Setup.BackColor = System.Drawing.Color.Transparent;
+            Setup.HorizontalScrollbarBarColor = true;
+            Setup.HorizontalScrollbarHighlightOnWheel = false;
+            Setup.HorizontalScrollbarSize = 8;
+            Setup.Location = new System.Drawing.Point(4, 38);
+            Setup.Name = "Setup";
+            Setup.Size = new System.Drawing.Size(578, 248);
+            Setup.TabIndex = 1;
+            Setup.Text = "Setup";
+            Setup.UseCustomBackColor = true;
+            Setup.VerticalScrollbarBarColor = true;
+            Setup.VerticalScrollbarHighlightOnWheel = false;
+            Setup.VerticalScrollbarSize = 8;
             // 
             // metroComboBox1
             // 
@@ -433,7 +467,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel1.Controls.Add(this.diffLabel4, 4, 4);
             this.tableLayoutPanel1.Controls.Add(this.currentLabel4, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.currentLabel1, 3, 1);
@@ -468,6 +502,118 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(586, 156);
             this.tableLayoutPanel1.TabIndex = 24;
+            // 
+            // diffLabel4
+            // 
+            this.diffLabel4.AutoSize = true;
+            this.diffLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.diffLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.diffLabel4.Location = new System.Drawing.Point(443, 120);
+            this.diffLabel4.Name = "diffLabel4";
+            this.diffLabel4.Size = new System.Drawing.Size(22, 25);
+            this.diffLabel4.Style = MetroFramework.MetroColorStyle.White;
+            this.diffLabel4.TabIndex = 36;
+            this.diffLabel4.Text = "0";
+            this.diffLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.diffLabel4.UseStyleColors = true;
+            // 
+            // currentLabel4
+            // 
+            this.currentLabel4.AutoSize = true;
+            this.currentLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.currentLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.currentLabel4.Location = new System.Drawing.Point(293, 120);
+            this.currentLabel4.Name = "currentLabel4";
+            this.currentLabel4.Size = new System.Drawing.Size(22, 25);
+            this.currentLabel4.Style = MetroFramework.MetroColorStyle.White;
+            this.currentLabel4.TabIndex = 32;
+            this.currentLabel4.Text = "0";
+            this.currentLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.currentLabel4.UseStyleColors = true;
+            // 
+            // currentLabel1
+            // 
+            this.currentLabel1.AutoSize = true;
+            this.currentLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.currentLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.currentLabel1.Location = new System.Drawing.Point(293, 30);
+            this.currentLabel1.Name = "currentLabel1";
+            this.currentLabel1.Size = new System.Drawing.Size(22, 25);
+            this.currentLabel1.Style = MetroFramework.MetroColorStyle.White;
+            this.currentLabel1.TabIndex = 29;
+            this.currentLabel1.Text = "0";
+            this.currentLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.currentLabel1.UseStyleColors = true;
+            // 
+            // currentLabel3
+            // 
+            this.currentLabel3.AutoSize = true;
+            this.currentLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.currentLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.currentLabel3.Location = new System.Drawing.Point(293, 90);
+            this.currentLabel3.Name = "currentLabel3";
+            this.currentLabel3.Size = new System.Drawing.Size(22, 25);
+            this.currentLabel3.Style = MetroFramework.MetroColorStyle.White;
+            this.currentLabel3.TabIndex = 31;
+            this.currentLabel3.Text = "0";
+            this.currentLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.currentLabel3.UseStyleColors = true;
+            // 
+            // diffLabel3
+            // 
+            this.diffLabel3.AutoSize = true;
+            this.diffLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.diffLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.diffLabel3.Location = new System.Drawing.Point(443, 90);
+            this.diffLabel3.Name = "diffLabel3";
+            this.diffLabel3.Size = new System.Drawing.Size(22, 25);
+            this.diffLabel3.Style = MetroFramework.MetroColorStyle.White;
+            this.diffLabel3.TabIndex = 35;
+            this.diffLabel3.Text = "0";
+            this.diffLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.diffLabel3.UseStyleColors = true;
+            // 
+            // diffLabel2
+            // 
+            this.diffLabel2.AutoSize = true;
+            this.diffLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.diffLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.diffLabel2.Location = new System.Drawing.Point(443, 60);
+            this.diffLabel2.Name = "diffLabel2";
+            this.diffLabel2.Size = new System.Drawing.Size(22, 25);
+            this.diffLabel2.Style = MetroFramework.MetroColorStyle.White;
+            this.diffLabel2.TabIndex = 33;
+            this.diffLabel2.Text = "0";
+            this.diffLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.diffLabel2.UseStyleColors = true;
+            // 
+            // currentLabel2
+            // 
+            this.currentLabel2.AutoSize = true;
+            this.currentLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.currentLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.currentLabel2.Location = new System.Drawing.Point(293, 60);
+            this.currentLabel2.Name = "currentLabel2";
+            this.currentLabel2.Size = new System.Drawing.Size(22, 25);
+            this.currentLabel2.Style = MetroFramework.MetroColorStyle.White;
+            this.currentLabel2.TabIndex = 30;
+            this.currentLabel2.Text = "0";
+            this.currentLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.currentLabel2.UseStyleColors = true;
+            // 
+            // diffLabel1
+            // 
+            this.diffLabel1.AutoSize = true;
+            this.diffLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.diffLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.diffLabel1.Location = new System.Drawing.Point(443, 30);
+            this.diffLabel1.Name = "diffLabel1";
+            this.diffLabel1.Size = new System.Drawing.Size(22, 25);
+            this.diffLabel1.Style = MetroFramework.MetroColorStyle.White;
+            this.diffLabel1.TabIndex = 34;
+            this.diffLabel1.Text = "0";
+            this.diffLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.diffLabel1.UseStyleColors = true;
             // 
             // targetLabel1
             // 
@@ -525,118 +671,6 @@
             this.targetLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.targetLabel4.UseStyleColors = true;
             // 
-            // currentLabel1
-            // 
-            this.currentLabel1.AutoSize = true;
-            this.currentLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.currentLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.currentLabel1.Location = new System.Drawing.Point(293, 30);
-            this.currentLabel1.Name = "currentLabel1";
-            this.currentLabel1.Size = new System.Drawing.Size(22, 25);
-            this.currentLabel1.Style = MetroFramework.MetroColorStyle.White;
-            this.currentLabel1.TabIndex = 29;
-            this.currentLabel1.Text = "0";
-            this.currentLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.currentLabel1.UseStyleColors = true;
-            // 
-            // currentLabel2
-            // 
-            this.currentLabel2.AutoSize = true;
-            this.currentLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.currentLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.currentLabel2.Location = new System.Drawing.Point(293, 60);
-            this.currentLabel2.Name = "currentLabel2";
-            this.currentLabel2.Size = new System.Drawing.Size(22, 25);
-            this.currentLabel2.Style = MetroFramework.MetroColorStyle.White;
-            this.currentLabel2.TabIndex = 30;
-            this.currentLabel2.Text = "0";
-            this.currentLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.currentLabel2.UseStyleColors = true;
-            // 
-            // currentLabel3
-            // 
-            this.currentLabel3.AutoSize = true;
-            this.currentLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.currentLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.currentLabel3.Location = new System.Drawing.Point(293, 90);
-            this.currentLabel3.Name = "currentLabel3";
-            this.currentLabel3.Size = new System.Drawing.Size(22, 25);
-            this.currentLabel3.Style = MetroFramework.MetroColorStyle.White;
-            this.currentLabel3.TabIndex = 31;
-            this.currentLabel3.Text = "0";
-            this.currentLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.currentLabel3.UseStyleColors = true;
-            // 
-            // currentLabel4
-            // 
-            this.currentLabel4.AutoSize = true;
-            this.currentLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.currentLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.currentLabel4.Location = new System.Drawing.Point(293, 120);
-            this.currentLabel4.Name = "currentLabel4";
-            this.currentLabel4.Size = new System.Drawing.Size(22, 25);
-            this.currentLabel4.Style = MetroFramework.MetroColorStyle.White;
-            this.currentLabel4.TabIndex = 32;
-            this.currentLabel4.Text = "0";
-            this.currentLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.currentLabel4.UseStyleColors = true;
-            // 
-            // diffLabel4
-            // 
-            this.diffLabel4.AutoSize = true;
-            this.diffLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.diffLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.diffLabel4.Location = new System.Drawing.Point(443, 120);
-            this.diffLabel4.Name = "diffLabel4";
-            this.diffLabel4.Size = new System.Drawing.Size(22, 25);
-            this.diffLabel4.Style = MetroFramework.MetroColorStyle.White;
-            this.diffLabel4.TabIndex = 36;
-            this.diffLabel4.Text = "0";
-            this.diffLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.diffLabel4.UseStyleColors = true;
-            // 
-            // diffLabel2
-            // 
-            this.diffLabel2.AutoSize = true;
-            this.diffLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.diffLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.diffLabel2.Location = new System.Drawing.Point(443, 60);
-            this.diffLabel2.Name = "diffLabel2";
-            this.diffLabel2.Size = new System.Drawing.Size(22, 25);
-            this.diffLabel2.Style = MetroFramework.MetroColorStyle.White;
-            this.diffLabel2.TabIndex = 33;
-            this.diffLabel2.Text = "0";
-            this.diffLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.diffLabel2.UseStyleColors = true;
-            // 
-            // diffLabel3
-            // 
-            this.diffLabel3.AutoSize = true;
-            this.diffLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.diffLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.diffLabel3.Location = new System.Drawing.Point(443, 90);
-            this.diffLabel3.Name = "diffLabel3";
-            this.diffLabel3.Size = new System.Drawing.Size(22, 25);
-            this.diffLabel3.Style = MetroFramework.MetroColorStyle.White;
-            this.diffLabel3.TabIndex = 35;
-            this.diffLabel3.Text = "0";
-            this.diffLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.diffLabel3.UseStyleColors = true;
-            // 
-            // diffLabel1
-            // 
-            this.diffLabel1.AutoSize = true;
-            this.diffLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.diffLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.diffLabel1.Location = new System.Drawing.Point(443, 30);
-            this.diffLabel1.Name = "diffLabel1";
-            this.diffLabel1.Size = new System.Drawing.Size(22, 25);
-            this.diffLabel1.Style = MetroFramework.MetroColorStyle.White;
-            this.diffLabel1.TabIndex = 34;
-            this.diffLabel1.Text = "0";
-            this.diffLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.diffLabel1.UseStyleColors = true;
-            // 
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
@@ -654,6 +688,11 @@
             // 
             this.metroTabPage1.BackColor = System.Drawing.Color.Transparent;
             this.metroTabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.metroTabPage1.Controls.Add(this.metroButton1);
+            this.metroTabPage1.Controls.Add(this.metroLabel24);
+            this.metroTabPage1.Controls.Add(this.metroTextBox2);
+            this.metroTabPage1.Controls.Add(this.mtCenterBtn);
+            this.metroTabPage1.Controls.Add(this.tableLayoutPanel3);
             this.metroTabPage1.Controls.Add(this.dirGoBtn);
             this.metroTabPage1.Controls.Add(this.tableLayoutPanel2);
             this.metroTabPage1.Controls.Add(this.metroLabel15);
@@ -662,7 +701,7 @@
             this.metroTabPage1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 10;
+            this.metroTabPage1.HorizontalScrollbarSize = 8;
             this.metroTabPage1.ImageKey = "(없음)";
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
@@ -672,81 +711,213 @@
             this.metroTabPage1.UseCustomBackColor = true;
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.VerticalScrollbarSize = 10;
+            this.metroTabPage1.VerticalScrollbarSize = 8;
             // 
-            // Setup
+            // mtCenterBtn
             // 
-            Setup.BackColor = System.Drawing.Color.Transparent;
-            Setup.HorizontalScrollbarBarColor = true;
-            Setup.HorizontalScrollbarHighlightOnWheel = false;
-            Setup.HorizontalScrollbarSize = 10;
-            Setup.Location = new System.Drawing.Point(4, 38);
-            Setup.Name = "Setup";
-            Setup.Size = new System.Drawing.Size(578, 248);
-            Setup.TabIndex = 1;
-            Setup.Text = "Setup";
-            Setup.UseCustomBackColor = true;
-            Setup.VerticalScrollbarBarColor = true;
-            Setup.VerticalScrollbarHighlightOnWheel = false;
-            Setup.VerticalScrollbarSize = 10;
+            this.mtCenterBtn.DisplayFocus = true;
+            this.mtCenterBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mtCenterBtn.Location = new System.Drawing.Point(205, 194);
+            this.mtCenterBtn.Name = "mtCenterBtn";
+            this.mtCenterBtn.Size = new System.Drawing.Size(151, 29);
+            this.mtCenterBtn.TabIndex = 32;
+            this.mtCenterBtn.Text = "CENTER";
+            this.mtCenterBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mtCenterBtn.UseSelectable = true;
+            this.mtCenterBtn.Click += new System.EventHandler(this.mtCenterBtn_Click);
             // 
-            // metroTabPage3
+            // tableLayoutPanel3
             // 
-            this.metroTabPage3.BackColor = System.Drawing.Color.Transparent;
-            this.metroTabPage3.HorizontalScrollbarBarColor = true;
-            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(578, 248);
-            this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "About";
-            this.metroTabPage3.UseCustomBackColor = true;
-            this.metroTabPage3.VerticalScrollbarBarColor = true;
-            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.VerticalScrollbarSize = 10;
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.Controls.Add(this.mt4StepDnBtn, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.mt3StepDnBtn, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.mt2StepDnBtn, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.mt2StepUpBtn, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.mt1StepDnBtn, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.metroLabel23, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.mt1StepUpBtn, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.metroLabel20, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.metroLabel21, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.metroLabel22, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.mt3StepUpBtn, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.mt4StepUpBtn, 1, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(163, 46);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(196, 142);
+            this.tableLayoutPanel3.TabIndex = 31;
             // 
-            // metroLabel13
+            // mt4StepDnBtn
             // 
-            this.metroLabel13.AutoSize = true;
-            this.metroLabel13.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel13.Location = new System.Drawing.Point(3, 9);
-            this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(58, 25);
-            this.metroLabel13.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel13.TabIndex = 26;
-            this.metroLabel13.Text = "Direct";
-            this.metroLabel13.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel13.UseStyleColors = true;
+            this.mt4StepDnBtn.DisplayFocus = true;
+            this.mt4StepDnBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mt4StepDnBtn.Location = new System.Drawing.Point(120, 108);
+            this.mt4StepDnBtn.Name = "mt4StepDnBtn";
+            this.mt4StepDnBtn.Size = new System.Drawing.Size(73, 29);
+            this.mt4StepDnBtn.TabIndex = 36;
+            this.mt4StepDnBtn.Text = "DN";
+            this.mt4StepDnBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mt4StepDnBtn.UseSelectable = true;
             // 
-            // metroLabel14
+            // mt3StepDnBtn
             // 
-            this.metroLabel14.AutoSize = true;
-            this.metroLabel14.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel14.Location = new System.Drawing.Point(190, 9);
-            this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(47, 25);
-            this.metroLabel14.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel14.TabIndex = 27;
-            this.metroLabel14.Text = "Step";
-            this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel14.UseStyleColors = true;
+            this.mt3StepDnBtn.DisplayFocus = true;
+            this.mt3StepDnBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mt3StepDnBtn.Location = new System.Drawing.Point(120, 73);
+            this.mt3StepDnBtn.Name = "mt3StepDnBtn";
+            this.mt3StepDnBtn.Size = new System.Drawing.Size(73, 29);
+            this.mt3StepDnBtn.TabIndex = 35;
+            this.mt3StepDnBtn.Text = "DN";
+            this.mt3StepDnBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mt3StepDnBtn.UseSelectable = true;
             // 
-            // metroLabel15
+            // mt2StepDnBtn
             // 
-            this.metroLabel15.AutoSize = true;
-            this.metroLabel15.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel15.Location = new System.Drawing.Point(384, 9);
-            this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(121, 25);
-            this.metroLabel15.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel15.TabIndex = 28;
-            this.metroLabel15.Text = "metroLabel15";
-            this.metroLabel15.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel15.UseStyleColors = true;
+            this.mt2StepDnBtn.DisplayFocus = true;
+            this.mt2StepDnBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mt2StepDnBtn.Location = new System.Drawing.Point(120, 38);
+            this.mt2StepDnBtn.Name = "mt2StepDnBtn";
+            this.mt2StepDnBtn.Size = new System.Drawing.Size(73, 29);
+            this.mt2StepDnBtn.TabIndex = 34;
+            this.mt2StepDnBtn.Text = "DN";
+            this.mt2StepDnBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mt2StepDnBtn.UseSelectable = true;
+            // 
+            // mt2StepUpBtn
+            // 
+            this.mt2StepUpBtn.DisplayFocus = true;
+            this.mt2StepUpBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mt2StepUpBtn.Location = new System.Drawing.Point(42, 38);
+            this.mt2StepUpBtn.Name = "mt2StepUpBtn";
+            this.mt2StepUpBtn.Size = new System.Drawing.Size(72, 29);
+            this.mt2StepUpBtn.TabIndex = 31;
+            this.mt2StepUpBtn.Text = "UP";
+            this.mt2StepUpBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mt2StepUpBtn.UseSelectable = true;
+            // 
+            // mt1StepDnBtn
+            // 
+            this.mt1StepDnBtn.DisplayFocus = true;
+            this.mt1StepDnBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mt1StepDnBtn.Location = new System.Drawing.Point(120, 3);
+            this.mt1StepDnBtn.Name = "mt1StepDnBtn";
+            this.mt1StepDnBtn.Size = new System.Drawing.Size(73, 29);
+            this.mt1StepDnBtn.TabIndex = 27;
+            this.mt1StepDnBtn.Text = "DN";
+            this.mt1StepDnBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mt1StepDnBtn.UseSelectable = true;
+            // 
+            // metroLabel23
+            // 
+            this.metroLabel23.AutoSize = true;
+            this.metroLabel23.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel23.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel23.Location = new System.Drawing.Point(3, 105);
+            this.metroLabel23.Name = "metroLabel23";
+            this.metroLabel23.Size = new System.Drawing.Size(33, 25);
+            this.metroLabel23.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel23.TabIndex = 30;
+            this.metroLabel23.Text = "#4";
+            this.metroLabel23.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel23.UseStyleColors = true;
+            // 
+            // mt1StepUpBtn
+            // 
+            this.mt1StepUpBtn.DisplayFocus = true;
+            this.mt1StepUpBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mt1StepUpBtn.Location = new System.Drawing.Point(42, 3);
+            this.mt1StepUpBtn.Name = "mt1StepUpBtn";
+            this.mt1StepUpBtn.Size = new System.Drawing.Size(72, 29);
+            this.mt1StepUpBtn.TabIndex = 26;
+            this.mt1StepUpBtn.Text = "UP";
+            this.mt1StepUpBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mt1StepUpBtn.UseSelectable = true;
+            // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel20.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel20.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(33, 25);
+            this.metroLabel20.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel20.TabIndex = 27;
+            this.metroLabel20.Text = "#1";
+            this.metroLabel20.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel20.UseStyleColors = true;
+            // 
+            // metroLabel21
+            // 
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel21.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel21.Location = new System.Drawing.Point(3, 35);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(33, 25);
+            this.metroLabel21.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel21.TabIndex = 28;
+            this.metroLabel21.Text = "#2";
+            this.metroLabel21.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel21.UseStyleColors = true;
+            // 
+            // metroLabel22
+            // 
+            this.metroLabel22.AutoSize = true;
+            this.metroLabel22.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel22.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel22.Location = new System.Drawing.Point(3, 70);
+            this.metroLabel22.Name = "metroLabel22";
+            this.metroLabel22.Size = new System.Drawing.Size(33, 25);
+            this.metroLabel22.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel22.TabIndex = 29;
+            this.metroLabel22.Text = "#3";
+            this.metroLabel22.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel22.UseStyleColors = true;
+            // 
+            // mt3StepUpBtn
+            // 
+            this.mt3StepUpBtn.DisplayFocus = true;
+            this.mt3StepUpBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mt3StepUpBtn.Location = new System.Drawing.Point(42, 73);
+            this.mt3StepUpBtn.Name = "mt3StepUpBtn";
+            this.mt3StepUpBtn.Size = new System.Drawing.Size(72, 29);
+            this.mt3StepUpBtn.TabIndex = 32;
+            this.mt3StepUpBtn.Text = "UP";
+            this.mt3StepUpBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mt3StepUpBtn.UseSelectable = true;
+            // 
+            // mt4StepUpBtn
+            // 
+            this.mt4StepUpBtn.DisplayFocus = true;
+            this.mt4StepUpBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mt4StepUpBtn.Location = new System.Drawing.Point(42, 108);
+            this.mt4StepUpBtn.Name = "mt4StepUpBtn";
+            this.mt4StepUpBtn.Size = new System.Drawing.Size(72, 29);
+            this.mt4StepUpBtn.TabIndex = 33;
+            this.mt4StepUpBtn.Text = "UP";
+            this.mt4StepUpBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mt4StepUpBtn.UseSelectable = true;
+            // 
+            // dirGoBtn
+            // 
+            this.dirGoBtn.DisplayFocus = true;
+            this.dirGoBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.dirGoBtn.Location = new System.Drawing.Point(3, 194);
+            this.dirGoBtn.Name = "dirGoBtn";
+            this.dirGoBtn.Size = new System.Drawing.Size(145, 29);
+            this.dirGoBtn.TabIndex = 30;
+            this.dirGoBtn.Text = "GO";
+            this.dirGoBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dirGoBtn.UseSelectable = true;
+            this.dirGoBtn.Click += new System.EventHandler(this.dirGoBtn_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -771,15 +942,72 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(145, 142);
             this.tableLayoutPanel2.TabIndex = 29;
             // 
+            // metroLabel19
+            // 
+            this.metroLabel19.AutoSize = true;
+            this.metroLabel19.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel19.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel19.Location = new System.Drawing.Point(3, 105);
+            this.metroLabel19.Name = "metroLabel19";
+            this.metroLabel19.Size = new System.Drawing.Size(33, 25);
+            this.metroLabel19.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel19.TabIndex = 32;
+            this.metroLabel19.Text = "#4";
+            this.metroLabel19.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel19.UseStyleColors = true;
+            // 
+            // metroLabel18
+            // 
+            this.metroLabel18.AutoSize = true;
+            this.metroLabel18.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel18.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel18.Location = new System.Drawing.Point(3, 70);
+            this.metroLabel18.Name = "metroLabel18";
+            this.metroLabel18.Size = new System.Drawing.Size(33, 25);
+            this.metroLabel18.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel18.TabIndex = 31;
+            this.metroLabel18.Text = "#3";
+            this.metroLabel18.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel18.UseStyleColors = true;
+            // 
+            // metroLabel17
+            // 
+            this.metroLabel17.AutoSize = true;
+            this.metroLabel17.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel17.Location = new System.Drawing.Point(3, 35);
+            this.metroLabel17.Name = "metroLabel17";
+            this.metroLabel17.Size = new System.Drawing.Size(33, 25);
+            this.metroLabel17.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel17.TabIndex = 30;
+            this.metroLabel17.Text = "#2";
+            this.metroLabel17.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel17.UseStyleColors = true;
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel16.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel16.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(33, 25);
+            this.metroLabel16.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel16.TabIndex = 26;
+            this.metroLabel16.Text = "#1";
+            this.metroLabel16.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel16.UseStyleColors = true;
+            // 
             // mt1DirectTxtBox
             // 
             // 
             // 
             // 
             this.mt1DirectTxtBox.CustomButton.Image = null;
-            this.mt1DirectTxtBox.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.mt1DirectTxtBox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.mt1DirectTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mt1DirectTxtBox.CustomButton.Name = "";
-            this.mt1DirectTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.mt1DirectTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
             this.mt1DirectTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.mt1DirectTxtBox.CustomButton.TabIndex = 1;
             this.mt1DirectTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -808,9 +1036,10 @@
             // 
             // 
             this.mt2DirectTxtBox.CustomButton.Image = null;
-            this.mt2DirectTxtBox.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.mt2DirectTxtBox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.mt2DirectTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mt2DirectTxtBox.CustomButton.Name = "";
-            this.mt2DirectTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.mt2DirectTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
             this.mt2DirectTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.mt2DirectTxtBox.CustomButton.TabIndex = 1;
             this.mt2DirectTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -839,9 +1068,10 @@
             // 
             // 
             this.mt3DirectTxtBox.CustomButton.Image = null;
-            this.mt3DirectTxtBox.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.mt3DirectTxtBox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.mt3DirectTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mt3DirectTxtBox.CustomButton.Name = "";
-            this.mt3DirectTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.mt3DirectTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
             this.mt3DirectTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.mt3DirectTxtBox.CustomButton.TabIndex = 1;
             this.mt3DirectTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -870,9 +1100,10 @@
             // 
             // 
             this.mt4DirectTxtBox.CustomButton.Image = null;
-            this.mt4DirectTxtBox.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.mt4DirectTxtBox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.mt4DirectTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mt4DirectTxtBox.CustomButton.Name = "";
-            this.mt4DirectTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.mt4DirectTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
             this.mt4DirectTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.mt4DirectTxtBox.CustomButton.TabIndex = 1;
             this.mt4DirectTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -895,74 +1126,121 @@
             this.mt4DirectTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mt4DirectTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroLabel16
+            // metroLabel15
             // 
-            this.metroLabel16.AutoSize = true;
-            this.metroLabel16.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel16.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel16.Location = new System.Drawing.Point(3, 0);
-            this.metroLabel16.Name = "metroLabel16";
-            this.metroLabel16.Size = new System.Drawing.Size(33, 25);
-            this.metroLabel16.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel16.TabIndex = 26;
-            this.metroLabel16.Text = "#1";
-            this.metroLabel16.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel16.UseStyleColors = true;
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel15.Location = new System.Drawing.Point(439, 53);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(78, 25);
+            this.metroLabel15.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel15.TabIndex = 28;
+            this.metroLabel15.Text = "StepSize";
+            this.metroLabel15.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel15.UseStyleColors = true;
             // 
-            // metroLabel17
+            // metroLabel14
             // 
-            this.metroLabel17.AutoSize = true;
-            this.metroLabel17.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel17.Location = new System.Drawing.Point(3, 35);
-            this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(33, 25);
-            this.metroLabel17.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel17.TabIndex = 30;
-            this.metroLabel17.Text = "#2";
-            this.metroLabel17.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel17.UseStyleColors = true;
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel14.Location = new System.Drawing.Point(163, 9);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(47, 25);
+            this.metroLabel14.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel14.TabIndex = 27;
+            this.metroLabel14.Text = "Step";
+            this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel14.UseStyleColors = true;
             // 
-            // metroLabel18
+            // metroLabel13
             // 
-            this.metroLabel18.AutoSize = true;
-            this.metroLabel18.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel18.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel18.Location = new System.Drawing.Point(3, 70);
-            this.metroLabel18.Name = "metroLabel18";
-            this.metroLabel18.Size = new System.Drawing.Size(33, 25);
-            this.metroLabel18.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel18.TabIndex = 31;
-            this.metroLabel18.Text = "#3";
-            this.metroLabel18.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel18.UseStyleColors = true;
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel13.Location = new System.Drawing.Point(3, 9);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(58, 25);
+            this.metroLabel13.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel13.TabIndex = 26;
+            this.metroLabel13.Text = "Direct";
+            this.metroLabel13.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel13.UseStyleColors = true;
             // 
-            // metroLabel19
+            // metroTabPage3
             // 
-            this.metroLabel19.AutoSize = true;
-            this.metroLabel19.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel19.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel19.Location = new System.Drawing.Point(3, 105);
-            this.metroLabel19.Name = "metroLabel19";
-            this.metroLabel19.Size = new System.Drawing.Size(33, 25);
-            this.metroLabel19.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel19.TabIndex = 32;
-            this.metroLabel19.Text = "#4";
-            this.metroLabel19.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel19.UseStyleColors = true;
+            this.metroTabPage3.BackColor = System.Drawing.Color.Transparent;
+            this.metroTabPage3.HorizontalScrollbarBarColor = true;
+            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage3.HorizontalScrollbarSize = 8;
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage3.Name = "metroTabPage3";
+            this.metroTabPage3.Size = new System.Drawing.Size(578, 248);
+            this.metroTabPage3.TabIndex = 2;
+            this.metroTabPage3.Text = "About";
+            this.metroTabPage3.UseCustomBackColor = true;
+            this.metroTabPage3.VerticalScrollbarBarColor = true;
+            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage3.VerticalScrollbarSize = 8;
             // 
-            // dirGoBtn
+            // metroTextBox2
             // 
-            this.dirGoBtn.DisplayFocus = true;
-            this.dirGoBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.dirGoBtn.Location = new System.Drawing.Point(3, 194);
-            this.dirGoBtn.Name = "dirGoBtn";
-            this.dirGoBtn.Size = new System.Drawing.Size(145, 29);
-            this.dirGoBtn.TabIndex = 30;
-            this.dirGoBtn.Text = "GO";
-            this.dirGoBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.dirGoBtn.UseSelectable = true;
-            this.dirGoBtn.Click += new System.EventHandler(this.dirGoBtn_Click);
+            // 
+            // 
+            // 
+            this.metroTextBox2.CustomButton.Image = null;
+            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.metroTextBox2.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.metroTextBox2.CustomButton.Name = "";
+            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox2.CustomButton.TabIndex = 1;
+            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox2.CustomButton.UseSelectable = true;
+            this.metroTextBox2.CustomButton.Visible = false;
+            this.metroTextBox2.Lines = new string[0];
+            this.metroTextBox2.Location = new System.Drawing.Point(380, 84);
+            this.metroTextBox2.MaxLength = 32767;
+            this.metroTextBox2.Name = "metroTextBox2";
+            this.metroTextBox2.PasswordChar = '\0';
+            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox2.SelectedText = "";
+            this.metroTextBox2.SelectionLength = 0;
+            this.metroTextBox2.SelectionStart = 0;
+            this.metroTextBox2.ShortcutsEnabled = true;
+            this.metroTextBox2.Size = new System.Drawing.Size(100, 23);
+            this.metroTextBox2.TabIndex = 33;
+            this.metroTextBox2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTextBox2.UseSelectable = true;
+            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel24
+            // 
+            this.metroLabel24.AutoSize = true;
+            this.metroLabel24.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel24.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel24.Location = new System.Drawing.Point(380, 110);
+            this.metroLabel24.Name = "metroLabel24";
+            this.metroLabel24.Size = new System.Drawing.Size(121, 25);
+            this.metroLabel24.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel24.TabIndex = 26;
+            this.metroLabel24.Text = "metroLabel24";
+            this.metroLabel24.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel24.UseStyleColors = true;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.DisplayFocus = true;
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton1.Location = new System.Drawing.Point(486, 81);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(101, 29);
+            this.metroButton1.TabIndex = 26;
+            this.metroButton1.Text = "metroButton1";
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton1.UseSelectable = true;
             // 
             // Form1
             // 
@@ -994,6 +1272,8 @@
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -1054,6 +1334,23 @@
         private MetroFramework.Controls.MetroTextBox mt3DirectTxtBox;
         private MetroFramework.Controls.MetroTextBox mt4DirectTxtBox;
         private MetroFramework.Controls.MetroButton dirGoBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private MetroFramework.Controls.MetroLabel metroLabel23;
+        private MetroFramework.Controls.MetroLabel metroLabel20;
+        private MetroFramework.Controls.MetroLabel metroLabel21;
+        private MetroFramework.Controls.MetroLabel metroLabel22;
+        private MetroFramework.Controls.MetroButton mt4StepDnBtn;
+        private MetroFramework.Controls.MetroButton mt3StepDnBtn;
+        private MetroFramework.Controls.MetroButton mt2StepDnBtn;
+        private MetroFramework.Controls.MetroButton mt2StepUpBtn;
+        private MetroFramework.Controls.MetroButton mt1StepDnBtn;
+        private MetroFramework.Controls.MetroButton mt1StepUpBtn;
+        private MetroFramework.Controls.MetroButton mt3StepUpBtn;
+        private MetroFramework.Controls.MetroButton mt4StepUpBtn;
+        private MetroFramework.Controls.MetroButton mtCenterBtn;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroLabel metroLabel24;
+        private MetroFramework.Controls.MetroTextBox metroTextBox2;
     }
 }
 

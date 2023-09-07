@@ -125,5 +125,11 @@ namespace DynaDrive
             }
             mySerial.WriteLine(openRB.serialGen()[0]);
         }
+
+        private void mtCenterBtn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 4; i++) openRB.goalPos[i] = 0;
+            mySerial.WriteLine(openRB.serialGen()[0]);
+        }
     }
 }
