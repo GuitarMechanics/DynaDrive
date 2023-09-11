@@ -25,7 +25,7 @@ namespace DynaDrive
         {
             for (int i = 0; i < 4; i++)
             {
-                goalPos[i] = posCenter;
+                goalPos[i] = 0;
                 pidPGains[i] = pidPinit;
             }
         }
