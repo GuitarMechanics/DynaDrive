@@ -26,7 +26,9 @@ namespace DynaDrive
         public MetroLabel[] diffLabels = new MetroLabel[4];
         public MetroToggle[] mtToggles = new MetroToggle[4];
         public MetroTextBox[] mtDirTargets = new MetroTextBox[4];
+        public MetroTextBox[] pidPGains = new MetroTextBox[4];
         private OpenRBSerialGen openRB = new OpenRBSerialGen();
+        private int stepsize = 0;
         public Form1()
         {
             InitializeComponent();
@@ -41,6 +43,8 @@ namespace DynaDrive
             mtToggles[2] = mt3Toggle; mtToggles[3] = mt4Toggle;
             mtDirTargets[0] = mt1DirectTxtBox; mtDirTargets[1] = mt2DirectTxtBox;
             mtDirTargets[2] = mt3DirectTxtBox; mtDirTargets[3] = mt4DirectTxtBox;
+            pidPGains[0] = pid1gain; pidPGains[1] = pid2gain;
+            pidPGains[2] = pid3gain; pidPGains[3] = pid4gain;
         }
 
         private void updateSerialPort()
@@ -129,7 +133,95 @@ namespace DynaDrive
         private void mtCenterBtn_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 4; i++) openRB.goalPos[i] = 0;
+            serialSend();
+        }
+
+        private void stepSetBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                stepsize = Convert.ToInt32(stepSizeTxtBox.Text.ToString());
+            }
+            catch (Exception) { stepsize = 256; }
+            finally
+            {
+                stepSizeIndLabel.Text = stepsize * 360 / 4096.0 + " deg";
+            }
+        }
+
+        private void serialSend()
+        {
             mySerial.WriteLine(openRB.serialGen()[0]);
+        }
+
+        private void mt1StepUpBtn_Click(object sender, EventArgs e)
+        {
+            openRB.goalPos[0] += stepsize; serialSend();
+            
+        }
+
+        private void mt1StepDnBtn_Click(object sender, EventArgs e)
+        {
+            openRB.goalPos[0] -= stepsize; serialSend();
+        }
+
+        private void mt2StepUpBtn_Click(object sender, EventArgs e)
+        {
+            openRB.goalPos[1] += stepsize; serialSend();
+        }
+
+        private void mt2StepDnBtn_Click(object sender, EventArgs e)
+        {
+            openRB.goalPos[1] -= stepsize; serialSend();
+        }
+
+        private void mt3StepUpBtn_Click(object sender, EventArgs e)
+        {
+            openRB.goalPos[2] += stepsize; serialSend();
+        }
+
+        private void mt3StepDnBtn_Click(object sender, EventArgs e)
+        {
+            openRB.goalPos[2] -= stepsize; serialSend();
+        }
+
+        private void mt4StepUpBtn_Click(object sender, EventArgs e)
+        {
+            openRB.goalPos[3] += stepsize; serialSend();
+        }
+
+        private void mt4StepDnBtn_Click(object sender, EventArgs e)
+        {
+            openRB.goalPos[3] -= stepsize; serialSend();
+        }
+
+        private void setApplyBtn_Click(object sender, EventArgs e)
+        {
+            int[] pidTmp = new int[4];
+            for(int i = 0; i<4; i++)
+            {
+                try { pidTmp[i] = Convert.ToInt32(pidPGains[i].Text.ToString()); }
+                catch (Exception) { pidPGains[i].Text = "400"; pidTmp[i] = 400; }
+            }
+            openRB.writePGains(pidTmp);
+            openRB.writeAccMode(4 - accComboBox.SelectedIndex);
+            openRB.manageSpeed = spdAutoAdjToggle.Checked;
+            try 
+            { 
+                openRB.maxSpd = Convert.ToInt32(spdRawTxtBox.Text.ToString());
+                spdRPMConvLabel.Text = "=" + openRB.maxSpd * 0.229 + " r/min";
+            }
+            catch (Exception)
+            {
+                openRB.maxSpd = 300;
+                spdRPMConvLabel.Text = "=" + 300 * 0.229 + " r/min";
+            }
+            serialSend();
+        }
+
+        private void rxLogClrBtn_Click(object sender, EventArgs e)
+        {
+            metroTextBox1.Text= string.Empty;
         }
     }
 }
