@@ -27,6 +27,11 @@ namespace DynaDrive
         public MetroToggle[] mtToggles = new MetroToggle[4];
         public MetroTextBox[] mtDirTargets = new MetroTextBox[4];
         public MetroTextBox[] pidPGains = new MetroTextBox[4];
+        public MetroTextBox[] PGFroms = new MetroTextBox[4];
+        public MetroTextBox[] PGTos = new MetroTextBox[4];
+        public MetroTextBox[] PGSteps = new MetroTextBox[4];
+
+
         private OpenRBSerialGen openRB = new OpenRBSerialGen();
         private int stepsize = 0;
         public Form1()
@@ -35,16 +40,30 @@ namespace DynaDrive
             updateSerialPort();
             targetLabels[0] = targetLabel1; targetLabels[1] = targetLabel2;
             targetLabels[2] = targetLabel3; targetLabels[3] = targetLabel4;
+
             currentLabels[0] = currentLabel1; currentLabels[1] = currentLabel2;
             currentLabels[2] = currentLabel3; currentLabels[3] = currentLabel4;
+
             diffLabels[0] = diffLabel1; diffLabels[1] = diffLabel2;
             diffLabels[2] = diffLabel3; diffLabels[3] = diffLabel4;
+
             mtToggles[0] = mt1Toggle; mtToggles[1] = mt2Toggle;
             mtToggles[2] = mt3Toggle; mtToggles[3] = mt4Toggle;
+
             mtDirTargets[0] = mt1DirectTxtBox; mtDirTargets[1] = mt2DirectTxtBox;
             mtDirTargets[2] = mt3DirectTxtBox; mtDirTargets[3] = mt4DirectTxtBox;
+
             pidPGains[0] = pid1gain; pidPGains[1] = pid2gain;
             pidPGains[2] = pid3gain; pidPGains[3] = pid4gain;
+
+            PGFroms[0] = PGmt1FromTxtBox; PGFroms[1] = PGmt2FromTxtBox;
+            PGFroms[2] = PGmt3FromTxtBox; PGFroms[3] = PGmt3FromTxtBox;
+
+            PGTos[0] = PGmt1ToTxtBox; PGTos[1] = PGmt2ToTxtBox;
+            PGTos[2] = PGmt3ToTxtBox; PGTos[3] = PGmt3ToTxtBox;
+
+            PGSteps[0] = PGmt1StepTxtBox; PGSteps[1] = PGmt2StepTxtBox;
+            PGSteps[2] = PGmt3StepTxtBox; PGSteps[3] = PGmt4StepTxtBox;
         }
 
         private void updateSerialPort()
@@ -222,6 +241,14 @@ namespace DynaDrive
         private void rxLogClrBtn_Click(object sender, EventArgs e)
         {
             metroTextBox1.Text= string.Empty;
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            bool[] mtAvails = new bool[4];
+            for (int i = 0; i < 4; i++) mtAvails[i] = mtToggles[i].Checked;
+            AutoStepping stepDatas = new AutoStepping(PGFroms, PGTos, PGSteps, mtAvails, PGRoundTripToggle.Checked);
+            stepDatas.runData2Str();
         }
     }
 }
