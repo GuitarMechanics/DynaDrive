@@ -11,6 +11,7 @@ using System.IO.Ports;
 using System.Linq.Expressions;
 using MetroFramework.Controls;
 using System.CodeDom;
+using System.Runtime.InteropServices;
 
 // 솔루션용 nuget 설치 필요: metroui
 // https://luckygg.tistory.com/302
@@ -34,6 +35,14 @@ namespace DynaDrive
 
         private OpenRBSerialGen openRB = new OpenRBSerialGen();
         private int stepsize = 0;
+        private bool stepRun = false;
+
+        Timer SteppingTimer = new Timer();
+        private int stepTimerCnt = 0;
+        private int stepRepeatTarget = 0;
+        private int stepRepeatCurrent = 0;
+        private int[,] stepdataArray;
+
         public Form1()
         {
             InitializeComponent();
@@ -64,6 +73,8 @@ namespace DynaDrive
 
             PGSteps[0] = PGmt1StepTxtBox; PGSteps[1] = PGmt2StepTxtBox;
             PGSteps[2] = PGmt3StepTxtBox; PGSteps[3] = PGmt4StepTxtBox;
+
+            SteppingTimer.Tick += new EventHandler(stepTimerTick);
         }
 
         private void updateSerialPort()
@@ -94,7 +105,8 @@ namespace DynaDrive
         }
         private void PortDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            ReceiveData = mySerial.ReadLine();
+            try {if(mySerial.IsOpen) ReceiveData = mySerial.ReadLine(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message);}
             try
             {
                 this.Invoke(new Action(ProcessingData));
@@ -113,6 +125,7 @@ namespace DynaDrive
         }
         private void posUpdate()
         {
+            int diffMax = 0;
             for(int i = 0; i<4; i++)
             {
                 if (mtToggles[i].Checked)
@@ -120,6 +133,7 @@ namespace DynaDrive
                     targetLabels[i].Text = openRB.goalPos[i].ToString();
                     currentLabels[i].Text = openRB.presPos[i].ToString();
                     int diffTemp = openRB.presPos[i] - openRB.goalPos[i];
+                    if (Math.Abs(diffTemp) > diffMax) diffMax = Math.Abs(diffTemp);
                     if (diffTemp > 0) diffLabels[i].Text = "+" + diffTemp.ToString();
                     else if (diffTemp < 0) diffLabels[i].Text = diffTemp.ToString();
                     else diffLabels[i].Text = "0";
@@ -132,6 +146,18 @@ namespace DynaDrive
                 }
 
             }
+            posInaccurate_labelTrigger(diffMax > 10);
+            autoStepper_LabelTrigger(SteppingTimer.Enabled);
+        }
+        private void posInaccurate_labelTrigger(bool isInAccurate)
+        {
+            if (isInAccurate) { posInAccurateLabel.Text = "Pos Inaccurate"; }
+            else posInAccurateLabel.Text = "";
+        }
+        private void autoStepper_LabelTrigger(bool isRunning)
+        {
+            if (isRunning) { AutoStepperRunLabel.Text = "AutoStep Running"; }
+            else AutoStepperRunLabel.Text = "";
         }
 
         private void dirGoBtn_Click(object sender, EventArgs e)
@@ -214,6 +240,7 @@ namespace DynaDrive
             openRB.goalPos[3] -= stepsize; serialSend();
         }
 
+
         private void setApplyBtn_Click(object sender, EventArgs e)
         {
             int[] pidTmp = new int[4];
@@ -243,12 +270,113 @@ namespace DynaDrive
             metroTextBox1.Text= string.Empty;
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void metroButton1_Click(object sender, EventArgs e) // AutoStep on
         {
+            int timeIntervals;
             bool[] mtAvails = new bool[4];
             for (int i = 0; i < 4; i++) mtAvails[i] = mtToggles[i].Checked;
             AutoStepping stepDatas = new AutoStepping(PGFroms, PGTos, PGSteps, mtAvails, PGRoundTripToggle.Checked);
-            stepDatas.runData2Str();
+            stepdataArray = stepDatas.RunDataGen();
+            try { timeIntervals = Convert.ToInt32(timeIntervalTxtBox.Text.ToString()); }
+            catch (Exception) { timeIntervals = 2000; timeIntervalTxtBox.Text = "2000"; }
+            try { stepRepeatTarget = Convert.ToInt32(repeatsTxtBox.Text.ToString()); }
+            catch (Exception) { stepRepeatTarget = 1; repeatsTxtBox.Text = "1"; }
+            SteppingTimer.Interval = timeIntervals;
+            stepTimerCnt = 0;
+            stepRepeatCurrent= 0;
+            autostepRun();
+
+        }
+
+        private void autostepRun()
+        {
+            stepRun = true;           
+            SteppingTimer.Start();
+        }
+
+        private void stepTimerTick(object sender, EventArgs e)
+        {
+            if(stepTimerCnt > stepdataArray.GetLength(0))
+            {
+                
+                SteppingTimer.Stop();
+                stepRepeatCurrent++;
+            }
+            else
+            {
+                stepTimerTickWritelines(stepdataArray,stepTimerCnt);
+            }
+
+        }
+        private void stepTimerTickWritelines(int[,] values, int rowcount)
+        {
+            try
+            {
+                for (int i = 0; i < 4; i++) { openRB.goalPos[i] = values[rowcount, i]; }
+                Console.WriteLine(openRB.serialGen()[0]);
+                serialSend();
+            }
+            catch (Exception) { SteppingTimer.Stop(); }
+            
+            stepTimerCnt++;
+        }
+
+        private void serialCloseBtn_Click(object sender, EventArgs e)
+        {
+            mySerial.Close();
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e) // AutoStep off
+        {
+            if(stepRun) SteppingTimer.Stop();
+            stepRun= false;
+        }
+
+        private void SetupPresetComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (SetupPresetComboBox.SelectedIndex)
+            {
+                case 0: // HP Fast
+                    foreach(var items in pidPGains) { items.Text = "1800"; }
+                    spdRawTxtBox.Text = "500";
+                    accComboBox.SelectedIndex = 1;
+                    break;
+                case 1: // HP Medium
+                    foreach(var items in pidPGains) { items.Text = "1800"; }
+                    spdRawTxtBox.Text = "300";
+                    accComboBox.SelectedIndex = 1;
+                    break;
+                case 2: // HP Slow
+                    foreach(var items in pidPGains) { items.Text = "1800"; }
+                    spdRawTxtBox.Text = "200";
+                    accComboBox.SelectedIndex = 2;
+                    break;
+                case 3: // ST Fast
+                    foreach(var items in pidPGains) { items.Text = "1000"; }
+                    spdRawTxtBox.Text = "500";
+                    accComboBox.SelectedIndex = 1;
+                    break;
+                case 4: // ST Medium
+                    foreach(var items in pidPGains) { items.Text = "1000"; }
+                    spdRawTxtBox.Text = "300";
+                    accComboBox.SelectedIndex = 1;
+                    break;
+                case 5: // ST Slow
+                    foreach(var items in pidPGains) { items.Text = "1000"; }
+                    spdRawTxtBox.Text = "200";
+                    accComboBox.SelectedIndex = 2;
+                    break;
+
+
+            }
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {        }
+
+        private void metroComboBox1_DropDown(object sender, EventArgs e)
+        {
+            updateSerialPort();
         }
     }
 }

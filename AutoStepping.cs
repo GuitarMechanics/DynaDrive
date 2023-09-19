@@ -18,23 +18,23 @@ namespace DynaDrive
 
         private int[] mtStepCnts = new int[4];
         public int runCounts;
+        public int repeats;
 
         public AutoStepping(MetroTextBox[] mtFromTBXs, MetroTextBox[] mtToTBXs, MetroTextBox[] mtStepTBXs, bool[] mtAvails,bool rTripSet)
         {
-            this.isRoundTripSet = rTripSet;
+            isRoundTripSet = rTripSet;
             mtActives = mtAvails;
 
             for (int i = 0; i<4; i++)
             {
-
                 try { mtFroms[i] = Convert.ToInt32(mtFromTBXs[i].Text.ToString());}
-                catch (Exception e) { mtFroms[i] = 0; mtFromTBXs[i].Text = "0"; }
+                catch (Exception) { mtFroms[i] = 0; mtFromTBXs[i].Text = "0"; }
 
                 try { mtFinals[i] = Convert.ToInt32(mtToTBXs[i].Text.ToString()); }
-                catch (Exception e) { mtFinals[i] = 0; mtToTBXs[i].Text = "0"; }
+                catch (Exception) { mtFinals[i] = 0; mtToTBXs[i].Text = "0"; }
 
                 try { mtSteps[i] = Convert.ToInt32(mtStepTBXs[i].Text.ToString()); }
-                catch(Exception e) { mtSteps[i] = 1; mtToTBXs[i].Text = "-"; }
+                catch (Exception) { mtSteps[i] = 1; mtToTBXs[i].Text = "-"; }
                 if (!mtAvails[i])
                 {
                     mtFroms[i] = 0;
@@ -42,7 +42,7 @@ namespace DynaDrive
                     mtSteps[i] = 1;
                 }
 
-                mtStepCnts[i] = Math.Abs(mtFinals[i] - mtFroms[i]) / mtSteps[i] + 1;
+                mtStepCnts[i] = Math.Abs(mtFinals[i] - mtFroms[i]) / Math.Abs(mtSteps[i]) + 1;
             }
         }
 
@@ -58,8 +58,9 @@ namespace DynaDrive
             {
                 for(int motors = 0; motors<4; motors++)
                 {
-                    if (turns > mtStepCnts[motors]) retVal[turns, motors] = retVal[turns - 1, motors];
-                    else retVal[turns, motors] = retVal[turns - 1, motors] += mtSteps[motors];
+                    if (turns > mtStepCnts[motors] || retVal[turns-1, motors] > mtFinals[motors] - mtSteps[motors]) 
+                        retVal[turns, motors] = retVal[turns - 1, motors];
+                    else retVal[turns, motors] = retVal[turns - 1, motors] + mtSteps[motors];
                 }
             }
             if(this.isRoundTripSet)
@@ -86,7 +87,6 @@ namespace DynaDrive
                 }
                 retStr += "\n";
             }
-            Console.WriteLine(retStr);
             return retStr;
         }
         public string runData2Str()
