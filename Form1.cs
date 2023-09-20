@@ -31,6 +31,7 @@ namespace DynaDrive
         public MetroTextBox[] PGFroms = new MetroTextBox[4];
         public MetroTextBox[] PGTos = new MetroTextBox[4];
         public MetroTextBox[] PGSteps = new MetroTextBox[4];
+        public MetroToggle[] PGToggles = new MetroToggle[4];
 
 
         private OpenRBSerialGen openRB = new OpenRBSerialGen();
@@ -66,13 +67,16 @@ namespace DynaDrive
             pidPGains[2] = pid3gain; pidPGains[3] = pid4gain;
 
             PGFroms[0] = PGmt1FromTxtBox; PGFroms[1] = PGmt2FromTxtBox;
-            PGFroms[2] = PGmt3FromTxtBox; PGFroms[3] = PGmt3FromTxtBox;
+            PGFroms[2] = PGmt3FromTxtBox; PGFroms[3] = PGmt4FromTxtBox;
 
             PGTos[0] = PGmt1ToTxtBox; PGTos[1] = PGmt2ToTxtBox;
-            PGTos[2] = PGmt3ToTxtBox; PGTos[3] = PGmt3ToTxtBox;
+            PGTos[2] = PGmt3ToTxtBox; PGTos[3] = PGmt4ToTxtBox;
 
             PGSteps[0] = PGmt1StepTxtBox; PGSteps[1] = PGmt2StepTxtBox;
             PGSteps[2] = PGmt3StepTxtBox; PGSteps[3] = PGmt4StepTxtBox;
+
+            PGToggles[0] = PGmt1Toggle; PGToggles[1] = PGmt2Toggle;
+            PGToggles[2] = PGmt3Toggle; PGToggles[3] = PGmt4Toggle;
 
             SteppingTimer.Tick += new EventHandler(stepTimerTick);
         }
@@ -156,8 +160,17 @@ namespace DynaDrive
         }
         private void autoStepper_LabelTrigger(bool isRunning)
         {
-            if (isRunning) { AutoStepperRunLabel.Text = "AutoStep Running"; }
-            else AutoStepperRunLabel.Text = "";
+            if (isRunning)
+            {
+                AutoStepperRunLabel.Text = "AutoStep Running";
+                StepCounterLabel.Text = "Step " + stepTimerCnt.ToString() + " / " + stepdataArray.GetLength(0);
+            }
+            else
+            {
+                AutoStepperRunLabel.Text = "";
+                StepCounterLabel.Text = "";
+            }
+
         }
 
         private void dirGoBtn_Click(object sender, EventArgs e)
@@ -274,18 +287,20 @@ namespace DynaDrive
         {
             int timeIntervals;
             bool[] mtAvails = new bool[4];
-            for (int i = 0; i < 4; i++) mtAvails[i] = mtToggles[i].Checked;
-            AutoStepping stepDatas = new AutoStepping(PGFroms, PGTos, PGSteps, mtAvails, PGRoundTripToggle.Checked);
-            stepdataArray = stepDatas.RunDataGen();
+            for (int i = 0; i < 4; i++)
+            {
+                mtAvails[i] = PGToggles[i].Checked;
+
+            }
             try { timeIntervals = Convert.ToInt32(timeIntervalTxtBox.Text.ToString()); }
             catch (Exception) { timeIntervals = 2000; timeIntervalTxtBox.Text = "2000"; }
             try { stepRepeatTarget = Convert.ToInt32(repeatsTxtBox.Text.ToString()); }
             catch (Exception) { stepRepeatTarget = 1; repeatsTxtBox.Text = "1"; }
+            AutoStepping stepDatas = new AutoStepping(PGFroms, PGTos, PGSteps, mtAvails, PGRoundTripToggle.Checked, stepRepeatTarget);
+            stepdataArray = stepDatas.RunDataGen();
             SteppingTimer.Interval = timeIntervals;
             stepTimerCnt = 0;
-            stepRepeatCurrent= 0;
             autostepRun();
-
         }
 
         private void autostepRun()
@@ -298,9 +313,7 @@ namespace DynaDrive
         {
             if(stepTimerCnt > stepdataArray.GetLength(0))
             {
-                
                 SteppingTimer.Stop();
-                stepRepeatCurrent++;
             }
             else
             {
@@ -366,8 +379,6 @@ namespace DynaDrive
                     spdRawTxtBox.Text = "200";
                     accComboBox.SelectedIndex = 2;
                     break;
-
-
             }
         }
 
@@ -377,6 +388,12 @@ namespace DynaDrive
         private void metroComboBox1_DropDown(object sender, EventArgs e)
         {
             updateSerialPort();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            openRB.writeGoalCenter();
+            serialSend();
         }
     }
 }

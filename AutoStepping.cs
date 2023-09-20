@@ -20,10 +20,11 @@ namespace DynaDrive
         public int runCounts;
         public int repeats;
 
-        public AutoStepping(MetroTextBox[] mtFromTBXs, MetroTextBox[] mtToTBXs, MetroTextBox[] mtStepTBXs, bool[] mtAvails,bool rTripSet)
+        public AutoStepping(MetroTextBox[] mtFromTBXs, MetroTextBox[] mtToTBXs, MetroTextBox[] mtStepTBXs, bool[] mtAvails, bool rTripSet, int repeatCounts)
         {
             isRoundTripSet = rTripSet;
             mtActives = mtAvails;
+            repeats = repeatCounts;
 
             for (int i = 0; i<4; i++)
             {
@@ -41,7 +42,6 @@ namespace DynaDrive
                     mtFinals[i] = 0;
                     mtSteps[i] = 1;
                 }
-
                 mtStepCnts[i] = Math.Abs(mtFinals[i] - mtFroms[i]) / Math.Abs(mtSteps[i]) + 1;
             }
         }
@@ -51,7 +51,7 @@ namespace DynaDrive
             int cntMax = 0;
             foreach (int i in mtStepCnts)  if (i > cntMax) cntMax = i;
             if(this.isRoundTripSet) { runCounts = cntMax * 2 - 1; } else { runCounts = cntMax; }
-            int[,] retVal = new int[runCounts, 4];
+            int[,] retVal = new int[runCounts * repeats, 4];
 
             for (int i = 0; i < 4; i++) retVal[0, i] = mtFroms[i];
             for(int turns = 1; turns < cntMax; turns++)
@@ -73,6 +73,17 @@ namespace DynaDrive
                     }
                 }
             }
+            for(int i = 0; i<repeats; i++)
+            {
+                for(int j = 0; j<runCounts; j++)
+                {
+                    for(int k = 0; k<4; k++)
+                    {
+                        retVal[j + runCounts*i, k] = retVal[j,k];
+                    }
+                }
+            }
+
             return retVal;
         }
 

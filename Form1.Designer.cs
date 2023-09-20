@@ -155,6 +155,7 @@
             this.posInAccurateLabel = new MetroFramework.Controls.MetroLabel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.AutoStepperRunLabel = new MetroFramework.Controls.MetroLabel();
+            this.StepCounterLabel = new MetroFramework.Controls.MetroLabel();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -1748,12 +1749,12 @@
             this.metroLabel36.AutoSize = true;
             this.metroLabel36.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel36.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel36.Location = new System.Drawing.Point(267, 178);
+            this.metroLabel36.Location = new System.Drawing.Point(290, 178);
             this.metroLabel36.Name = "metroLabel36";
-            this.metroLabel36.Size = new System.Drawing.Size(125, 25);
+            this.metroLabel36.Size = new System.Drawing.Size(74, 25);
             this.metroLabel36.Style = MetroFramework.MetroColorStyle.White;
             this.metroLabel36.TabIndex = 40;
-            this.metroLabel36.Text = "Repeats(Inop.)";
+            this.metroLabel36.Text = "Repeats";
             this.metroLabel36.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroLabel36.UseStyleColors = true;
             // 
@@ -2505,6 +2506,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.posInAccurateLabel, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.AutoStepperRunLabel, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.StepCounterLabel, 1, 1);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(682, 251);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
@@ -2526,6 +2528,19 @@
             this.AutoStepperRunLabel.TabIndex = 27;
             this.AutoStepperRunLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.AutoStepperRunLabel.UseStyleColors = true;
+            // 
+            // StepCounterLabel
+            // 
+            this.StepCounterLabel.AutoSize = true;
+            this.StepCounterLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.StepCounterLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.StepCounterLabel.Location = new System.Drawing.Point(172, 32);
+            this.StepCounterLabel.Name = "StepCounterLabel";
+            this.StepCounterLabel.Size = new System.Drawing.Size(0, 0);
+            this.StepCounterLabel.Style = MetroFramework.MetroColorStyle.Lime;
+            this.StepCounterLabel.TabIndex = 28;
+            this.StepCounterLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.StepCounterLabel.UseStyleColors = true;
             // 
             // Form1
             // 
@@ -2550,6 +2565,7 @@
             this.Style = MetroFramework.MetroColorStyle.White;
             this.Text = "DynaDrive beta";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             Setup.ResumeLayout(false);
             Setup.PerformLayout();
@@ -2705,6 +2721,7 @@
         private MetroFramework.Controls.MetroLabel posInAccurateLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private MetroFramework.Controls.MetroLabel AutoStepperRunLabel;
+        private MetroFramework.Controls.MetroLabel StepCounterLabel;
     }
 }
 
