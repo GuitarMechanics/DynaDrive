@@ -55,12 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="eulerDouble.cs" />
+    <Compile Include="eulerSingle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="leadscrew_drive.cs" />
     <Compile Include="OpenRBSerialGen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="AutoStepping.cs" />

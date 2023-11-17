@@ -16,25 +16,27 @@ namespace DynaDrive
         private int[] mtSteps = new int[4];
         private bool isRoundTripSet = false;
 
+        private bool linearConv;
+
         private int[] mtStepCnts = new int[4];
         public int runCounts;
         public int repeats;
 
-        public AutoStepping(MetroTextBox[] mtFromTBXs, MetroTextBox[] mtToTBXs, MetroTextBox[] mtStepTBXs, bool[] mtAvails, bool rTripSet, int repeatCounts)
+        public AutoStepping(MetroTextBox[] mtFromTBXs, MetroTextBox[] mtToTBXs, MetroTextBox[] mtStepTBXs, bool[] mtAvails, bool rTripSet, int repeatCounts, bool linearConv)
         {
             isRoundTripSet = rTripSet;
             mtActives = mtAvails;
             repeats = repeatCounts;
-
-            for (int i = 0; i<4; i++)
+            this.linearConv = linearConv;
+            for (int i = 0; i < 4; i++)
             {
-                try { mtFroms[i] = Convert.ToInt32(mtFromTBXs[i].Text.ToString());}
+                try { mtFroms[i] = linearConvert(Convert.ToDouble(mtFromTBXs[i].Text.ToString())); }
                 catch (Exception) { mtFroms[i] = 0; mtFromTBXs[i].Text = "0"; }
 
-                try { mtFinals[i] = Convert.ToInt32(mtToTBXs[i].Text.ToString()); }
+                try { mtFinals[i] = linearConvert(Convert.ToInt32(mtToTBXs[i].Text.ToString())); }
                 catch (Exception) { mtFinals[i] = 0; mtToTBXs[i].Text = "0"; }
 
-                try { mtSteps[i] = Convert.ToInt32(mtStepTBXs[i].Text.ToString()); }
+                try { mtSteps[i] = linearConvert(Convert.ToInt32(mtStepTBXs[i].Text.ToString())); }
                 catch (Exception) { mtSteps[i] = 1; mtToTBXs[i].Text = "-"; }
                 if (!mtAvails[i])
                 {
@@ -44,6 +46,14 @@ namespace DynaDrive
                 }
                 mtStepCnts[i] = Math.Abs(mtFinals[i] - mtFroms[i]) / Math.Abs(mtSteps[i]) + 1;
             }
+
+        }
+        private int linearConvert(double trans)
+        {
+            int retVal = 0;
+            if (this.linearConv) retVal = (int)(trans / 10 * 4096);
+            else retVal = (int)trans;
+            return retVal;
         }
 
         public int[,] RunDataGen()

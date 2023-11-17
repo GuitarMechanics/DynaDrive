@@ -38,6 +38,10 @@ namespace DynaDrive
         private int stepsize = 0;
         private bool stepRun = false;
 
+        private float leadLength = 10;
+        private leadscrew_drive screwDrive;
+        private bool transConv = false;
+
         Timer SteppingTimer = new Timer();
         private int stepTimerCnt = 0;
         private int stepRepeatTarget = 0;
@@ -79,12 +83,29 @@ namespace DynaDrive
             PGToggles[2] = PGmt3Toggle; PGToggles[3] = PGmt4Toggle;
 
             SteppingTimer.Tick += new EventHandler(stepTimerTick);
+            updateSerialPort();
+
+            screwDrive = new leadscrew_drive(leadLength, openRB);
         }
 
         private void updateSerialPort()
         {
             metroComboBox1.Items.Clear();
             foreach (var item in SerialPort.GetPortNames()) metroComboBox1.Items.Add(item);
+            if(metroComboBox1.Items.Count == 1) // automatically opens serial port if only one active port exists
+            {
+                metroComboBox1.SelectedIndex = 0;
+                metroComboBox2.SelectedIndex = 0;
+                mySerial.PortName = metroComboBox1.SelectedItem.ToString();
+                mySerial.BaudRate = Convert.ToInt32(metroComboBox2.SelectedItem.ToString());
+                mySerial.Parity = Parity.None;
+                mySerial.StopBits = StopBits.One;
+                mySerial.DataBits = 8;
+                mySerial.ReadBufferSize = 20000000;
+                mySerial.DataReceived += PortDataReceived;
+                try { mySerial.Open(); }
+                catch (Exception ex) { MessageBox.Show(ex.Message, "Falied to open"); }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -129,29 +150,58 @@ namespace DynaDrive
         }
         private void posUpdate()
         {
-            int diffMax = 0;
-            for(int i = 0; i<4; i++)
+            if (!transConv)
             {
-                if (mtToggles[i].Checked)
+                int diffMax = 0;
+                for (int i = 0; i < 4; i++)
                 {
-                    targetLabels[i].Text = openRB.goalPos[i].ToString();
-                    currentLabels[i].Text = openRB.presPos[i].ToString();
-                    int diffTemp = openRB.presPos[i] - openRB.goalPos[i];
-                    if (Math.Abs(diffTemp) > diffMax) diffMax = Math.Abs(diffTemp);
-                    if (diffTemp > 0) diffLabels[i].Text = "+" + diffTemp.ToString();
-                    else if (diffTemp < 0) diffLabels[i].Text = diffTemp.ToString();
-                    else diffLabels[i].Text = "0";
+                    if (mtToggles[i].Checked)
+                    {
+                        targetLabels[i].Text = openRB.goalPos[i].ToString();
+                        currentLabels[i].Text = openRB.presPos[i].ToString();
+                        int diffTemp = openRB.presPos[i] - openRB.goalPos[i];
+                        if (Math.Abs(diffTemp) > diffMax) diffMax = Math.Abs(diffTemp);
+                        if (diffTemp > 0) diffLabels[i].Text = "+" + diffTemp.ToString();
+                        else if (diffTemp < 0) diffLabels[i].Text = diffTemp.ToString();
+                        else diffLabels[i].Text = "0";
+                    }
+                    else
+                    {
+                        targetLabels[i].Text = "";
+                        currentLabels[i].Text = "";
+                        diffLabels[i].Text = "";
+                    }
                 }
-                else
-                {
-                    targetLabels[i].Text = "";
-                    currentLabels[i].Text = "";
-                    diffLabels[i].Text = "";
-                }
-
+                posInaccurate_labelTrigger(diffMax > 10);
+                autoStepper_LabelTrigger(SteppingTimer.Enabled);
             }
-            posInaccurate_labelTrigger(diffMax > 10);
-            autoStepper_LabelTrigger(SteppingTimer.Enabled);
+            else
+            {
+                float diffMax = 0;
+                float[] targetValues = screwDrive.rot2trans(this.openRB.goalPos);
+                float[] currentValues = screwDrive.rot2trans(this.openRB.presPos);
+                for(int i = 0; i<4; i++)
+                {
+                    if (mtToggles[i].Checked)
+                    {
+                        targetLabels[i].Text = targetValues[i].ToString();
+                        currentLabels[i].Text = currentValues[i].ToString();
+                        float diffTemp = currentValues[i] - targetValues[i];
+                        if (Math.Abs(diffTemp) > diffMax) diffMax = Math.Abs(diffTemp);
+                        if (diffTemp > 0) diffLabels[i].Text = "+" + diffTemp.ToString();
+                        else if (diffTemp < 0) diffLabels[i].Text = diffTemp.ToString();
+                        else diffLabels[i].Text = "0";
+                    }
+                    else
+                    {
+                        targetLabels[i].Text = "";
+                        currentLabels[i].Text = "";
+                        diffLabels[i].Text = "";
+                    }
+                }
+                posInaccurate_labelTrigger(diffMax > 0.1);
+                autoStepper_LabelTrigger(SteppingTimer.Enabled);
+            }
         }
         private void posInaccurate_labelTrigger(bool isInAccurate)
         {
@@ -175,17 +225,32 @@ namespace DynaDrive
 
         private void dirGoBtn_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 4; i++)
+            if (!transConv)
             {
-                if (!mtToggles[i].Checked) continue;
-                try
+                for (int i = 0; i < 4; i++)
                 {
-                    openRB.goalPos[i] = Convert.ToInt32(mtDirTargets[i].Text.ToString());
-                }
-                catch (Exception) { }
+                    if (!mtToggles[i].Checked) continue;
+                    try
+                    {
+                        openRB.goalPos[i] = Convert.ToInt32(mtDirTargets[i].Text.ToString());
+                    }
+                    catch (Exception) { }
 
+                }
+                mySerial.WriteLine(openRB.serialGen()[0]);
             }
-            mySerial.WriteLine(openRB.serialGen()[0]);
+            else
+            {
+                float[] transTargetPos = new float[mtDirTargets.Length];
+                for(int i = 0; i < mtDirTargets.Length; i++)
+                {
+                    if (!mtToggles[i].Checked) continue;
+                    transTargetPos[i] = (float)Convert.ToDouble(mtDirTargets[i].Text.ToString());
+                }
+                try { screwDrive.trans2rot(transTargetPos); }
+                catch(Exception) { }
+                
+            }
         }
 
         private void mtCenterBtn_Click(object sender, EventArgs e)
@@ -296,7 +361,7 @@ namespace DynaDrive
             catch (Exception) { timeIntervals = 2000; timeIntervalTxtBox.Text = "2000"; }
             try { stepRepeatTarget = Convert.ToInt32(repeatsTxtBox.Text.ToString()); }
             catch (Exception) { stepRepeatTarget = 1; repeatsTxtBox.Text = "1"; }
-            AutoStepping stepDatas = new AutoStepping(PGFroms, PGTos, PGSteps, mtAvails, PGRoundTripToggle.Checked, stepRepeatTarget);
+            AutoStepping stepDatas = new AutoStepping(PGFroms, PGTos, PGSteps, mtAvails, PGRoundTripToggle.Checked, stepRepeatTarget, transConv);
             stepdataArray = stepDatas.RunDataGen();
             SteppingTimer.Interval = timeIntervals;
             stepTimerCnt = 0;
@@ -392,8 +457,23 @@ namespace DynaDrive
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            openRB.writeGoalCenter();
-            serialSend();
+            try
+            {
+                openRB.writeGoalCenter();
+                serialSend();
+            }
+            catch (Exception ex) { };
+
+        }
+
+        private void setRotRawModeBtn_Click(object sender, EventArgs e)
+        {
+            this.transConv = false;
+        }
+
+        private void setTransConvBtn_Click(object sender, EventArgs e)
+        {
+            this.transConv = true;
         }
     }
 }

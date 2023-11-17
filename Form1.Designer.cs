@@ -156,6 +156,9 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.AutoStepperRunLabel = new MetroFramework.Controls.MetroLabel();
             this.StepCounterLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel38 = new MetroFramework.Controls.MetroLabel();
+            this.setRotRawModeBtn = new MetroFramework.Controls.MetroButton();
+            this.setTransConvBtn = new MetroFramework.Controls.MetroButton();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -1121,7 +1124,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(79, 320);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(586, 290);
             this.metroTabControl1.TabIndex = 25;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1672,10 +1675,10 @@
             this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel14.Location = new System.Drawing.Point(163, 9);
             this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(47, 25);
+            this.metroLabel14.Size = new System.Drawing.Size(152, 25);
             this.metroLabel14.Style = MetroFramework.MetroColorStyle.White;
             this.metroLabel14.TabIndex = 27;
-            this.metroLabel14.Text = "Step";
+            this.metroLabel14.Text = "Step - RAW ONLY";
             this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroLabel14.UseStyleColors = true;
             // 
@@ -2542,11 +2545,54 @@
             this.StepCounterLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.StepCounterLabel.UseStyleColors = true;
             // 
+            // metroLabel38
+            // 
+            this.metroLabel38.AutoSize = true;
+            this.metroLabel38.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel38.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel38.Location = new System.Drawing.Point(735, 466);
+            this.metroLabel38.Name = "metroLabel38";
+            this.metroLabel38.Size = new System.Drawing.Size(110, 25);
+            this.metroLabel38.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel38.TabIndex = 28;
+            this.metroLabel38.Text = "Visual Mode";
+            this.metroLabel38.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel38.UseStyleColors = true;
+            // 
+            // setRotRawModeBtn
+            // 
+            this.setRotRawModeBtn.DisplayFocus = true;
+            this.setRotRawModeBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.setRotRawModeBtn.Location = new System.Drawing.Point(735, 500);
+            this.setRotRawModeBtn.Name = "setRotRawModeBtn";
+            this.setRotRawModeBtn.Size = new System.Drawing.Size(101, 29);
+            this.setRotRawModeBtn.TabIndex = 29;
+            this.setRotRawModeBtn.Text = "Motor RAW";
+            this.setRotRawModeBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.setRotRawModeBtn.UseSelectable = true;
+            this.setRotRawModeBtn.Click += new System.EventHandler(this.setRotRawModeBtn_Click);
+            // 
+            // setTransConvBtn
+            // 
+            this.setTransConvBtn.DisplayFocus = true;
+            this.setTransConvBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.setTransConvBtn.Location = new System.Drawing.Point(854, 500);
+            this.setTransConvBtn.Name = "setTransConvBtn";
+            this.setTransConvBtn.Size = new System.Drawing.Size(139, 29);
+            this.setTransConvBtn.TabIndex = 30;
+            this.setTransConvBtn.Text = "Translation CONV";
+            this.setTransConvBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.setTransConvBtn.UseSelectable = true;
+            this.setTransConvBtn.Click += new System.EventHandler(this.setTransConvBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 634);
+            this.Controls.Add(this.setTransConvBtn);
+            this.Controls.Add(this.setRotRawModeBtn);
+            this.Controls.Add(this.metroLabel38);
             this.Controls.Add(this.tableLayoutPanel6);
             this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -2563,7 +2609,7 @@
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(26, 80, 26, 27);
             this.Style = MetroFramework.MetroColorStyle.White;
-            this.Text = "DynaDrive beta";
+            this.Text = "EasyTrans";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -2722,6 +2768,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private MetroFramework.Controls.MetroLabel AutoStepperRunLabel;
         private MetroFramework.Controls.MetroLabel StepCounterLabel;
+        private MetroFramework.Controls.MetroLabel metroLabel38;
+        private MetroFramework.Controls.MetroButton setRotRawModeBtn;
+        private MetroFramework.Controls.MetroButton setTransConvBtn;
     }
 }
 
