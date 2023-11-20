@@ -83,7 +83,7 @@ namespace DynaDrive
             PGToggles[2] = PGmt3Toggle; PGToggles[3] = PGmt4Toggle;
 
             SteppingTimer.Tick += new EventHandler(stepTimerTick);
-            updateSerialPort();
+            //updateSerialPort();
 
             screwDrive = new leadscrew_drive(leadLength, openRB);
         }
@@ -241,15 +241,28 @@ namespace DynaDrive
             }
             else
             {
-                float[] transTargetPos = new float[mtDirTargets.Length];
-                for(int i = 0; i < mtDirTargets.Length; i++)
+                double[] transTargetPos = new double[mtDirTargets.Length];
+                int[] mtGoalPos = new int[mtDirTargets.Length];
+                for (int i = 0; i < mtDirTargets.Length; i++)
                 {
                     if (!mtToggles[i].Checked) continue;
-                    transTargetPos[i] = (float)Convert.ToDouble(mtDirTargets[i].Text.ToString());
+                    else
+                    {
+                        try
+                        {
+                            string tmpStr = mtDirTargets[i].Text.ToString();
+                            mtGoalPos[i] = screwDrive.trans2rot(tmpStr);
+                            Console.WriteLine(i+ " " + tmpStr + " " + mtGoalPos[i]);
+                        }
+                        catch (Exception ex)
+                        {
+                            mtDirTargets[i].Text = "0";
+                            mtGoalPos[i] = 0;
+                        }
+                    }
                 }
-                try { screwDrive.trans2rot(transTargetPos); }
-                catch(Exception) { }
-                
+                openRB.writeGoalPos(mtGoalPos);
+                serialSend();
             }
         }
 
