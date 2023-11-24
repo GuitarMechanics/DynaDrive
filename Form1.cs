@@ -134,7 +134,7 @@ namespace DynaDrive
             catch (Exception ex) { MessageBox.Show(ex.Message);}
             try
             {
-                this.Invoke(new Action(ProcessingData));
+                  this.Invoke(new Action(ProcessingData));
             }
             catch(ObjectDisposedException ex)
             {

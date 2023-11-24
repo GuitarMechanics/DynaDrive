@@ -8,7 +8,7 @@ namespace DynaDrive
 {
     internal class OpenRBSerialGen
     {
-        private const int posCenter = 2047;
+        private const int posCenter = 2048;
         private const int pidPinit = 800;
 
         private int[] parcedInts = new int[12];
