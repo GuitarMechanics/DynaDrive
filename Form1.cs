@@ -28,7 +28,15 @@ namespace DynaDrive
         public MetroTextBox[] mtDirTargets = new MetroTextBox[4];
         public MetroTextBox[] pidPGains = new MetroTextBox[4];
         private OpenRBSerialGen openRB = new OpenRBSerialGen();
+
+
         private int stepsize = 0;
+
+        // JHC
+        private CtrMovementControl CtrMC;
+        private CtrPositionControl CtrPos;
+        public MetroTextBox[] mtMcTargets = new MetroTextBox[4];
+
         public Form1()
         {
             InitializeComponent();
@@ -45,6 +53,11 @@ namespace DynaDrive
             mtDirTargets[2] = mt3DirectTxtBox; mtDirTargets[3] = mt4DirectTxtBox;
             pidPGains[0] = pid1gain; pidPGains[1] = pid2gain;
             pidPGains[2] = pid3gain; pidPGains[3] = pid4gain;
+
+            // JHC
+
+            CtrMC = new CtrMovementControl(this, openRB);
+            CtrPos = new CtrPositionControl(this, openRB);
         }
 
         private void updateSerialPort()
@@ -52,12 +65,10 @@ namespace DynaDrive
             metroComboBox1.Items.Clear();
             foreach (var item in SerialPort.GetPortNames()) metroComboBox1.Items.Add(item);
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
-
         private void serialOpenBtn_Click(object sender, EventArgs e)
         {
             if (!mySerial.IsOpen)
@@ -75,7 +86,11 @@ namespace DynaDrive
         }
         private void PortDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            ReceiveData = mySerial.ReadLine();
+            try
+            {
+                ReceiveData = mySerial.ReadLine();
+            }
+            catch (Exception) {}
             try
             {
                 this.Invoke(new Action(ProcessingData));
@@ -87,8 +102,9 @@ namespace DynaDrive
         }
         private void ProcessingData()
         {
+
             string tmpStr = ReceiveData.ToString();
-            metroTextBox1.AppendText(tmpStr + Environment.NewLine);
+            //metroTextBox1.AppendText(tmpStr + Environment.NewLine);
             openRB.inputStrDecode(tmpStr);
             posUpdate();
         }
@@ -114,7 +130,6 @@ namespace DynaDrive
 
             }
         }
-
         private void dirGoBtn_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 4; i++)
@@ -129,13 +144,11 @@ namespace DynaDrive
             }
             mySerial.WriteLine(openRB.serialGen()[0]);
         }
-
         private void mtCenterBtn_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 4; i++) openRB.goalPos[i] = 0;
             serialSend();
         }
-
         private void stepSetBtn_Click(object sender, EventArgs e)
         {
             try
@@ -148,60 +161,50 @@ namespace DynaDrive
                 stepSizeIndLabel.Text = stepsize * 360 / 4096.0 + " deg";
             }
         }
-
         private void serialSend()
         {
             mySerial.WriteLine(openRB.serialGen()[0]);
         }
-
         private void mt1StepUpBtn_Click(object sender, EventArgs e)
         {
             openRB.goalPos[0] += stepsize; serialSend();
             
         }
-
         private void mt1StepDnBtn_Click(object sender, EventArgs e)
         {
             openRB.goalPos[0] -= stepsize; serialSend();
         }
-
         private void mt2StepUpBtn_Click(object sender, EventArgs e)
         {
             openRB.goalPos[1] += stepsize; serialSend();
         }
-
         private void mt2StepDnBtn_Click(object sender, EventArgs e)
         {
             openRB.goalPos[1] -= stepsize; serialSend();
         }
-
         private void mt3StepUpBtn_Click(object sender, EventArgs e)
         {
             openRB.goalPos[2] += stepsize; serialSend();
         }
-
         private void mt3StepDnBtn_Click(object sender, EventArgs e)
         {
             openRB.goalPos[2] -= stepsize; serialSend();
         }
-
         private void mt4StepUpBtn_Click(object sender, EventArgs e)
         {
             openRB.goalPos[3] += stepsize; serialSend();
         }
-
         private void mt4StepDnBtn_Click(object sender, EventArgs e)
         {
             openRB.goalPos[3] -= stepsize; serialSend();
         }
-
         private void setApplyBtn_Click(object sender, EventArgs e)
         {
             int[] pidTmp = new int[4];
             for(int i = 0; i<4; i++)
             {
                 try { pidTmp[i] = Convert.ToInt32(pidPGains[i].Text.ToString()); }
-                catch (Exception) { pidPGains[i].Text = "400"; pidTmp[i] = 400; }
+                catch (Exception) { pidPGains[i].Text = "1200"; pidTmp[i] = 1200; }
             }
             openRB.writePGains(pidTmp);
             openRB.writeAccMode(4 - accComboBox.SelectedIndex);
@@ -218,10 +221,60 @@ namespace DynaDrive
             }
             serialSend();
         }
-
         private void rxLogClrBtn_Click(object sender, EventArgs e)
         {
             metroTextBox1.Text= string.Empty;
+        }
+
+        ////////////// JHC
+        ///
+        private void McGoBt_Click(object sender, EventArgs e)
+        {
+            CtrMC.MovementControlGo(this, openRB);
+            mySerial.WriteLine(openRB.serialGen()[0]);
+        }
+        private void McZeroBtn_Click(object sender, EventArgs e)
+        {
+
+            CtrMC.McZero(this, openRB);
+            serialSend();
+        }
+        private void McCenterBtn_Click(object sender, EventArgs e)
+        {
+            CtrMC.McCenter(this, openRB);
+            serialSend();
+        }
+        private void metroComboBox1_DropDown(object sender, EventArgs e)
+        {
+            updateSerialPort();
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                McCenterBtn_Click(sender, e);
+            }
+            catch (Exception) { }
+        }
+        private void MC_TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                McGoBt_Click(sender, e);
+            }
+        }
+
+        private void PcGetXyzPosBtn_Click(object sender, EventArgs e)
+        {
+            double[,] xyzPos = new double[3,2];
+            xyzPos = CtrPos.PcGetXyzPos(this, openRB);
+            PcXPosTxtbox.Text = xyzPos[0, 0].ToString();
+            PcYPosTxtbox.Text = xyzPos[1, 0].ToString();
+            PcZPosTxtbox.Text = xyzPos[2, 0].ToString();
+
+            PcXOriTxtbox.Text = xyzPos[0, 1].ToString();
+            PcYOriTxtbox.Text = xyzPos[1, 1].ToString();
+            PcZOriTxtbox.Text = xyzPos[2, 1].ToString();
         }
     }
 }
