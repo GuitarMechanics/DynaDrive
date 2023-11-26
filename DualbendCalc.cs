@@ -53,6 +53,10 @@ namespace DynaDrive
             mt2trans -= seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // offset compensation
 
             // Input: distal segment, Offset compensation for proximal segment
+
+            mt1trans += seg2tdlEquiv * Math.Cos(mtDirs[0] - seg2Dir);
+            mt2trans += seg2tdlEquiv * Math.Cos(mtDirs[1] - seg2Dir);
+
             // Offset initial curvature k_1 --> use k_1 = 2*tdl / (curvelength * radius)
             // Result: compenTDL_prox = TDL_dist * (proxlen / totallen)
             double k1_seg2_compenTDL = seg2tdlEquiv * (this.ProxLength / this.TotalLength);
