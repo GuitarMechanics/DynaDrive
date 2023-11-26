@@ -150,6 +150,15 @@
             this.PGmt2StepTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.PGmt3StepTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.PGmt4StepTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.metroLabel52 = new MetroFramework.Controls.MetroLabel();
+            this.bendDiskRadTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.bendTotLengthTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel55 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel56 = new MetroFramework.Controls.MetroLabel();
+            this.bendProxLenTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.BendSetupSetBtn = new MetroFramework.Controls.MetroButton();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel34 = new MetroFramework.Controls.MetroLabel();
             this.posInAccurateLabel = new MetroFramework.Controls.MetroLabel();
@@ -159,6 +168,18 @@
             this.metroLabel38 = new MetroFramework.Controls.MetroLabel();
             this.setRotRawModeBtn = new MetroFramework.Controls.MetroButton();
             this.setTransConvBtn = new MetroFramework.Controls.MetroButton();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.seg2DirTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.seg2BendTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.seg1DirTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.seg1BendTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel50 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel39 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel41 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel43 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel51 = new MetroFramework.Controls.MetroLabel();
+            this.bendCtrSetBtn = new MetroFramework.Controls.MetroButton();
+            this.bendCtrCenterBtn = new MetroFramework.Controls.MetroButton();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -169,8 +190,11 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.ProgramPage.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // Setup
@@ -1121,10 +1145,11 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.ProgramPage);
             this.metroTabControl1.Controls.Add(Setup);
+            this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(79, 320);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(586, 290);
             this.metroTabControl1.TabIndex = 25;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -2456,6 +2481,204 @@
             this.PGmt4StepTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.PGmt4StepTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.metroTabPage2.Controls.Add(this.tableLayoutPanel8);
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 4;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(578, 248);
+            this.metroTabPage2.TabIndex = 4;
+            this.metroTabPage2.Text = "BendSetup";
+            this.metroTabPage2.UseCustomBackColor = true;
+            this.metroTabPage2.UseCustomForeColor = true;
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 5;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel8.Controls.Add(this.metroLabel52, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.bendDiskRadTxtBox, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.bendTotLengthTxtBox, 2, 1);
+            this.tableLayoutPanel8.Controls.Add(this.metroLabel55, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.metroLabel56, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.bendProxLenTxtBox, 2, 2);
+            this.tableLayoutPanel8.Controls.Add(this.BendSetupSetBtn, 2, 3);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(13, 37);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 4;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(330, 135);
+            this.tableLayoutPanel8.TabIndex = 32;
+            // 
+            // metroLabel52
+            // 
+            this.metroLabel52.AutoSize = true;
+            this.metroLabel52.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel52.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel52.Location = new System.Drawing.Point(69, 0);
+            this.metroLabel52.Name = "metroLabel52";
+            this.metroLabel52.Size = new System.Drawing.Size(82, 25);
+            this.metroLabel52.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel52.TabIndex = 39;
+            this.metroLabel52.Text = "Disk Rad";
+            this.metroLabel52.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel52.UseStyleColors = true;
+            // 
+            // bendDiskRadTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.bendDiskRadTxtBox.CustomButton.Image = null;
+            this.bendDiskRadTxtBox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.bendDiskRadTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.bendDiskRadTxtBox.CustomButton.Name = "";
+            this.bendDiskRadTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.bendDiskRadTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.bendDiskRadTxtBox.CustomButton.TabIndex = 1;
+            this.bendDiskRadTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.bendDiskRadTxtBox.CustomButton.UseSelectable = true;
+            this.bendDiskRadTxtBox.CustomButton.Visible = false;
+            this.bendDiskRadTxtBox.Lines = new string[] {
+        "3.4"};
+            this.bendDiskRadTxtBox.Location = new System.Drawing.Point(201, 3);
+            this.bendDiskRadTxtBox.MaxLength = 32767;
+            this.bendDiskRadTxtBox.Name = "bendDiskRadTxtBox";
+            this.bendDiskRadTxtBox.PasswordChar = '\0';
+            this.bendDiskRadTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.bendDiskRadTxtBox.SelectedText = "";
+            this.bendDiskRadTxtBox.SelectionLength = 0;
+            this.bendDiskRadTxtBox.SelectionStart = 0;
+            this.bendDiskRadTxtBox.ShortcutsEnabled = true;
+            this.bendDiskRadTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.bendDiskRadTxtBox.TabIndex = 34;
+            this.bendDiskRadTxtBox.Text = "3.4";
+            this.bendDiskRadTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.bendDiskRadTxtBox.UseSelectable = true;
+            this.bendDiskRadTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.bendDiskRadTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // bendTotLengthTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.bendTotLengthTxtBox.CustomButton.Image = null;
+            this.bendTotLengthTxtBox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.bendTotLengthTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.bendTotLengthTxtBox.CustomButton.Name = "";
+            this.bendTotLengthTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.bendTotLengthTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.bendTotLengthTxtBox.CustomButton.TabIndex = 1;
+            this.bendTotLengthTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.bendTotLengthTxtBox.CustomButton.UseSelectable = true;
+            this.bendTotLengthTxtBox.CustomButton.Visible = false;
+            this.bendTotLengthTxtBox.Lines = new string[] {
+        "60"};
+            this.bendTotLengthTxtBox.Location = new System.Drawing.Point(201, 36);
+            this.bendTotLengthTxtBox.MaxLength = 32767;
+            this.bendTotLengthTxtBox.Name = "bendTotLengthTxtBox";
+            this.bendTotLengthTxtBox.PasswordChar = '\0';
+            this.bendTotLengthTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.bendTotLengthTxtBox.SelectedText = "";
+            this.bendTotLengthTxtBox.SelectionLength = 0;
+            this.bendTotLengthTxtBox.SelectionStart = 0;
+            this.bendTotLengthTxtBox.ShortcutsEnabled = true;
+            this.bendTotLengthTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.bendTotLengthTxtBox.TabIndex = 36;
+            this.bendTotLengthTxtBox.Text = "60";
+            this.bendTotLengthTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.bendTotLengthTxtBox.UseSelectable = true;
+            this.bendTotLengthTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.bendTotLengthTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel55
+            // 
+            this.metroLabel55.AutoSize = true;
+            this.metroLabel55.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel55.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel55.Location = new System.Drawing.Point(69, 33);
+            this.metroLabel55.Name = "metroLabel55";
+            this.metroLabel55.Size = new System.Drawing.Size(99, 25);
+            this.metroLabel55.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel55.TabIndex = 17;
+            this.metroLabel55.Text = "Tot. Length";
+            this.metroLabel55.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel55.UseStyleColors = true;
+            // 
+            // metroLabel56
+            // 
+            this.metroLabel56.AutoSize = true;
+            this.metroLabel56.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel56.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel56.Location = new System.Drawing.Point(69, 66);
+            this.metroLabel56.Name = "metroLabel56";
+            this.metroLabel56.Size = new System.Drawing.Size(105, 25);
+            this.metroLabel56.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel56.TabIndex = 19;
+            this.metroLabel56.Text = "Prox.Length";
+            this.metroLabel56.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel56.UseStyleColors = true;
+            // 
+            // bendProxLenTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.bendProxLenTxtBox.CustomButton.Image = null;
+            this.bendProxLenTxtBox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.bendProxLenTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.bendProxLenTxtBox.CustomButton.Name = "";
+            this.bendProxLenTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.bendProxLenTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.bendProxLenTxtBox.CustomButton.TabIndex = 1;
+            this.bendProxLenTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.bendProxLenTxtBox.CustomButton.UseSelectable = true;
+            this.bendProxLenTxtBox.CustomButton.Visible = false;
+            this.bendProxLenTxtBox.Lines = new string[] {
+        "30"};
+            this.bendProxLenTxtBox.Location = new System.Drawing.Point(201, 69);
+            this.bendProxLenTxtBox.MaxLength = 32767;
+            this.bendProxLenTxtBox.Name = "bendProxLenTxtBox";
+            this.bendProxLenTxtBox.PasswordChar = '\0';
+            this.bendProxLenTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.bendProxLenTxtBox.SelectedText = "";
+            this.bendProxLenTxtBox.SelectionLength = 0;
+            this.bendProxLenTxtBox.SelectionStart = 0;
+            this.bendProxLenTxtBox.ShortcutsEnabled = true;
+            this.bendProxLenTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.bendProxLenTxtBox.TabIndex = 40;
+            this.bendProxLenTxtBox.Text = "30";
+            this.bendProxLenTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.bendProxLenTxtBox.UseSelectable = true;
+            this.bendProxLenTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.bendProxLenTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // BendSetupSetBtn
+            // 
+            this.BendSetupSetBtn.DisplayFocus = true;
+            this.BendSetupSetBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.BendSetupSetBtn.Location = new System.Drawing.Point(201, 102);
+            this.BendSetupSetBtn.Name = "BendSetupSetBtn";
+            this.BendSetupSetBtn.Size = new System.Drawing.Size(124, 29);
+            this.BendSetupSetBtn.TabIndex = 38;
+            this.BendSetupSetBtn.Text = "SET";
+            this.BendSetupSetBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.BendSetupSetBtn.UseSelectable = true;
+            this.BendSetupSetBtn.Click += new System.EventHandler(this.BendSetupSetBtn_Click);
+            // 
             // metroTabPage3
             // 
             this.metroTabPage3.BackColor = System.Drawing.Color.Transparent;
@@ -2550,7 +2773,7 @@
             this.metroLabel38.AutoSize = true;
             this.metroLabel38.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel38.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel38.Location = new System.Drawing.Point(735, 466);
+            this.metroLabel38.Location = new System.Drawing.Point(734, 539);
             this.metroLabel38.Name = "metroLabel38";
             this.metroLabel38.Size = new System.Drawing.Size(110, 25);
             this.metroLabel38.Style = MetroFramework.MetroColorStyle.White;
@@ -2563,7 +2786,7 @@
             // 
             this.setRotRawModeBtn.DisplayFocus = true;
             this.setRotRawModeBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.setRotRawModeBtn.Location = new System.Drawing.Point(735, 500);
+            this.setRotRawModeBtn.Location = new System.Drawing.Point(734, 573);
             this.setRotRawModeBtn.Name = "setRotRawModeBtn";
             this.setRotRawModeBtn.Size = new System.Drawing.Size(101, 29);
             this.setRotRawModeBtn.TabIndex = 29;
@@ -2576,7 +2799,7 @@
             // 
             this.setTransConvBtn.DisplayFocus = true;
             this.setTransConvBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.setTransConvBtn.Location = new System.Drawing.Point(854, 500);
+            this.setTransConvBtn.Location = new System.Drawing.Point(853, 573);
             this.setTransConvBtn.Name = "setTransConvBtn";
             this.setTransConvBtn.Size = new System.Drawing.Size(139, 29);
             this.setTransConvBtn.TabIndex = 30;
@@ -2585,11 +2808,263 @@
             this.setTransConvBtn.UseSelectable = true;
             this.setTransConvBtn.Click += new System.EventHandler(this.setTransConvBtn_Click);
             // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 3;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel7.Controls.Add(this.seg2DirTxtBox, 2, 2);
+            this.tableLayoutPanel7.Controls.Add(this.seg2BendTxtBox, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.seg1DirTxtBox, 2, 1);
+            this.tableLayoutPanel7.Controls.Add(this.seg1BendTxtBox, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.metroLabel50, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.metroLabel39, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.metroLabel41, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.metroLabel43, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.metroLabel51, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.bendCtrSetBtn, 2, 3);
+            this.tableLayoutPanel7.Controls.Add(this.bendCtrCenterBtn, 1, 3);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(691, 399);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 4;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(330, 135);
+            this.tableLayoutPanel7.TabIndex = 31;
+            // 
+            // seg2DirTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.seg2DirTxtBox.CustomButton.Image = null;
+            this.seg2DirTxtBox.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.seg2DirTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.seg2DirTxtBox.CustomButton.Name = "";
+            this.seg2DirTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.seg2DirTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.seg2DirTxtBox.CustomButton.TabIndex = 1;
+            this.seg2DirTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.seg2DirTxtBox.CustomButton.UseSelectable = true;
+            this.seg2DirTxtBox.CustomButton.Visible = false;
+            this.seg2DirTxtBox.Lines = new string[0];
+            this.seg2DirTxtBox.Location = new System.Drawing.Point(201, 69);
+            this.seg2DirTxtBox.MaxLength = 32767;
+            this.seg2DirTxtBox.Name = "seg2DirTxtBox";
+            this.seg2DirTxtBox.PasswordChar = '\0';
+            this.seg2DirTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.seg2DirTxtBox.SelectedText = "";
+            this.seg2DirTxtBox.SelectionLength = 0;
+            this.seg2DirTxtBox.SelectionStart = 0;
+            this.seg2DirTxtBox.ShortcutsEnabled = true;
+            this.seg2DirTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.seg2DirTxtBox.TabIndex = 37;
+            this.seg2DirTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.seg2DirTxtBox.UseSelectable = true;
+            this.seg2DirTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.seg2DirTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // seg2BendTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.seg2BendTxtBox.CustomButton.Image = null;
+            this.seg2BendTxtBox.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.seg2BendTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.seg2BendTxtBox.CustomButton.Name = "";
+            this.seg2BendTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.seg2BendTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.seg2BendTxtBox.CustomButton.TabIndex = 1;
+            this.seg2BendTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.seg2BendTxtBox.CustomButton.UseSelectable = true;
+            this.seg2BendTxtBox.CustomButton.Visible = false;
+            this.seg2BendTxtBox.Lines = new string[0];
+            this.seg2BendTxtBox.Location = new System.Drawing.Point(69, 69);
+            this.seg2BendTxtBox.MaxLength = 32767;
+            this.seg2BendTxtBox.Name = "seg2BendTxtBox";
+            this.seg2BendTxtBox.PasswordChar = '\0';
+            this.seg2BendTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.seg2BendTxtBox.SelectedText = "";
+            this.seg2BendTxtBox.SelectionLength = 0;
+            this.seg2BendTxtBox.SelectionStart = 0;
+            this.seg2BendTxtBox.ShortcutsEnabled = true;
+            this.seg2BendTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.seg2BendTxtBox.TabIndex = 36;
+            this.seg2BendTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.seg2BendTxtBox.UseSelectable = true;
+            this.seg2BendTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.seg2BendTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // seg1DirTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.seg1DirTxtBox.CustomButton.Image = null;
+            this.seg1DirTxtBox.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.seg1DirTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.seg1DirTxtBox.CustomButton.Name = "";
+            this.seg1DirTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.seg1DirTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.seg1DirTxtBox.CustomButton.TabIndex = 1;
+            this.seg1DirTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.seg1DirTxtBox.CustomButton.UseSelectable = true;
+            this.seg1DirTxtBox.CustomButton.Visible = false;
+            this.seg1DirTxtBox.Lines = new string[0];
+            this.seg1DirTxtBox.Location = new System.Drawing.Point(201, 36);
+            this.seg1DirTxtBox.MaxLength = 32767;
+            this.seg1DirTxtBox.Name = "seg1DirTxtBox";
+            this.seg1DirTxtBox.PasswordChar = '\0';
+            this.seg1DirTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.seg1DirTxtBox.SelectedText = "";
+            this.seg1DirTxtBox.SelectionLength = 0;
+            this.seg1DirTxtBox.SelectionStart = 0;
+            this.seg1DirTxtBox.ShortcutsEnabled = true;
+            this.seg1DirTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.seg1DirTxtBox.TabIndex = 35;
+            this.seg1DirTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.seg1DirTxtBox.UseSelectable = true;
+            this.seg1DirTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.seg1DirTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // seg1BendTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.seg1BendTxtBox.CustomButton.Image = null;
+            this.seg1BendTxtBox.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.seg1BendTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.seg1BendTxtBox.CustomButton.Name = "";
+            this.seg1BendTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.seg1BendTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.seg1BendTxtBox.CustomButton.TabIndex = 1;
+            this.seg1BendTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.seg1BendTxtBox.CustomButton.UseSelectable = true;
+            this.seg1BendTxtBox.CustomButton.Visible = false;
+            this.seg1BendTxtBox.Lines = new string[0];
+            this.seg1BendTxtBox.Location = new System.Drawing.Point(69, 36);
+            this.seg1BendTxtBox.MaxLength = 32767;
+            this.seg1BendTxtBox.Name = "seg1BendTxtBox";
+            this.seg1BendTxtBox.PasswordChar = '\0';
+            this.seg1BendTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.seg1BendTxtBox.SelectedText = "";
+            this.seg1BendTxtBox.SelectionLength = 0;
+            this.seg1BendTxtBox.SelectionStart = 0;
+            this.seg1BendTxtBox.ShortcutsEnabled = true;
+            this.seg1BendTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.seg1BendTxtBox.TabIndex = 34;
+            this.seg1BendTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.seg1BendTxtBox.UseSelectable = true;
+            this.seg1BendTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.seg1BendTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel50
+            // 
+            this.metroLabel50.AutoSize = true;
+            this.metroLabel50.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel50.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel50.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel50.Name = "metroLabel50";
+            this.metroLabel50.Size = new System.Drawing.Size(42, 25);
+            this.metroLabel50.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel50.TabIndex = 18;
+            this.metroLabel50.Text = "Seg";
+            this.metroLabel50.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel50.UseStyleColors = true;
+            // 
+            // metroLabel39
+            // 
+            this.metroLabel39.AutoSize = true;
+            this.metroLabel39.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel39.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel39.Location = new System.Drawing.Point(69, 0);
+            this.metroLabel39.Name = "metroLabel39";
+            this.metroLabel39.Size = new System.Drawing.Size(93, 25);
+            this.metroLabel39.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel39.TabIndex = 15;
+            this.metroLabel39.Text = "Bend(deg)";
+            this.metroLabel39.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel39.UseStyleColors = true;
+            // 
+            // metroLabel41
+            // 
+            this.metroLabel41.AutoSize = true;
+            this.metroLabel41.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel41.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel41.Location = new System.Drawing.Point(201, 0);
+            this.metroLabel41.Name = "metroLabel41";
+            this.metroLabel41.Size = new System.Drawing.Size(124, 25);
+            this.metroLabel41.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel41.TabIndex = 16;
+            this.metroLabel41.Text = "Direction(deg)";
+            this.metroLabel41.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel41.UseStyleColors = true;
+            // 
+            // metroLabel43
+            // 
+            this.metroLabel43.AutoSize = true;
+            this.metroLabel43.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel43.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel43.Location = new System.Drawing.Point(3, 33);
+            this.metroLabel43.Name = "metroLabel43";
+            this.metroLabel43.Size = new System.Drawing.Size(47, 25);
+            this.metroLabel43.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel43.TabIndex = 17;
+            this.metroLabel43.Text = "Prox";
+            this.metroLabel43.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel43.UseStyleColors = true;
+            // 
+            // metroLabel51
+            // 
+            this.metroLabel51.AutoSize = true;
+            this.metroLabel51.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel51.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel51.Location = new System.Drawing.Point(3, 66);
+            this.metroLabel51.Name = "metroLabel51";
+            this.metroLabel51.Size = new System.Drawing.Size(43, 25);
+            this.metroLabel51.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel51.TabIndex = 19;
+            this.metroLabel51.Text = "Dist";
+            this.metroLabel51.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel51.UseStyleColors = true;
+            // 
+            // bendCtrSetBtn
+            // 
+            this.bendCtrSetBtn.DisplayFocus = true;
+            this.bendCtrSetBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.bendCtrSetBtn.Location = new System.Drawing.Point(201, 102);
+            this.bendCtrSetBtn.Name = "bendCtrSetBtn";
+            this.bendCtrSetBtn.Size = new System.Drawing.Size(124, 29);
+            this.bendCtrSetBtn.TabIndex = 38;
+            this.bendCtrSetBtn.Text = "SET";
+            this.bendCtrSetBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.bendCtrSetBtn.UseSelectable = true;
+            this.bendCtrSetBtn.Click += new System.EventHandler(this.bendCtrSetBtn_Click);
+            // 
+            // bendCtrCenterBtn
+            // 
+            this.bendCtrCenterBtn.DisplayFocus = true;
+            this.bendCtrCenterBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.bendCtrCenterBtn.Location = new System.Drawing.Point(69, 102);
+            this.bendCtrCenterBtn.Name = "bendCtrCenterBtn";
+            this.bendCtrCenterBtn.Size = new System.Drawing.Size(126, 29);
+            this.bendCtrCenterBtn.TabIndex = 39;
+            this.bendCtrCenterBtn.Text = "CENTER";
+            this.bendCtrCenterBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.bendCtrCenterBtn.UseSelectable = true;
+            this.bendCtrCenterBtn.Click += new System.EventHandler(this.bendCtrCenterBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 634);
+            this.Controls.Add(this.tableLayoutPanel7);
             this.Controls.Add(this.setTransConvBtn);
             this.Controls.Add(this.setRotRawModeBtn);
             this.Controls.Add(this.metroLabel38);
@@ -2630,10 +3105,15 @@
             this.ProgramPage.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            this.metroTabPage2.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.metroTabPage3.ResumeLayout(false);
             this.metroTabPage3.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2771,6 +3251,27 @@
         private MetroFramework.Controls.MetroLabel metroLabel38;
         private MetroFramework.Controls.MetroButton setRotRawModeBtn;
         private MetroFramework.Controls.MetroButton setTransConvBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private MetroFramework.Controls.MetroTextBox seg2DirTxtBox;
+        private MetroFramework.Controls.MetroTextBox seg2BendTxtBox;
+        private MetroFramework.Controls.MetroTextBox seg1DirTxtBox;
+        private MetroFramework.Controls.MetroTextBox seg1BendTxtBox;
+        private MetroFramework.Controls.MetroLabel metroLabel50;
+        private MetroFramework.Controls.MetroLabel metroLabel39;
+        private MetroFramework.Controls.MetroLabel metroLabel41;
+        private MetroFramework.Controls.MetroLabel metroLabel43;
+        private MetroFramework.Controls.MetroLabel metroLabel51;
+        private MetroFramework.Controls.MetroButton bendCtrSetBtn;
+        private MetroFramework.Controls.MetroButton bendCtrCenterBtn;
+        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private MetroFramework.Controls.MetroTextBox bendTotLengthTxtBox;
+        private MetroFramework.Controls.MetroTextBox bendDiskRadTxtBox;
+        private MetroFramework.Controls.MetroLabel metroLabel55;
+        private MetroFramework.Controls.MetroLabel metroLabel56;
+        private MetroFramework.Controls.MetroButton BendSetupSetBtn;
+        private MetroFramework.Controls.MetroLabel metroLabel52;
+        private MetroFramework.Controls.MetroTextBox bendProxLenTxtBox;
     }
 }
 

@@ -33,6 +33,8 @@ namespace DynaDrive
         public MetroTextBox[] PGSteps = new MetroTextBox[4];
         public MetroToggle[] PGToggles = new MetroToggle[4];
 
+        public MetroTextBox[,] bendCtrs = new MetroTextBox[2,2];
+        public MetroTextBox[] bendSets = new MetroTextBox[3];
 
         private OpenRBSerialGen openRB = new OpenRBSerialGen();
         private int stepsize = 0;
@@ -42,11 +44,14 @@ namespace DynaDrive
         private leadscrew_drive screwDrive;
         private bool transConv = false;
 
+        private DualbendCalc dualBend;
+
         Timer SteppingTimer = new Timer();
         private int stepTimerCnt = 0;
         private int stepRepeatTarget = 0;
         private int stepRepeatCurrent = 0;
         private int[,] stepdataArray;
+
 
         public Form1()
         {
@@ -82,10 +87,17 @@ namespace DynaDrive
             PGToggles[0] = PGmt1Toggle; PGToggles[1] = PGmt2Toggle;
             PGToggles[2] = PGmt3Toggle; PGToggles[3] = PGmt4Toggle;
 
+            bendCtrs[0,0] = seg1BendTxtBox; bendCtrs[0, 1] = seg1DirTxtBox;
+            bendCtrs[1, 0] = seg2BendTxtBox; bendCtrs[1, 1] = seg2DirTxtBox;
+
+            bendSets[0] = bendDiskRadTxtBox; bendSets[1] = bendTotLengthTxtBox;
+            bendSets[2] = bendProxLenTxtBox;
+
             SteppingTimer.Tick += new EventHandler(stepTimerTick);
             //updateSerialPort();
 
             screwDrive = new leadscrew_drive(leadLength, openRB);
+            dualBend = new DualbendCalc(bendSets);
         }
 
         private void updateSerialPort()
@@ -487,6 +499,24 @@ namespace DynaDrive
         private void setTransConvBtn_Click(object sender, EventArgs e)
         {
             this.transConv = true;
+        }
+
+        private void bendCtrCenterBtn_Click(object sender, EventArgs e)
+        {
+            mtCenterBtn_Click(sender,e);
+        }
+
+        private void bendCtrSetBtn_Click(object sender, EventArgs e)
+        {
+            string consoleStr = "";
+            double[] outval = dualBend.getTargetTrans(bendCtrs);
+            foreach (double val in outval) consoleStr += val + " , ";
+            Console.WriteLine(consoleStr);
+        }
+
+        private void BendSetupSetBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
