@@ -156,6 +156,7 @@ namespace DynaDrive
         private void ProcessingData()
         {
             string tmpStr = ReceiveData.ToString();
+            if (metroTextBox1.Lines.Length > 150) metroTextBox1.Text = "";
             metroTextBox1.AppendText(tmpStr + Environment.NewLine);
             openRB.inputStrDecode(tmpStr);
             posUpdate();
@@ -508,15 +509,23 @@ namespace DynaDrive
 
         private void bendCtrSetBtn_Click(object sender, EventArgs e)
         {
-            string consoleStr = "";
+            string[] consoleStr = new string[2];
+            int[] convVal = new int[4];
             double[] outval = dualBend.getTargetTrans(bendCtrs);
-            foreach (double val in outval) consoleStr += val + " , ";
-            Console.WriteLine(consoleStr);
+            for(int i = 0; i < outval.Length; i++)
+            {
+                convVal[i] = screwDrive.trans2rot(outval[i]);
+            }
+            openRB.writeGoalPos(convVal);
+            serialSend();
+            foreach (double val in outval) consoleStr[0] += val + " , ";
+            foreach (int val in convVal) consoleStr[1] += val + " , ";
+            foreach (string str in consoleStr) Console.WriteLine(str);
         }
 
         private void BendSetupSetBtn_Click(object sender, EventArgs e)
         {
-
+            dualBend.getProperties(bendSets);
         }
     }
 }

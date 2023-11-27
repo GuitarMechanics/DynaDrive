@@ -32,6 +32,16 @@ namespace DynaDrive
             this.openRB.writeGoalPos(retVals);
             return retVals;
         }
+        public void trans2rotVoid(double[] values)
+        {
+            int[] retVals = new int[values.Length];
+            for (int i = 0; i < values.Length; i++)
+            {
+                retVals[i] = (int)Math.Round((values[i] / this.screw_lead)) * 4096;
+            }
+            this.openRB.writeGoalPos(retVals);
+        }
+
         public int trans2rot(double value)
         {
             int retVal = (int)Math.Round((value/ this.screw_lead) * 4096);
