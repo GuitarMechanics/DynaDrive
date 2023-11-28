@@ -518,9 +518,13 @@ namespace DynaDrive
             }
             openRB.writeGoalPos(convVal);
             serialSend();
-            foreach (double val in outval) consoleStr[0] += val + " , ";
-            foreach (int val in convVal) consoleStr[1] += val + " , ";
-            foreach (string str in consoleStr) Console.WriteLine(str);
+            double[] angleVal = dualBend.getDistalOrient();
+            string distalStr = "Dist Angle Vct : ";
+            foreach(double var in angleVal)
+            {
+                distalStr += (Math.Round(var * 100) / 100).ToString() + "  ";
+            }
+            distalAngleLabel.Text = distalStr;
         }
 
         private void BendSetupSetBtn_Click(object sender, EventArgs e)

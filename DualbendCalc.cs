@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,9 +22,10 @@ namespace DynaDrive
         private double mt3dir;//to proximal
         private double mt4dir;
 
-        private double dist_compenCoeff;
-        private double prox_compenCoeff;
+        private double dist_compenCoeff_toprox;
+        private double prox_compenCoeff_todist;
 
+        private double dir1, dir2, bend1, bend2;
 
         private double[] mtDirs;
 
@@ -45,18 +47,23 @@ namespace DynaDrive
             double mt3trans = 0;
             double mt4trans = 0;
 
-            double seg1tdlEquiv = ang2Equivtdl(deg2rad(txtBox2Double(targetTxtBoxes[0, 0])));
-            double seg1Dir = deg2rad(txtBox2Double(targetTxtBoxes[0, 1]));
-            double seg2tdlEquiv = ang2Equivtdl(deg2rad(txtBox2Double(targetTxtBoxes[1, 0])));
-            double seg2Dir = deg2rad(txtBox2Double(targetTxtBoxes[1, 1]));
+            bend1 = deg2rad(txtBox2Double(targetTxtBoxes[0, 0]));
+            dir1 = deg2rad(txtBox2Double(targetTxtBoxes[0, 1]));
+            bend2 = deg2rad(txtBox2Double(targetTxtBoxes[1, 0]));
+            dir2 = deg2rad(txtBox2Double(targetTxtBoxes[1, 1]));
+
+            double seg1tdlEquiv = ang2Equivtdl(bend1);
+            double seg1Dir = this.dir1;
+            double seg2tdlEquiv = ang2Equivtdl(bend2);
+            double seg2Dir = this.dir2;
 
             // Input: proximal segment, Offset compensation for distal segment
 
             mt3trans += seg1tdlEquiv * Math.Cos(mtDirs[2] - seg1Dir); // original input
             mt4trans += seg1tdlEquiv * Math.Cos(mtDirs[3] - seg1Dir); // original input
                                      
-            mt1trans += (3d / 4d) * seg1tdlEquiv * Math.Cos(mtDirs[0] - seg1Dir); // offset compensation
-            mt2trans += (3d / 4d) * seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // offset compensation
+            mt1trans += prox_compenCoeff_todist * seg1tdlEquiv * Math.Cos(mtDirs[0] - seg1Dir); // offset compensation
+            mt2trans += prox_compenCoeff_todist * seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // offset compensation
 
             // Input: distal segment, Offset compensation for proximal segment
 
@@ -66,7 +73,7 @@ namespace DynaDrive
 
             // Offset initial curvature k_1 --> use k_1 = 2*tdl / (curvelength * radius)
             // Result: compenTDL_prox = TDL_dist * (proxlen / totallen)
-            double k1_seg2_compenTDL = seg2tdlEquiv * (1d/4d);
+            double k1_seg2_compenTDL = seg2tdlEquiv * dist_compenCoeff_toprox;
             mt3trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[2] - seg2Dir);
             mt4trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[3] - seg2Dir);
 
@@ -81,8 +88,8 @@ namespace DynaDrive
             TotalLength = txtBox2Double(props[1]);
             ProxLength = txtBox2Double(props[2]);
             lenRatio = ProxLength / TotalLength;
-            dist_compenCoeff = 1 / (lenRatio * (2 - lenRatio));
-            prox_compenCoeff = 1 - (1 - lenRatio) * (1 - lenRatio);
+            prox_compenCoeff_todist = 1 - (1 - lenRatio) * (1 - lenRatio);
+            dist_compenCoeff_toprox = lenRatio * (1 - lenRatio);
         }
 
         private double txtBox2Double(MetroTextBox txtBox)
@@ -127,6 +134,57 @@ namespace DynaDrive
         {
             double[] retVct = new double[3];
 
+            return retVct;
+        }
+
+        public double[] getDistalOrient()
+        {
+            double[] initUnit = { 0d, 0d, 1d };
+            double[] retVct = new double[3];
+            double[] vct1 = matVctMul(initUnit,matMul(matMul(matMul(rotMatrixZ(dir1),rotMatrixY(bend1)),rotMatrixZ(dir2)),rotMatrixY(bend2)));
+            string consoleStr = "";
+            foreach (double var in vct1) consoleStr += var + " ";
+            Console.WriteLine(consoleStr);
+            return retVct;
+        }
+        private double[,] rotMatrixY(double ang)
+        {
+            double[,] retMat = { { Math.Cos(ang), 0, -Math.Sin(ang) }, { 0d,1d,0d},{ Math.Sin(ang), 0d, Math.Cos(ang) } };
+            return retMat;
+        }
+        private double[,] rotMatrixZ(double ang)
+        {
+            double[,] retMat = { { Math.Cos(ang), Math.Sin(ang), 0d }, { -Math.Sin(ang), Math.Cos(ang), 0d }, { 0d, 0d, 1d } };
+            return retMat;
+        }
+        private double vctDot(double[] vct1, double[] vct2)
+        {
+            double retVal = 0;
+            for (int i = 0; i < 3; i++) retVal += vct1[i] * vct2[i];
+            return retVal;
+        }
+        private double[,] matMul(double[,] mat1, double[,] mat2)
+        {
+            double[,] retMat = new double[3, 3];
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    double[] vctRow = { mat1[i, 0], mat1[i, 1], mat1[i, 2] };
+                    double[] vctCol = { mat2[0, j], mat2[1, j], mat2[2, j] };
+                    retMat[i, j] = vctDot(vctRow, vctCol);
+                }
+            }
+            return retMat;
+        }
+        private double[] matVctMul(double[] vct, double[,] mat)
+        {
+            double[] retVct = new double[3];
+            for(int i = 0; i<3; i++)
+            {
+                double[] partVct = new double[3]{ mat[i, 0], mat[i, 1], mat[i, 2] };
+                retVct[i] = vctDot(partVct, vct);
+            }
             return retVct;
         }
     }
