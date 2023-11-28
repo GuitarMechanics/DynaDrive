@@ -180,6 +180,7 @@
             this.metroLabel51 = new MetroFramework.Controls.MetroLabel();
             this.bendCtrSetBtn = new MetroFramework.Controls.MetroButton();
             this.bendCtrCenterBtn = new MetroFramework.Controls.MetroButton();
+            this.distalAngleLabel = new MetroFramework.Controls.MetroLabel();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -2487,7 +2488,7 @@
             this.metroTabPage2.Controls.Add(this.tableLayoutPanel8);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 4;
+            this.metroTabPage2.HorizontalScrollbarSize = 3;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(578, 248);
@@ -2497,7 +2498,7 @@
             this.metroTabPage2.UseCustomForeColor = true;
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 5;
+            this.metroTabPage2.VerticalScrollbarSize = 4;
             // 
             // tableLayoutPanel8
             // 
@@ -2648,7 +2649,7 @@
             this.bendProxLenTxtBox.CustomButton.UseSelectable = true;
             this.bendProxLenTxtBox.CustomButton.Visible = false;
             this.bendProxLenTxtBox.Lines = new string[] {
-        "30"};
+        "28"};
             this.bendProxLenTxtBox.Location = new System.Drawing.Point(201, 69);
             this.bendProxLenTxtBox.MaxLength = 32767;
             this.bendProxLenTxtBox.Name = "bendProxLenTxtBox";
@@ -2660,7 +2661,7 @@
             this.bendProxLenTxtBox.ShortcutsEnabled = true;
             this.bendProxLenTxtBox.Size = new System.Drawing.Size(100, 23);
             this.bendProxLenTxtBox.TabIndex = 40;
-            this.bendProxLenTxtBox.Text = "30";
+            this.bendProxLenTxtBox.Text = "28";
             this.bendProxLenTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.bendProxLenTxtBox.UseSelectable = true;
             this.bendProxLenTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -3059,11 +3060,26 @@
             this.bendCtrCenterBtn.UseSelectable = true;
             this.bendCtrCenterBtn.Click += new System.EventHandler(this.bendCtrCenterBtn_Click);
             // 
+            // distalAngleLabel
+            // 
+            this.distalAngleLabel.AutoSize = true;
+            this.distalAngleLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.distalAngleLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.distalAngleLabel.Location = new System.Drawing.Point(691, 358);
+            this.distalAngleLabel.Name = "distalAngleLabel";
+            this.distalAngleLabel.Size = new System.Drawing.Size(195, 25);
+            this.distalAngleLabel.Style = MetroFramework.MetroColorStyle.White;
+            this.distalAngleLabel.TabIndex = 32;
+            this.distalAngleLabel.Text = "Dist Angle Vct : 0 , 0 , 0";
+            this.distalAngleLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.distalAngleLabel.UseStyleColors = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 634);
+            this.Controls.Add(this.distalAngleLabel);
             this.Controls.Add(this.tableLayoutPanel7);
             this.Controls.Add(this.setTransConvBtn);
             this.Controls.Add(this.setRotRawModeBtn);
@@ -3272,6 +3288,7 @@
         private MetroFramework.Controls.MetroButton BendSetupSetBtn;
         private MetroFramework.Controls.MetroLabel metroLabel52;
         private MetroFramework.Controls.MetroTextBox bendProxLenTxtBox;
+        private MetroFramework.Controls.MetroLabel distalAngleLabel;
     }
 }
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DynaDrive
 {
@@ -13,11 +14,15 @@ namespace DynaDrive
         private double diskRadius;
         private double TotalLength;
         private double ProxLength;
+        private double lenRatio;
 
         private double mt1dir;//to distal
         private double mt2dir;
         private double mt3dir;//to proximal
         private double mt4dir;
+
+        private double dist_compenCoeff;
+        private double prox_compenCoeff;
 
 
         private double[] mtDirs;
@@ -75,6 +80,9 @@ namespace DynaDrive
             diskRadius = txtBox2Double(props[0]);
             TotalLength = txtBox2Double(props[1]);
             ProxLength = txtBox2Double(props[2]);
+            lenRatio = ProxLength / TotalLength;
+            dist_compenCoeff = 1 / (lenRatio * (2 - lenRatio));
+            prox_compenCoeff = 1 - (1 - lenRatio) * (1 - lenRatio);
         }
 
         private double txtBox2Double(MetroTextBox txtBox)
@@ -114,6 +122,12 @@ namespace DynaDrive
         private double InitCurve2TDL(double curvature, double armLength)
         {
             return armLength * curvature * this.diskRadius / 2;
+        }
+        private double[] getRotSingleSeg(double[] vct, double bend, double dir)
+        {
+            double[] retVct = new double[3];
+
+            return retVct;
         }
     }
 }
