@@ -525,6 +525,10 @@ namespace DynaDrive
                 distalStr += (Math.Round(var * 100) / 100).ToString() + "  ";
             }
             distalAngleLabel.Text = distalStr;
+            double[] distPos = dualBend.getDistalPos();
+            string distalPosStr = "Dist.Tip Pos : " + distPos[0] + " " + distPos[1] + " " + distPos[2];
+            Console.WriteLine("Dist Pos Debug : " + distPos[0] + " , " + distPos[1] + " , " + distPos[2]);
+            distPosLabel.Text = distalPosStr;
         }
 
         private void BendSetupSetBtn_Click(object sender, EventArgs e)

@@ -181,6 +181,7 @@
             this.bendCtrSetBtn = new MetroFramework.Controls.MetroButton();
             this.bendCtrCenterBtn = new MetroFramework.Controls.MetroButton();
             this.distalAngleLabel = new MetroFramework.Controls.MetroLabel();
+            this.distPosLabel = new MetroFramework.Controls.MetroLabel();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -1150,7 +1151,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(79, 320);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 3;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(586, 290);
             this.metroTabControl1.TabIndex = 25;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -2485,10 +2486,12 @@
             // metroTabPage2
             // 
             this.metroTabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.metroTabPage2.Controls.Add(this.distPosLabel);
+            this.metroTabPage2.Controls.Add(this.distalAngleLabel);
             this.metroTabPage2.Controls.Add(this.tableLayoutPanel8);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 3;
+            this.metroTabPage2.HorizontalScrollbarSize = 2;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(578, 248);
@@ -2498,7 +2501,7 @@
             this.metroTabPage2.UseCustomForeColor = true;
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 4;
+            this.metroTabPage2.VerticalScrollbarSize = 3;
             // 
             // tableLayoutPanel8
             // 
@@ -3065,7 +3068,7 @@
             this.distalAngleLabel.AutoSize = true;
             this.distalAngleLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.distalAngleLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.distalAngleLabel.Location = new System.Drawing.Point(691, 358);
+            this.distalAngleLabel.Location = new System.Drawing.Point(39, 227);
             this.distalAngleLabel.Name = "distalAngleLabel";
             this.distalAngleLabel.Size = new System.Drawing.Size(195, 25);
             this.distalAngleLabel.Style = MetroFramework.MetroColorStyle.White;
@@ -3074,12 +3077,25 @@
             this.distalAngleLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.distalAngleLabel.UseStyleColors = true;
             // 
+            // distPosLabel
+            // 
+            this.distPosLabel.AutoSize = true;
+            this.distPosLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.distPosLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.distPosLabel.Location = new System.Drawing.Point(507, 245);
+            this.distPosLabel.Name = "distPosLabel";
+            this.distPosLabel.Size = new System.Drawing.Size(205, 25);
+            this.distPosLabel.Style = MetroFramework.MetroColorStyle.White;
+            this.distPosLabel.TabIndex = 33;
+            this.distPosLabel.Text = "Dist Angle POS : 0 , 0 , 0";
+            this.distPosLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.distPosLabel.UseStyleColors = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 634);
-            this.Controls.Add(this.distalAngleLabel);
+            this.ClientSize = new System.Drawing.Size(1147, 634);
             this.Controls.Add(this.tableLayoutPanel7);
             this.Controls.Add(this.setTransConvBtn);
             this.Controls.Add(this.setRotRawModeBtn);
@@ -3122,6 +3138,7 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.metroTabPage3.ResumeLayout(false);
@@ -3289,6 +3306,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel52;
         private MetroFramework.Controls.MetroTextBox bendProxLenTxtBox;
         private MetroFramework.Controls.MetroLabel distalAngleLabel;
+        private MetroFramework.Controls.MetroLabel distPosLabel;
     }
 }
 

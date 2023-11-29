@@ -28,6 +28,7 @@ namespace DynaDrive
         private double dir1, dir2, bend1, bend2;
 
         private double[] mtDirs;
+        private double s_val = 0.17575d;
 
         public DualbendCalc(MetroTextBox[] initValsTxtBox)
         {
@@ -147,6 +148,12 @@ namespace DynaDrive
             Console.WriteLine(consoleStr);
             return retVct;
         }
+        public double[] getDistalPos()
+        {
+            double[] initPos = { 0d, 0d, 0d, 1d };
+            double[] distPos = matVctMul(initPos, matMul(forward_transform(bend1, dir1, ProxLength), forward_transform(bend2, dir2, (TotalLength - ProxLength))));
+            return distPos;
+        }
         private double[,] rotMatrixY(double ang)
         {
             double[,] retMat = { { Math.Cos(ang), 0, -Math.Sin(ang) }, { 0d,1d,0d},{ Math.Sin(ang), 0d, Math.Cos(ang) } };
@@ -165,7 +172,7 @@ namespace DynaDrive
         }
         private double[,] matMul(double[,] mat1, double[,] mat2)
         {
-            double[,] retMat = new double[3, 3];
+            double[,] retMat = new double[mat1.GetLength(0), mat1.GetLength(1)];
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -179,13 +186,24 @@ namespace DynaDrive
         }
         private double[] matVctMul(double[] vct, double[,] mat)
         {
-            double[] retVct = new double[3];
-            for(int i = 0; i<3; i++)
+            double[] retVct = new double[vct.Length];
+            for(int i = 0; i<vct.Length; i++)
             {
                 double[] partVct = new double[3]{ mat[i, 0], mat[i, 1], mat[i, 2] };
                 retVct[i] = vctDot(partVct, vct);
             }
             return retVct;
+        }
+        private double[,] forward_transform(double bend, double dir, double segLength)
+        {
+            double[,] retMat =
+            {
+                {Math.Cos(dir)*Math.Cos(bend), Math.Sin(dir), -Math.Cos(dir)*Math.Sin(bend), segLength * ((1-s_val)*Math.Sin(Math.PI*bend/4))},
+                {-Math.Sin(dir)*Math.Cos(bend), Math.Cos(dir), Math.Sin(dir)*Math.Sin(bend),0 },
+                {Math.Sin(bend), 0,Math.Cos(bend),segLength*(s_val + (1-s_val)*Math.Cos(Math.PI*bend/4)) },
+                {0,0,0,1 }
+            };
+            return retMat;
         }
     }
 }
