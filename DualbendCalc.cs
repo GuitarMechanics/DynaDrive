@@ -62,9 +62,11 @@ namespace DynaDrive
 
             mt3trans += seg1tdlEquiv * Math.Cos(mtDirs[2] - seg1Dir); // original input
             mt4trans += seg1tdlEquiv * Math.Cos(mtDirs[3] - seg1Dir); // original input
-                                     
+
             mt1trans += prox_compenCoeff_todist * seg1tdlEquiv * Math.Cos(mtDirs[0] - seg1Dir); // offset compensation
             mt2trans += prox_compenCoeff_todist * seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // offset compensation
+            //mt1trans += seg1tdlEquiv * Math.Cos(mtDirs[0] - seg1Dir);
+            //mt2trans += seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // prox input --> length compensation for distal
 
             // Input: distal segment, Offset compensation for proximal segment
 
