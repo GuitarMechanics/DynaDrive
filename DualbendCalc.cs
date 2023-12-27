@@ -63,20 +63,20 @@ namespace DynaDrive
             mt3trans += seg1tdlEquiv * Math.Cos(mtDirs[2] - seg1Dir); // original input
             mt4trans += seg1tdlEquiv * Math.Cos(mtDirs[3] - seg1Dir); // original input
 
-            mt1trans += prox_compenCoeff_todist * seg1tdlEquiv * Math.Cos(mtDirs[0] - seg1Dir); // offset compensation
-            mt2trans += prox_compenCoeff_todist * seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // offset compensation
-            //mt1trans += seg1tdlEquiv * Math.Cos(mtDirs[0] - seg1Dir);
-            //mt2trans += seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // prox input --> length compensation for distal
+            //mt1trans += prox_compenCoeff_todist * seg1tdlEquiv * Math.Cos(mtDirs[0] - seg1Dir); // offset compensation
+            //mt2trans += prox_compenCoeff_todist * seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // offset compensation
+            mt1trans += seg1tdlEquiv * Math.Cos(mtDirs[0] - seg1Dir);
+            mt2trans += seg1tdlEquiv * Math.Cos(mtDirs[1] - seg1Dir); // prox input --> length compensation for distal
 
             // Input: distal segment, Offset compensation for proximal segment
 
-
-            mt1trans += seg2tdlEquiv * Math.Cos(mtDirs[0] - seg2Dir);
-            mt2trans += seg2tdlEquiv * Math.Cos(mtDirs[1] - seg2Dir);
+            double seg2tdlReal = seg2tdlEquiv / (1-lenRatio) / (1-lenRatio) / 3;
+            mt1trans += seg2tdlReal * Math.Cos(mtDirs[0] - seg2Dir);
+            mt2trans += seg2tdlReal * Math.Cos(mtDirs[1] - seg2Dir);
 
             // Offset initial curvature k_1 --> use k_1 = 2*tdl / (curvelength * radius)
             // Result: compenTDL_prox = TDL_dist * (proxlen / totallen)
-            double k1_seg2_compenTDL = seg2tdlEquiv * dist_compenCoeff_toprox;
+            double k1_seg2_compenTDL = seg2tdlReal * lenRatio * (2-lenRatio) / 3;
             mt3trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[2] - seg2Dir);
             mt4trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[3] - seg2Dir);
 
@@ -92,7 +92,7 @@ namespace DynaDrive
             ProxLength = txtBox2Double(props[2]);
             lenRatio = ProxLength / TotalLength;
             prox_compenCoeff_todist = 1 - (1 - lenRatio) * (1 - lenRatio);
-            dist_compenCoeff_toprox = lenRatio * (1 - lenRatio);
+            dist_compenCoeff_toprox = lenRatio * (2-lenRatio);
         }
 
         private double txtBox2Double(MetroTextBox txtBox)
