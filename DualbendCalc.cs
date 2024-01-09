@@ -70,15 +70,21 @@ namespace DynaDrive
 
             // Input: distal segment, Offset compensation for proximal segment
 
-            double seg2tdlReal = seg2tdlEquiv / (1-lenRatio) / (1-lenRatio) / 3;
+            //proximal compensation
+            double proxBias = ProxLength - seg1tdlEquiv * Math.Cos(seg2Dir- seg1Dir);
+            double lenratio_bias = proxBias / TotalLength;
+            double k1_seg2_compenTDL = seg2tdlEquiv * lenratio_bias * (1 - lenratio_bias/2) / 2;
+            mt3trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[2] - seg2Dir);
+            mt4trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[3] - seg2Dir);
+
+            double seg2tdlReal = seg2tdlEquiv + k1_seg2_compenTDL * (1 - Math.Cos(seg1Dir  - seg2Dir));//compression compensation
             mt1trans += seg2tdlReal * Math.Cos(mtDirs[0] - seg2Dir);
             mt2trans += seg2tdlReal * Math.Cos(mtDirs[1] - seg2Dir);
 
             // Offset initial curvature k_1 --> use k_1 = 2*tdl / (curvelength * radius)
             // Result: compenTDL_prox = TDL_dist * (proxlen / totallen)
-            double k1_seg2_compenTDL = seg2tdlReal * lenRatio * (2-lenRatio) / 3;
-            mt3trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[2] - seg2Dir);
-            mt4trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[3] - seg2Dir);
+            //double k1_seg2_compenTDL = seg2tdlReal / 2;// * lenRatio * (2-lenRatio);
+
 
 
             double[] targetTrans = new double[] { mt1trans, mt2trans, mt3trans, mt4trans };
