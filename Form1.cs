@@ -276,5 +276,10 @@ namespace DynaDrive
             PcYOriTxtbox.Text = xyzPos[1, 1].ToString();
             PcZOriTxtbox.Text = xyzPos[2, 1].ToString();
         }
+
+        private void mtCenterPos3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

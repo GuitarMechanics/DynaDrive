@@ -52,7 +52,7 @@ namespace DynaDrive
             updateVal(Form);
             try
             {
-                if (Form.mtToggles[0].Checked) openRB.goalPos[0] = mtZeroPos[0] + Convert.ToInt32(Math.Round(Convert.ToDouble(mtMcTargets[0].Text.ToString())) / 360 * 4096);
+                if (Form.mtToggles[0].Checked) openRB.goalPos[0] = mtZeroPos[0] + Convert.ToInt32(Math.Round(Convert.ToDouble(mtMcTargets[0].Text.ToString()) / 360 * 4096));
             }
             catch (Exception) { }
             try
