@@ -47,10 +47,16 @@ namespace DynaDrive
         private DualbendCalc dualBend;
 
         Timer SteppingTimer = new Timer();
+        Timer BendingTimer = new Timer();
         private int stepTimerCnt = 0;
         private int stepRepeatTarget = 0;
         private int stepRepeatCurrent = 0;
         private int[,] stepdataArray;
+        private double[,] bendDataArray;
+        private int bendTimerCnt = 0;
+
+        private bool autoBendRunning = false;
+        private int autobendsteps = 0;
 
 
         public Form1()
@@ -223,10 +229,15 @@ namespace DynaDrive
         }
         private void autoStepper_LabelTrigger(bool isRunning)
         {
-            if (isRunning)
+            if (isRunning && !autoBendRunning)
             {
                 AutoStepperRunLabel.Text = "AutoStep Running";
                 StepCounterLabel.Text = "Step " + stepTimerCnt.ToString() + " / " + stepdataArray.GetLength(0);
+            }
+            else if (isRunning && autoBendRunning)
+            {
+                AutoStepperRunLabel.Text = "Autobend Running";
+                StepCounterLabel.Text = "Step " + stepTimerCnt.ToString() + " / AutoBend";
             }
             else
             {
@@ -534,6 +545,137 @@ namespace DynaDrive
         private void BendSetupSetBtn_Click(object sender, EventArgs e)
         {
             dualBend.getProperties(bendSets);
+        }
+
+        private double txtBox2Double(MetroTextBox txtBox)
+        {
+            try { return Convert.ToDouble(txtBox.Text); }
+            catch (Exception)
+            {
+                Console.WriteLine("ex in txtbox2double");
+                txtBox.Text = "0";
+                return 0;
+            }
+        }
+
+        private void AutobendRunBtn_Click(object sender, EventArgs e)
+        {
+            double proxBendStart = txtBox2Double(ProxBendStartTxtBox);
+            double proxBendGoal = txtBox2Double(ProxBendGoalTxtBox);
+            double proxDirStart = txtBox2Double(ProxDirStartTxtBox);
+            double proxDirGoal = txtBox2Double(ProxDirGoalTxtBox);
+
+            double distBendStart = txtBox2Double(DistBendStartTxtBox);
+            double distBendGoal = txtBox2Double(DistBendGoaltTxtBox);
+            double distDirStart = txtBox2Double(DistDirStartTxtBox);
+            double distDirGoal = txtBox2Double(DistDirGoalTxtBox);
+
+            double bendStep = txtBox2Double(AutobendBendStepTxtBox);
+            double dirStep = txtBox2Double(AutobendDirStepTxtBox);
+
+            int timeInterval = 2000;
+            int repeats = 1;
+
+            double proxBendCurrent = proxBendStart;
+            double proxDirCurrent = proxDirStart;
+            double distBendCurrent = distBendStart;
+            double distDirCurrent = distDirStart;
+
+            double[] proxBendVals = getStepArray(proxBendStart,proxBendGoal,bendStep);
+            double[] proxDirVals = getStepArray(proxDirStart,proxDirGoal,dirStep);
+            double[] distBendVals = getStepArray(distBendStart, distBendGoal, bendStep);
+            double[] distDirVals = getStepArray(distDirStart, distDirGoal, dirStep);
+
+            autobendsteps = getStepCounts(proxBendStart, proxBendGoal, bendStep) * getStepCounts(proxDirStart, proxDirGoal, dirStep)
+                 * getStepCounts(distBendStart, distBendGoal, bendStep) * getStepCounts(distDirStart, distDirGoal, dirStep);
+
+            bendDataArray = new double[autobendsteps, 4];
+
+            int indexCount = 0;
+            for(int pb = 0; pb < proxBendVals.Length; pb++)
+            {
+                for(int pd = 0; pd < proxDirVals.Length; pd++)
+                {
+                    for(int db = 0; db < distBendVals.Length; db++)
+                    {
+                        for(int dd = 0; dd < distDirVals.Length; dd++)
+                        {
+                            bendDataArray[indexCount, 3] = distDirVals[dd];
+                            bendDataArray[indexCount, 2] = distBendVals[db];
+                            bendDataArray[indexCount, 1] = distDirVals[pd];
+                            bendDataArray[indexCount, 0] = distBendVals[pb];
+                            distDirCurrent += dirStep;
+                            for (int i = 0; i < 4; i++)
+                            {
+                                Console.Write(bendDataArray[indexCount, i] + " , ");
+                            }
+                            Console.WriteLine();
+                            indexCount++;
+
+                        }
+                        distBendCurrent += bendStep;
+                    }
+                    proxDirCurrent += dirStep;
+                }
+                proxBendCurrent += bendStep;
+            }
+
+
+            try { timeInterval = Convert.ToInt32(AutobendIntTxtBox); }
+            catch(Exception) { AutobendIntTxtBox.Text = "2000"; }
+
+            try { repeats = Convert.ToInt32(AutobendRepeatTxtBox);}
+            catch(Exception) { AutobendRepeatTxtBox.Text = "1"; }
+
+            BendingTimer.Interval = timeInterval;
+            bendTimerCnt = 0;
+            autobendRun();
+        }
+
+        private void autobendRun()
+        {
+            autoBendRunning = true;
+            BendingTimer.Start();
+        }
+
+        private void bendTimerTick(object sender, EventArgs e)
+        {
+            if (bendTimerCnt > autobendsteps)
+            {
+                BendingTimer.Stop();
+            }
+            else
+            {
+                bendTimerTickWritelines(bendDataArray, bendTimerCnt);
+            }
+        }
+
+        private void bendTimerTickWritelines(double[,] values, int rowcount)
+        {
+            try
+            {
+                seg1BendTxtBox.Text = Convert.ToString(values[rowcount, 0]);
+                seg1DirTxtBox.Text = Convert.ToString(values[rowcount, 1]);
+                seg2BendTxtBox.Text = Convert.ToString(values[rowcount, 2]);
+                seg2DirTxtBox.Text = Convert.ToString(values[rowcount, 3]);
+
+            }
+            catch(Exception) { Console.WriteLine("ex in bendtimertickwrtlines"); BendingTimer.Stop(); }
+            bendTimerCnt++;
+        }
+        private int getStepCounts(double start, double end, double step)
+        {
+            return Convert.ToInt32((end - start) / step + 1);
+        }
+        private double[] getStepArray(double start, double end, double step)
+        {
+            double[] retArr = new double[getStepCounts(start, end, step)];
+            retArr[0] = start;
+            for(int i = 1; i<retArr.Length; i++)
+            {
+                retArr[i] = retArr[i - 1] + step;
+            }
+            return retArr;
         }
     }
 }

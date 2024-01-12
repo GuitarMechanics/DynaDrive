@@ -73,11 +73,11 @@ namespace DynaDrive
             //proximal compensation
             double proxBias = ProxLength - seg1tdlEquiv * Math.Cos(seg2Dir- seg1Dir);
             double lenratio_bias = proxBias / TotalLength;
-            double k1_seg2_compenTDL = seg2tdlEquiv * lenratio_bias * (1 - lenratio_bias/2) / 2;
+            double k1_seg2_compenTDL = seg2tdlEquiv * lenratio_bias * (1 - lenratio_bias / 2) / 2;
             mt3trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[2] - seg2Dir);
             mt4trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[3] - seg2Dir);
 
-            double seg2tdlReal = seg2tdlEquiv + k1_seg2_compenTDL * (1 - Math.Cos(seg1Dir  - seg2Dir));//compression compensation
+            double seg2tdlReal = seg2tdlEquiv + k1_seg2_compenTDL;///2;// * (1 - Math.Cos(seg1Dir  - seg2Dir));//compression compensation
             mt1trans += seg2tdlReal * Math.Cos(mtDirs[0] - seg2Dir);
             mt2trans += seg2tdlReal * Math.Cos(mtDirs[1] - seg2Dir);
 
