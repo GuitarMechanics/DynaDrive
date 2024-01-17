@@ -1131,7 +1131,7 @@ namespace DynaDrive
             this.metroTabControl1.Controls.Add(Setup);
             this.metroTabControl1.Location = new System.Drawing.Point(78, 320);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(860, 398);
             this.metroTabControl1.TabIndex = 25;
             this.metroTabControl1.TabStop = false;
@@ -1793,7 +1793,7 @@ namespace DynaDrive
             this.mtZeroPos3.CustomButton.UseSelectable = true;
             this.mtZeroPos3.CustomButton.Visible = false;
             this.mtZeroPos3.Lines = new string[] {
-        "-857"};
+        "-907"};
             this.mtZeroPos3.Location = new System.Drawing.Point(649, 116);
             this.mtZeroPos3.MaxLength = 32767;
             this.mtZeroPos3.Name = "mtZeroPos3";
@@ -1805,7 +1805,7 @@ namespace DynaDrive
             this.mtZeroPos3.ShortcutsEnabled = true;
             this.mtZeroPos3.Size = new System.Drawing.Size(76, 23);
             this.mtZeroPos3.TabIndex = 56;
-            this.mtZeroPos3.Text = "-857";
+            this.mtZeroPos3.Text = "-907";
             this.mtZeroPos3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtZeroPos3.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.mtZeroPos3.UseSelectable = true;
@@ -1863,7 +1863,7 @@ namespace DynaDrive
             this.mtZeroPos1.CustomButton.UseSelectable = true;
             this.mtZeroPos1.CustomButton.Visible = false;
             this.mtZeroPos1.Lines = new string[] {
-        "1218"};
+        "1028"};
             this.mtZeroPos1.Location = new System.Drawing.Point(485, 116);
             this.mtZeroPos1.MaxLength = 32767;
             this.mtZeroPos1.Name = "mtZeroPos1";
@@ -1875,7 +1875,7 @@ namespace DynaDrive
             this.mtZeroPos1.ShortcutsEnabled = true;
             this.mtZeroPos1.Size = new System.Drawing.Size(76, 23);
             this.mtZeroPos1.TabIndex = 54;
-            this.mtZeroPos1.Text = "1218";
+            this.mtZeroPos1.Text = "1028";
             this.mtZeroPos1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtZeroPos1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.mtZeroPos1.UseSelectable = true;
@@ -1947,7 +1947,7 @@ namespace DynaDrive
             this.mtCenterPos3.CustomButton.UseSelectable = true;
             this.mtCenterPos3.CustomButton.Visible = false;
             this.mtCenterPos3.Lines = new string[] {
-        "-857"};
+        "-907"};
             this.mtCenterPos3.Location = new System.Drawing.Point(649, 37);
             this.mtCenterPos3.MaxLength = 32767;
             this.mtCenterPos3.Name = "mtCenterPos3";
@@ -1959,7 +1959,7 @@ namespace DynaDrive
             this.mtCenterPos3.ShortcutsEnabled = true;
             this.mtCenterPos3.Size = new System.Drawing.Size(76, 23);
             this.mtCenterPos3.TabIndex = 51;
-            this.mtCenterPos3.Text = "-857";
+            this.mtCenterPos3.Text = "-907";
             this.mtCenterPos3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtCenterPos3.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.mtCenterPos3.UseSelectable = true;
@@ -2018,7 +2018,7 @@ namespace DynaDrive
             this.mtCenterPos1.CustomButton.UseSelectable = true;
             this.mtCenterPos1.CustomButton.Visible = false;
             this.mtCenterPos1.Lines = new string[] {
-        "1218"};
+        "1028"};
             this.mtCenterPos1.Location = new System.Drawing.Point(485, 37);
             this.mtCenterPos1.MaxLength = 32767;
             this.mtCenterPos1.Name = "mtCenterPos1";
@@ -2030,7 +2030,7 @@ namespace DynaDrive
             this.mtCenterPos1.ShortcutsEnabled = true;
             this.mtCenterPos1.Size = new System.Drawing.Size(76, 23);
             this.mtCenterPos1.TabIndex = 49;
-            this.mtCenterPos1.Text = "1218";
+            this.mtCenterPos1.Text = "1028";
             this.mtCenterPos1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtCenterPos1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.mtCenterPos1.UseSelectable = true;
@@ -2894,7 +2894,7 @@ namespace DynaDrive
             this.PcTube2L_sTxtbox.CustomButton.UseSelectable = true;
             this.PcTube2L_sTxtbox.CustomButton.Visible = false;
             this.PcTube2L_sTxtbox.Lines = new string[] {
-        "10"};
+        "15"};
             this.PcTube2L_sTxtbox.Location = new System.Drawing.Point(207, 134);
             this.PcTube2L_sTxtbox.MaxLength = 32767;
             this.PcTube2L_sTxtbox.Name = "PcTube2L_sTxtbox";
@@ -2906,7 +2906,7 @@ namespace DynaDrive
             this.PcTube2L_sTxtbox.ShortcutsEnabled = true;
             this.PcTube2L_sTxtbox.Size = new System.Drawing.Size(76, 23);
             this.PcTube2L_sTxtbox.TabIndex = 42;
-            this.PcTube2L_sTxtbox.Text = "10";
+            this.PcTube2L_sTxtbox.Text = "15";
             this.PcTube2L_sTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PcTube2L_sTxtbox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.PcTube2L_sTxtbox.UseSelectable = true;
@@ -2929,7 +2929,7 @@ namespace DynaDrive
             this.PcTube2ODTxtbox.CustomButton.UseSelectable = true;
             this.PcTube2ODTxtbox.CustomButton.Visible = false;
             this.PcTube2ODTxtbox.Lines = new string[] {
-        "6.7"};
+        "7.7"};
             this.PcTube2ODTxtbox.Location = new System.Drawing.Point(207, 105);
             this.PcTube2ODTxtbox.MaxLength = 32767;
             this.PcTube2ODTxtbox.Name = "PcTube2ODTxtbox";
@@ -2941,7 +2941,7 @@ namespace DynaDrive
             this.PcTube2ODTxtbox.ShortcutsEnabled = true;
             this.PcTube2ODTxtbox.Size = new System.Drawing.Size(76, 23);
             this.PcTube2ODTxtbox.TabIndex = 41;
-            this.PcTube2ODTxtbox.Text = "6.7";
+            this.PcTube2ODTxtbox.Text = "7.7";
             this.PcTube2ODTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PcTube2ODTxtbox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.PcTube2ODTxtbox.UseSelectable = true;
@@ -3013,7 +3013,7 @@ namespace DynaDrive
             this.PcTube1ETxtbox.CustomButton.UseSelectable = true;
             this.PcTube1ETxtbox.CustomButton.Visible = false;
             this.PcTube1ETxtbox.Lines = new string[] {
-        "10.81"};
+        "39.61659"};
             this.PcTube1ETxtbox.Location = new System.Drawing.Point(124, 221);
             this.PcTube1ETxtbox.MaxLength = 32767;
             this.PcTube1ETxtbox.Name = "PcTube1ETxtbox";
@@ -3025,7 +3025,7 @@ namespace DynaDrive
             this.PcTube1ETxtbox.ShortcutsEnabled = true;
             this.PcTube1ETxtbox.Size = new System.Drawing.Size(76, 23);
             this.PcTube1ETxtbox.TabIndex = 38;
-            this.PcTube1ETxtbox.Text = "10.81";
+            this.PcTube1ETxtbox.Text = "39.61659";
             this.PcTube1ETxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PcTube1ETxtbox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.PcTube1ETxtbox.UseSelectable = true;
