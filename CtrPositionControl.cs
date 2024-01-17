@@ -166,7 +166,7 @@ namespace DynaDrive
             PcToggles[1] = Form.PcTboToggle.Checked;
             PcPreset(Form);
             updateVal(openRB);
-            double theta_0 = 0.251;
+            double theta_0 = 0.07;
             double K_x, K_y, K_f = 0, K_t1 = 0,K_t2 = 0, K_tx = 0, K_ty = 0, K_t = 0;
             double angleRt1 = tube1.angleRt;
             double angleRt2 = tube2.angleRt;
@@ -254,29 +254,29 @@ namespace DynaDrive
                     z_p = 1 / K_f * Math.Sin(L * K_f);
                 }
                 
-                
-                // base frame 공차 offset rotation matrix
-                if (IsTol1 && PcToggles[1]) 
-                {
-                    R_t = arrayMath.multArray(arrayMath.multArray(rotationZ(phi), rotationY(theta_0)), rotationZ(-phi));
-                    R = arrayMath.multArray(R_t, R);
-                    IsTol1 = false;
-                }
-                
-                
                 // base frame에 대한 위치벡터 연산
                 P_p = new double[3, 1] { { x_p }, { y_p }, { z_p } };
                 P_p = arrayMath.multArray(R, P_p);
                 P = arrayMath.addArray(P, P_p);
-                
+
+                Console.WriteLine(angleRt1);
 
                 // 다음 구간 각각의 튜브 각도
                 angleRt1 -= phi;
                 angleRt2 -= phi;
 
                 // 다음 구간 rotation matrix
-                R = arrayMath.multArray(R, arrayMath.multArray(rotationZ(phi), rotationY(theta)));
-                
+
+                R = arrayMath.multArray(R, rotationZ(phi));
+
+                    
+                if (IsTol1 && PcToggles[1]) // base frame 공차 offset rotation matrix
+                {
+                    R = arrayMath.multArray(R, rotationY(theta_0));
+                    IsTol1 = false;
+                }
+
+                R = arrayMath.multArray(R, rotationY(theta));
 
             }
 

@@ -52,14 +52,14 @@ namespace DynaDrive
             updateVal(Form);
             try
             {
-                if (Form.mtToggles[0].Checked) openRB.goalPos[0] = mtZeroPos[0] + Convert.ToInt32(Math.Round(Convert.ToDouble(mtMcTargets[0].Text.ToString())) / 360 * 4096);
+                if (Form.mtToggles[0].Checked) openRB.goalPos[0] = mtZeroPos[0] + Convert.ToInt32(Math.Round(Convert.ToDouble(mtMcTargets[0].Text.ToString()) / 360 * 4096));
             }
             catch (Exception) { }
             try
             {
                 if (Form.mtToggles[1].Checked)
                 {
-                    openRB.goalPos[1] = mtZeroPos[1] - Convert.ToInt32(Math.Round((Convert.ToDouble(mtMcTargets[1].Text.ToString()) - 2) * 4096 / (14 * 2 * Math.PI)));
+                    openRB.goalPos[1] = mtZeroPos[1] - Convert.ToInt32(Math.Round((Convert.ToDouble(mtMcTargets[1].Text.ToString())) * 4096 / (14 * 2 * Math.PI)));
                     if (Convert.ToInt32(mtMcTargets[1].Text.ToString()) > 75) openRB.goalPos[1] = mtZeroPos[1] - Convert.ToInt32(Math.Round(73 * 4096 / (14 * 2 * Math.PI)));
                     if (Convert.ToInt32(mtMcTargets[1].Text.ToString()) < 4) openRB.goalPos[1] = mtZeroPos[1];
                 }
