@@ -11,6 +11,7 @@ using System.IO.Ports;
 using System.Linq.Expressions;
 using MetroFramework.Controls;
 using System.CodeDom;
+using MetroFramework;
 
 // 솔루션용 nuget 설치 필요: metroui
 // https://luckygg.tistory.com/302
@@ -64,6 +65,21 @@ namespace DynaDrive
         {
             metroComboBox1.Items.Clear();
             foreach (var item in SerialPort.GetPortNames()) metroComboBox1.Items.Add(item);
+            if(metroComboBox1.Items.Count == 1)
+            {
+                metroComboBox1.SelectedIndex = 0;
+                metroComboBox2.SelectedIndex = 0;
+                mySerial.PortName= metroComboBox1.Text;
+                mySerial.BaudRate = Convert.ToInt32(metroComboBox2.Text.ToString());
+                mySerial.Parity = Parity.None;
+                mySerial.StopBits = StopBits.One;
+                mySerial.DataBits = 8;
+                mySerial.ReadBufferSize = 20000000;
+                mySerial.DataReceived += PortDataReceived;
+                try { mySerial.Open(); }
+                catch(Exception ex) { MessageBox.Show(ex.Message, "failed to open"); }
+
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {

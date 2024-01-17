@@ -118,6 +118,15 @@ namespace DynaDrive
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.MovementControl = new MetroFramework.Controls.MetroTabPage();
+            this.mtZeroPos4 = new MetroFramework.Controls.MetroTextBox();
+            this.mtZeroPos3 = new MetroFramework.Controls.MetroTextBox();
+            this.mtZeroPos2 = new MetroFramework.Controls.MetroTextBox();
+            this.mtZeroPos1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel61 = new MetroFramework.Controls.MetroLabel();
+            this.mtCenterPos4 = new MetroFramework.Controls.MetroTextBox();
+            this.mtCenterPos3 = new MetroFramework.Controls.MetroTextBox();
+            this.mtCenterPos2 = new MetroFramework.Controls.MetroTextBox();
+            this.mtCenterPos1 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel60 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel42 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel41 = new MetroFramework.Controls.MetroLabel();
@@ -176,15 +185,6 @@ namespace DynaDrive
             this.metroLabel44 = new MetroFramework.Controls.MetroLabel();
             this.About = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel34 = new MetroFramework.Controls.MetroLabel();
-            this.mtCenterPos1 = new MetroFramework.Controls.MetroTextBox();
-            this.mtCenterPos2 = new MetroFramework.Controls.MetroTextBox();
-            this.mtCenterPos3 = new MetroFramework.Controls.MetroTextBox();
-            this.mtCenterPos4 = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel61 = new MetroFramework.Controls.MetroLabel();
-            this.mtZeroPos4 = new MetroFramework.Controls.MetroTextBox();
-            this.mtZeroPos3 = new MetroFramework.Controls.MetroTextBox();
-            this.mtZeroPos2 = new MetroFramework.Controls.MetroTextBox();
-            this.mtZeroPos1 = new MetroFramework.Controls.MetroTextBox();
             Setup = new MetroFramework.Controls.MetroTabPage();
             metroLabel36 = new MetroFramework.Controls.MetroLabel();
             Setup.SuspendLayout();
@@ -3042,300 +3042,6 @@ namespace DynaDrive
             this.metroLabel34.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroLabel34.UseStyleColors = true;
             // 
-            // mtCenterPos1
-            // 
-            // 
-            // 
-            // 
-            this.mtCenterPos1.CustomButton.Image = null;
-            this.mtCenterPos1.CustomButton.Location = new System.Drawing.Point(54, 1);
-            this.mtCenterPos1.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.mtCenterPos1.CustomButton.Name = "";
-            this.mtCenterPos1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.mtCenterPos1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.mtCenterPos1.CustomButton.TabIndex = 1;
-            this.mtCenterPos1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mtCenterPos1.CustomButton.UseSelectable = true;
-            this.mtCenterPos1.CustomButton.Visible = false;
-            this.mtCenterPos1.Lines = new string[] {
-        "1218"};
-            this.mtCenterPos1.Location = new System.Drawing.Point(485, 37);
-            this.mtCenterPos1.MaxLength = 32767;
-            this.mtCenterPos1.Name = "mtCenterPos1";
-            this.mtCenterPos1.PasswordChar = '\0';
-            this.mtCenterPos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mtCenterPos1.SelectedText = "";
-            this.mtCenterPos1.SelectionLength = 0;
-            this.mtCenterPos1.SelectionStart = 0;
-            this.mtCenterPos1.ShortcutsEnabled = true;
-            this.mtCenterPos1.Size = new System.Drawing.Size(76, 23);
-            this.mtCenterPos1.TabIndex = 49;
-            this.mtCenterPos1.Text = "1218";
-            this.mtCenterPos1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mtCenterPos1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.mtCenterPos1.UseSelectable = true;
-            this.mtCenterPos1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.mtCenterPos1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // mtCenterPos2
-            // 
-            // 
-            // 
-            // 
-            this.mtCenterPos2.CustomButton.Image = null;
-            this.mtCenterPos2.CustomButton.Location = new System.Drawing.Point(54, 1);
-            this.mtCenterPos2.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.mtCenterPos2.CustomButton.Name = "";
-            this.mtCenterPos2.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.mtCenterPos2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.mtCenterPos2.CustomButton.TabIndex = 1;
-            this.mtCenterPos2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mtCenterPos2.CustomButton.UseSelectable = true;
-            this.mtCenterPos2.CustomButton.Visible = false;
-            this.mtCenterPos2.Lines = new string[] {
-        "-1533"};
-            this.mtCenterPos2.Location = new System.Drawing.Point(567, 37);
-            this.mtCenterPos2.MaxLength = 32767;
-            this.mtCenterPos2.Name = "mtCenterPos2";
-            this.mtCenterPos2.PasswordChar = '\0';
-            this.mtCenterPos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mtCenterPos2.SelectedText = "";
-            this.mtCenterPos2.SelectionLength = 0;
-            this.mtCenterPos2.SelectionStart = 0;
-            this.mtCenterPos2.ShortcutsEnabled = true;
-            this.mtCenterPos2.Size = new System.Drawing.Size(76, 23);
-            this.mtCenterPos2.TabIndex = 50;
-            this.mtCenterPos2.Text = "-1533";
-            this.mtCenterPos2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mtCenterPos2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.mtCenterPos2.UseSelectable = true;
-            this.mtCenterPos2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.mtCenterPos2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // mtCenterPos3
-            // 
-            // 
-            // 
-            // 
-            this.mtCenterPos3.CustomButton.Image = null;
-            this.mtCenterPos3.CustomButton.Location = new System.Drawing.Point(54, 1);
-            this.mtCenterPos3.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.mtCenterPos3.CustomButton.Name = "";
-            this.mtCenterPos3.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.mtCenterPos3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.mtCenterPos3.CustomButton.TabIndex = 1;
-            this.mtCenterPos3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mtCenterPos3.CustomButton.UseSelectable = true;
-            this.mtCenterPos3.CustomButton.Visible = false;
-            this.mtCenterPos3.Lines = new string[] {
-        "-762"};
-            this.mtCenterPos3.Location = new System.Drawing.Point(649, 37);
-            this.mtCenterPos3.MaxLength = 32767;
-            this.mtCenterPos3.Name = "mtCenterPos3";
-            this.mtCenterPos3.PasswordChar = '\0';
-            this.mtCenterPos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mtCenterPos3.SelectedText = "";
-            this.mtCenterPos3.SelectionLength = 0;
-            this.mtCenterPos3.SelectionStart = 0;
-            this.mtCenterPos3.ShortcutsEnabled = true;
-            this.mtCenterPos3.Size = new System.Drawing.Size(76, 23);
-            this.mtCenterPos3.TabIndex = 51;
-            this.mtCenterPos3.Text = "-762";
-            this.mtCenterPos3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mtCenterPos3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.mtCenterPos3.UseSelectable = true;
-            this.mtCenterPos3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.mtCenterPos3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // mtCenterPos4
-            // 
-            // 
-            // 
-            // 
-            this.mtCenterPos4.CustomButton.Image = null;
-            this.mtCenterPos4.CustomButton.Location = new System.Drawing.Point(54, 1);
-            this.mtCenterPos4.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.mtCenterPos4.CustomButton.Name = "";
-            this.mtCenterPos4.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.mtCenterPos4.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.mtCenterPos4.CustomButton.TabIndex = 1;
-            this.mtCenterPos4.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mtCenterPos4.CustomButton.UseSelectable = true;
-            this.mtCenterPos4.CustomButton.Visible = false;
-            this.mtCenterPos4.Lines = new string[] {
-        "1290"};
-            this.mtCenterPos4.Location = new System.Drawing.Point(731, 37);
-            this.mtCenterPos4.MaxLength = 32767;
-            this.mtCenterPos4.Name = "mtCenterPos4";
-            this.mtCenterPos4.PasswordChar = '\0';
-            this.mtCenterPos4.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mtCenterPos4.SelectedText = "";
-            this.mtCenterPos4.SelectionLength = 0;
-            this.mtCenterPos4.SelectionStart = 0;
-            this.mtCenterPos4.ShortcutsEnabled = true;
-            this.mtCenterPos4.Size = new System.Drawing.Size(76, 23);
-            this.mtCenterPos4.TabIndex = 52;
-            this.mtCenterPos4.Text = "1290";
-            this.mtCenterPos4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mtCenterPos4.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.mtCenterPos4.UseSelectable = true;
-            this.mtCenterPos4.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.mtCenterPos4.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel61
-            // 
-            this.metroLabel61.AutoSize = true;
-            this.metroLabel61.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel61.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel61.Location = new System.Drawing.Point(482, 88);
-            this.metroLabel61.Name = "metroLabel61";
-            this.metroLabel61.Size = new System.Drawing.Size(98, 25);
-            this.metroLabel61.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel61.TabIndex = 53;
-            this.metroLabel61.Text = "MotorZero";
-            this.metroLabel61.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel61.UseStyleColors = true;
-            // 
-            // mtZeroPos4
-            // 
-            // 
-            // 
-            // 
-            this.mtZeroPos4.CustomButton.Image = null;
-            this.mtZeroPos4.CustomButton.Location = new System.Drawing.Point(54, 1);
-            this.mtZeroPos4.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.mtZeroPos4.CustomButton.Name = "";
-            this.mtZeroPos4.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.mtZeroPos4.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.mtZeroPos4.CustomButton.TabIndex = 1;
-            this.mtZeroPos4.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mtZeroPos4.CustomButton.UseSelectable = true;
-            this.mtZeroPos4.CustomButton.Visible = false;
-            this.mtZeroPos4.Lines = new string[] {
-        "5038"};
-            this.mtZeroPos4.Location = new System.Drawing.Point(731, 116);
-            this.mtZeroPos4.MaxLength = 32767;
-            this.mtZeroPos4.Name = "mtZeroPos4";
-            this.mtZeroPos4.PasswordChar = '\0';
-            this.mtZeroPos4.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mtZeroPos4.SelectedText = "";
-            this.mtZeroPos4.SelectionLength = 0;
-            this.mtZeroPos4.SelectionStart = 0;
-            this.mtZeroPos4.ShortcutsEnabled = true;
-            this.mtZeroPos4.Size = new System.Drawing.Size(76, 23);
-            this.mtZeroPos4.TabIndex = 57;
-            this.mtZeroPos4.Text = "5038";
-            this.mtZeroPos4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mtZeroPos4.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.mtZeroPos4.UseSelectable = true;
-            this.mtZeroPos4.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.mtZeroPos4.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // mtZeroPos3
-            // 
-            // 
-            // 
-            // 
-            this.mtZeroPos3.CustomButton.Image = null;
-            this.mtZeroPos3.CustomButton.Location = new System.Drawing.Point(54, 1);
-            this.mtZeroPos3.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.mtZeroPos3.CustomButton.Name = "";
-            this.mtZeroPos3.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.mtZeroPos3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.mtZeroPos3.CustomButton.TabIndex = 1;
-            this.mtZeroPos3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mtZeroPos3.CustomButton.UseSelectable = true;
-            this.mtZeroPos3.CustomButton.Visible = false;
-            this.mtZeroPos3.Lines = new string[] {
-        "-762"};
-            this.mtZeroPos3.Location = new System.Drawing.Point(649, 116);
-            this.mtZeroPos3.MaxLength = 32767;
-            this.mtZeroPos3.Name = "mtZeroPos3";
-            this.mtZeroPos3.PasswordChar = '\0';
-            this.mtZeroPos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mtZeroPos3.SelectedText = "";
-            this.mtZeroPos3.SelectionLength = 0;
-            this.mtZeroPos3.SelectionStart = 0;
-            this.mtZeroPos3.ShortcutsEnabled = true;
-            this.mtZeroPos3.Size = new System.Drawing.Size(76, 23);
-            this.mtZeroPos3.TabIndex = 56;
-            this.mtZeroPos3.Text = "-762";
-            this.mtZeroPos3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mtZeroPos3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.mtZeroPos3.UseSelectable = true;
-            this.mtZeroPos3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.mtZeroPos3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // mtZeroPos2
-            // 
-            // 
-            // 
-            // 
-            this.mtZeroPos2.CustomButton.Image = null;
-            this.mtZeroPos2.CustomButton.Location = new System.Drawing.Point(54, 1);
-            this.mtZeroPos2.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.mtZeroPos2.CustomButton.Name = "";
-            this.mtZeroPos2.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.mtZeroPos2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.mtZeroPos2.CustomButton.TabIndex = 1;
-            this.mtZeroPos2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mtZeroPos2.CustomButton.UseSelectable = true;
-            this.mtZeroPos2.CustomButton.Visible = false;
-            this.mtZeroPos2.Lines = new string[] {
-        "1243"};
-            this.mtZeroPos2.Location = new System.Drawing.Point(567, 116);
-            this.mtZeroPos2.MaxLength = 32767;
-            this.mtZeroPos2.Name = "mtZeroPos2";
-            this.mtZeroPos2.PasswordChar = '\0';
-            this.mtZeroPos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mtZeroPos2.SelectedText = "";
-            this.mtZeroPos2.SelectionLength = 0;
-            this.mtZeroPos2.SelectionStart = 0;
-            this.mtZeroPos2.ShortcutsEnabled = true;
-            this.mtZeroPos2.Size = new System.Drawing.Size(76, 23);
-            this.mtZeroPos2.TabIndex = 55;
-            this.mtZeroPos2.Text = "1243";
-            this.mtZeroPos2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mtZeroPos2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.mtZeroPos2.UseSelectable = true;
-            this.mtZeroPos2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.mtZeroPos2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // mtZeroPos1
-            // 
-            // 
-            // 
-            // 
-            this.mtZeroPos1.CustomButton.Image = null;
-            this.mtZeroPos1.CustomButton.Location = new System.Drawing.Point(54, 1);
-            this.mtZeroPos1.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.mtZeroPos1.CustomButton.Name = "";
-            this.mtZeroPos1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.mtZeroPos1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.mtZeroPos1.CustomButton.TabIndex = 1;
-            this.mtZeroPos1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.mtZeroPos1.CustomButton.UseSelectable = true;
-            this.mtZeroPos1.CustomButton.Visible = false;
-            this.mtZeroPos1.Lines = new string[] {
-        "1218"};
-            this.mtZeroPos1.Location = new System.Drawing.Point(485, 116);
-            this.mtZeroPos1.MaxLength = 32767;
-            this.mtZeroPos1.Name = "mtZeroPos1";
-            this.mtZeroPos1.PasswordChar = '\0';
-            this.mtZeroPos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mtZeroPos1.SelectedText = "";
-            this.mtZeroPos1.SelectionLength = 0;
-            this.mtZeroPos1.SelectionStart = 0;
-            this.mtZeroPos1.ShortcutsEnabled = true;
-            this.mtZeroPos1.Size = new System.Drawing.Size(76, 23);
-            this.mtZeroPos1.TabIndex = 54;
-            this.mtZeroPos1.Text = "1218";
-            this.mtZeroPos1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mtZeroPos1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.mtZeroPos1.UseSelectable = true;
-            this.mtZeroPos1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.mtZeroPos1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -3515,7 +3221,6 @@ namespace DynaDrive
         private MetroFramework.Controls.MetroLabel metroLabel50;
         public MetroFramework.Controls.MetroTextBox PcTube1RhoTxtbox;
         private MetroFramework.Controls.MetroLabel metroLabel49;
-        private MetroFramework.Controls.MetroButton PcGetXyzPosBtn;
         public MetroFramework.Controls.MetroTextBox PcZPosTxtbox;
         public MetroFramework.Controls.MetroTextBox PcYPosTxtbox;
         public MetroFramework.Controls.MetroTextBox PcXPosTxtbox;
@@ -3541,6 +3246,7 @@ namespace DynaDrive
         public MetroFramework.Controls.MetroTextBox mtZeroPos2;
         public MetroFramework.Controls.MetroTextBox mtZeroPos1;
         private MetroFramework.Controls.MetroLabel metroLabel61;
+        public MetroFramework.Controls.MetroButton PcGetXyzPosBtn;
     }
 }
 
