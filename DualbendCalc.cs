@@ -71,9 +71,9 @@ namespace DynaDrive
             // Input: distal segment, Offset compensation for proximal segment
 
             //proximal compensation
-            double proxBias = ProxLength - seg1tdlEquiv * Math.Cos(seg2Dir- seg1Dir);
+            double proxBias = ProxLength + seg1tdlEquiv * Math.Cos(seg2Dir- seg1Dir);
             double lenratio_bias = proxBias / TotalLength;
-            double k1_seg2_compenTDL = seg2tdlEquiv * lenratio_bias * (1 - lenratio_bias / 2) / 2;
+            double k1_seg2_compenTDL = seg2tdlEquiv * lenratio_bias * (1 - lenratio_bias / 2);// / 2;
             mt3trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[2] - seg2Dir);
             mt4trans -= k1_seg2_compenTDL * Math.Cos(mtDirs[3] - seg2Dir);
 

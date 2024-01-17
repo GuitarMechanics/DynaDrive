@@ -101,6 +101,7 @@ namespace DynaDrive
 
             SteppingTimer.Tick += new EventHandler(stepTimerTick);
             //updateSerialPort();
+            BendingTimer.Tick += new EventHandler(bendTimerTick);
 
             screwDrive = new leadscrew_drive(leadLength, openRB);
             dualBend = new DualbendCalc(bendSets);
@@ -193,6 +194,7 @@ namespace DynaDrive
                 }
                 posInaccurate_labelTrigger(diffMax > 10);
                 autoStepper_LabelTrigger(SteppingTimer.Enabled);
+                autoStepper_LabelTrigger(BendingTimer.Enabled);
             }
             else
             {
@@ -220,6 +222,7 @@ namespace DynaDrive
                 }
                 posInaccurate_labelTrigger(diffMax > 0.1);
                 autoStepper_LabelTrigger(SteppingTimer.Enabled);
+                autoStepper_LabelTrigger(BendingTimer.Enabled);
             }
         }
         private void posInaccurate_labelTrigger(bool isInAccurate)
@@ -237,7 +240,7 @@ namespace DynaDrive
             else if (isRunning && autoBendRunning)
             {
                 AutoStepperRunLabel.Text = "Autobend Running";
-                StepCounterLabel.Text = "Step " + stepTimerCnt.ToString() + " / AutoBend";
+                StepCounterLabel.Text = "Step " + bendTimerCnt.ToString() + " / " + autobendsteps;
             }
             else
             {
@@ -560,6 +563,7 @@ namespace DynaDrive
 
         private void AutobendRunBtn_Click(object sender, EventArgs e)
         {
+            if (bendDataArray != null) bendDataArray = null;
             double proxBendStart = txtBox2Double(ProxBendStartTxtBox);
             double proxBendGoal = txtBox2Double(ProxBendGoalTxtBox);
             double proxDirStart = txtBox2Double(ProxDirStartTxtBox);
@@ -602,8 +606,8 @@ namespace DynaDrive
                         {
                             bendDataArray[indexCount, 3] = distDirVals[dd];
                             bendDataArray[indexCount, 2] = distBendVals[db];
-                            bendDataArray[indexCount, 1] = distDirVals[pd];
-                            bendDataArray[indexCount, 0] = distBendVals[pb];
+                            bendDataArray[indexCount, 1] = proxDirVals[pd];
+                            bendDataArray[indexCount, 0] = proxBendVals[pb];
                             distDirCurrent += dirStep;
                             for (int i = 0; i < 4; i++)
                             {
@@ -622,10 +626,10 @@ namespace DynaDrive
 
 
             try { timeInterval = Convert.ToInt32(AutobendIntTxtBox); }
-            catch(Exception) { AutobendIntTxtBox.Text = "2000"; }
+            catch(Exception) { AutobendIntTxtBox.Text = "2000"; Console.WriteLine("TimeInterval Set by Default"); }
 
             try { repeats = Convert.ToInt32(AutobendRepeatTxtBox);}
-            catch(Exception) { AutobendRepeatTxtBox.Text = "1"; }
+            catch(Exception) { AutobendRepeatTxtBox.Text = "1"; Console.WriteLine("Repeat Set by Default"); }
 
             BendingTimer.Interval = timeInterval;
             bendTimerCnt = 0;
@@ -640,7 +644,7 @@ namespace DynaDrive
 
         private void bendTimerTick(object sender, EventArgs e)
         {
-            if (bendTimerCnt > autobendsteps)
+            if (bendTimerCnt >= autobendsteps)
             {
                 BendingTimer.Stop();
             }
@@ -652,20 +656,18 @@ namespace DynaDrive
 
         private void bendTimerTickWritelines(double[,] values, int rowcount)
         {
-            try
-            {
-                seg1BendTxtBox.Text = Convert.ToString(values[rowcount, 0]);
-                seg1DirTxtBox.Text = Convert.ToString(values[rowcount, 1]);
-                seg2BendTxtBox.Text = Convert.ToString(values[rowcount, 2]);
-                seg2DirTxtBox.Text = Convert.ToString(values[rowcount, 3]);
-
-            }
-            catch(Exception) { Console.WriteLine("ex in bendtimertickwrtlines"); BendingTimer.Stop(); }
+            Console.WriteLine("bendTimerTick run");
+            seg1BendTxtBox.Text = values[rowcount, 0].ToString();
+            seg1DirTxtBox.Text = values[rowcount, 1].ToString();
+            seg2BendTxtBox.Text = values[rowcount, 2].ToString();
+            seg2DirTxtBox.Text = values[rowcount, 3].ToString();
             bendTimerCnt++;
+            bendCtrSetBtn.PerformClick();
         }
         private int getStepCounts(double start, double end, double step)
         {
-            return Convert.ToInt32((end - start) / step + 1);
+            if (start == end) return 1;
+            else return Convert.ToInt32((end - start) / step + 1);
         }
         private double[] getStepArray(double start, double end, double step)
         {
@@ -676,6 +678,21 @@ namespace DynaDrive
                 retArr[i] = retArr[i - 1] + step;
             }
             return retArr;
+        }
+
+        private void AutobendStopBtn_Click(object sender, EventArgs e)
+        {
+            BendingTimer.Stop();
+            bendTimerCnt = 0;
+            autoBendRunning= false;
+            bendCtrCenterBtn.PerformClick();
+        }
+
+        private void AutobendHoldBtn_Click(object sender, EventArgs e)
+        {
+            BendingTimer.Stop();
+            bendTimerCnt = 0;
+            autoBendRunning = false;
         }
     }
 }
