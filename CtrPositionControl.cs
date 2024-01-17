@@ -94,8 +94,8 @@ namespace DynaDrive
             tube2.ID = Convert.ToDouble(Form.PcTube2IDTxtbox.Text.ToString());
             tube1.rho = Convert.ToDouble(Form.PcTube1RhoTxtbox.Text.ToString());
             tube2.rho = Convert.ToDouble(Form.PcTube2RhoTxtbox.Text.ToString());
-            tube1.angle = Convert.ToDouble(Form.PcTube1AngleTxtbox.Text.ToString())/180*Math.PI;
-            tube2.angle = Convert.ToDouble(Form.PcTube2AngleTxtbox.Text.ToString())/180*Math.PI;
+            tube1.angle = Convert.ToDouble(Form.PcTube1AngleTxtbox.Text.ToString())/180.0*Math.PI;
+            tube2.angle = Convert.ToDouble(Form.PcTube2AngleTxtbox.Text.ToString())/180.0*Math.PI;
             tube1.E = Convert.ToDouble(Form.PcTube1ETxtbox.Text.ToString());
             tube2.E = Convert.ToDouble(Form.PcTube2ETxtbox.Text.ToString());
             
