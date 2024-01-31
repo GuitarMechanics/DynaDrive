@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0B88F4C6-0204-4F78-BF64-7B9366A76D1E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>DynaDrive</RootNamespace>
     <AssemblyName>DynaDrive</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>

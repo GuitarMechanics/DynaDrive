@@ -219,8 +219,7 @@ namespace DynaDrive
                         K_t = 1 / (Math.Pow(L_t,2) / 5.6 + 0.35);
                         theta_t = Math.Asin((L_t / 2)/ (1 / K_t))*2;
                     }
-                    R_t = arrayMath.multArray(arrayMath.multArray(rotationZ(angle_t), rotationY(theta_t)), rotationZ(-angle_t));
-                    R = arrayMath.multArray(R, R_t);
+                    R = arrayMath.multArray(R,rotationY(theta_t));
 
                     K_t1 = 0;
                     K_t2 = 0;
