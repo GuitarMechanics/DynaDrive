@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MetroFramework.Controls;
-//123123123
 
 namespace DynaDrive
 {

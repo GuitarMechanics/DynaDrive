@@ -246,17 +246,20 @@ namespace DynaDrive
         {
             CtrMC.MovementControlGo(this, openRB);
             mySerial.WriteLine(openRB.serialGen()[0]);
+            CtrPos.PcGetXyzPos(this, openRB);
         }
         private void McZeroBtn_Click(object sender, EventArgs e)
         {
 
             CtrMC.McZero(this, openRB);
             serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
         }
         private void McCenterBtn_Click(object sender, EventArgs e)
         {
             CtrMC.McCenter(this, openRB);
             serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
         }
         private void metroComboBox1_DropDown(object sender, EventArgs e)
         {
@@ -280,20 +283,7 @@ namespace DynaDrive
 
         private void PcGetXyzPosBtn_Click(object sender, EventArgs e)
         {
-            double[,] xyzPos = new double[3,2];
-            xyzPos = CtrPos.PcGetXyzPos(this, openRB);
-            PcXPosTxtbox.Text = xyzPos[0, 0].ToString();
-            PcYPosTxtbox.Text = xyzPos[1, 0].ToString();
-            PcZPosTxtbox.Text = xyzPos[2, 0].ToString();
-
-            PcXOriTxtbox.Text = xyzPos[0, 1].ToString();
-            PcYOriTxtbox.Text = xyzPos[1, 1].ToString();
-            PcZOriTxtbox.Text = xyzPos[2, 1].ToString();
-        }
-
-        private void mtCenterPos3_Click(object sender, EventArgs e)
-        {
-
+            CtrPos.PcGetXyzPos(this, openRB);
         }
     }
 }

@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="CtrMovementControl.cs" />
     <Compile Include="CtrPositionControl.cs" />
+    <Compile Include="CtrStepControl.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

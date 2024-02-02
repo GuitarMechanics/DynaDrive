@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Controls;
-//123
+
 namespace DynaDrive
 {
     public class ArrayMath
@@ -84,7 +84,6 @@ namespace DynaDrive
         {
             PcPreset(Form);
             updateVal(openRB);
-            
         }
         public void PcPreset(Form1 Form)
         {
@@ -132,7 +131,7 @@ namespace DynaDrive
             tube1.angleRt = Convert.ToDouble(openRB.goalPos[2] - mtZeroPos[2]) / 4096 * Math.PI * 2;
             tube2.angleRt = Convert.ToDouble(openRB.goalPos[0] - mtZeroPos[0]) / 4096 * Math.PI * 2;
             tube1.lengthTr = -Convert.ToDouble(openRB.goalPos[3] - mtZeroPos[3]) / 4096 * (14 * 2 * Math.PI);
-            tube2.lengthTr = -Convert.ToDouble(openRB.goalPos[1] - mtZeroPos[1]) / 4096 * (14 * 2 * Math.PI)+3.5;
+            tube2.lengthTr = -Convert.ToDouble(openRB.goalPos[1] - mtZeroPos[1]) / 4096 * (14 * 2 * Math.PI) + 3.5;
             tube1.tubeExist = 1;
             tube2.tubeExist = 1;
             Array.Resize(ref L_c, 2);
@@ -145,9 +144,6 @@ namespace DynaDrive
             L_c[0] = (tube1.lengthTr);
             L_c[1] = (tube2.lengthTr);
             Array.Sort(L_c);
-            //foreach (var val in L_c) Console.Write(val.ToString() + " , ");
-            //Console.WriteLine();
-
         }
         public double[,] rotationY(double x)
         {
@@ -159,7 +155,7 @@ namespace DynaDrive
             double[,] R = new double[3, 3] { { Math.Cos(x), -Math.Sin(x), 0 }, { Math.Sin(x), Math.Cos(x), 0 }, { 0, 0, 1 }, };
             return R;
         }
-        public double[,] PcGetXyzPos(Form1 Form, OpenRBSerialGen openRB)
+        public void PcGetXyzPos(Form1 Form, OpenRBSerialGen openRB)
         {
             
             PcToggles[0] = Form.PcTolToggle.Checked;
@@ -182,21 +178,17 @@ namespace DynaDrive
             double[,] R_t = new double[3, 3];
             double[,] ans = new double[3, 2];
             bool IsTol1 = true, IsTol2 = true;
-            //R_t = 
+
             foreach (double length in L_c)
             {
-
                 // 현재 구간 길이
                 L = length - sumL;
 
                 sumL += L;
 
-
-
                 // 현재 구간 각각의 튜브 곡률
                 K_1 = tube1.curvature(tube1.lengthTr, length);
                 K_2 = tube2.curvature(tube2.lengthTr, length);
-                
                 
                 // 튜브 공차 offset rotation matrix
                 if (tube1.tubeExist == 0)
@@ -287,8 +279,13 @@ namespace DynaDrive
                 ans[i, 1] = Ori[i, 0];
             }
 
+            Form.PcXPosTxtbox.Text = ans[0, 0].ToString();
+            Form.PcYPosTxtbox.Text = ans[1, 0].ToString();
+            Form.PcZPosTxtbox.Text = ans[2, 0].ToString();
 
-            return ans;
+            Form.PcXOriTxtbox.Text = ans[0, 1].ToString();
+            Form.PcYOriTxtbox.Text = ans[1, 1].ToString();
+            Form.PcZOriTxtbox.Text = ans[2, 1].ToString();
         }
     }
 }
