@@ -119,6 +119,12 @@ namespace DynaDrive
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.MovementControl = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel72 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel73 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel71 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel70 = new MetroFramework.Controls.MetroLabel();
+            this.ScTrStepSizeTxtbox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel65 = new MetroFramework.Controls.MetroLabel();
             this.ScStepupBtn2 = new MetroFramework.Controls.MetroButton();
             this.ScStepDownBtn2 = new MetroFramework.Controls.MetroButton();
             this.ScStepupBtn4 = new MetroFramework.Controls.MetroButton();
@@ -130,9 +136,8 @@ namespace DynaDrive
             this.metroLabel66 = new MetroFramework.Controls.MetroLabel();
             this.ScStepupBtn3 = new MetroFramework.Controls.MetroButton();
             this.metroLabel64 = new MetroFramework.Controls.MetroLabel();
-            this.ScStepSizeSetBtn = new MetroFramework.Controls.MetroButton();
             this.ScStepDownBtn3 = new MetroFramework.Controls.MetroButton();
-            this.ScStepSizeTxtbox = new MetroFramework.Controls.MetroTextBox();
+            this.ScRtStepSizeTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel74 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel75 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel63 = new MetroFramework.Controls.MetroLabel();
@@ -204,12 +209,6 @@ namespace DynaDrive
             this.metroLabel60 = new MetroFramework.Controls.MetroLabel();
             this.About = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel34 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel65 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel70 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel71 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel72 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel73 = new MetroFramework.Controls.MetroLabel();
             Setup = new MetroFramework.Controls.MetroTabPage();
             metroLabel36 = new MetroFramework.Controls.MetroLabel();
             metroLabel69 = new MetroFramework.Controls.MetroLabel();
@@ -245,7 +244,7 @@ namespace DynaDrive
             Setup.HorizontalScrollbarSize = 2;
             Setup.Location = new System.Drawing.Point(4, 38);
             Setup.Name = "Setup";
-            Setup.Size = new System.Drawing.Size(1042, 570);
+            Setup.Size = new System.Drawing.Size(1097, 641);
             Setup.TabIndex = 1;
             Setup.Text = "Setup";
             Setup.UseCustomBackColor = true;
@@ -1202,7 +1201,7 @@ namespace DynaDrive
             this.DirectControl.ImageKey = "(없음)";
             this.DirectControl.Location = new System.Drawing.Point(4, 38);
             this.DirectControl.Name = "DirectControl";
-            this.DirectControl.Size = new System.Drawing.Size(1042, 570);
+            this.DirectControl.Size = new System.Drawing.Size(1097, 641);
             this.DirectControl.TabIndex = 0;
             this.DirectControl.Text = "DirectControl";
             this.DirectControl.UseCustomBackColor = true;
@@ -1754,7 +1753,7 @@ namespace DynaDrive
             this.MovementControl.Controls.Add(this.metroLabel73);
             this.MovementControl.Controls.Add(this.metroLabel71);
             this.MovementControl.Controls.Add(this.metroLabel70);
-            this.MovementControl.Controls.Add(this.metroTextBox2);
+            this.MovementControl.Controls.Add(this.ScTrStepSizeTxtbox);
             this.MovementControl.Controls.Add(this.metroLabel65);
             this.MovementControl.Controls.Add(this.ScStepupBtn2);
             this.MovementControl.Controls.Add(this.ScStepDownBtn2);
@@ -1768,9 +1767,8 @@ namespace DynaDrive
             this.MovementControl.Controls.Add(this.metroLabel66);
             this.MovementControl.Controls.Add(this.ScStepupBtn3);
             this.MovementControl.Controls.Add(this.metroLabel64);
-            this.MovementControl.Controls.Add(this.ScStepSizeSetBtn);
             this.MovementControl.Controls.Add(this.ScStepDownBtn3);
-            this.MovementControl.Controls.Add(this.ScStepSizeTxtbox);
+            this.MovementControl.Controls.Add(this.ScRtStepSizeTxtbox);
             this.MovementControl.Controls.Add(this.metroLabel74);
             this.MovementControl.Controls.Add(this.metroLabel75);
             this.MovementControl.Controls.Add(this.metroLabel63);
@@ -1815,6 +1813,108 @@ namespace DynaDrive
             this.MovementControl.VerticalScrollbarHighlightOnWheel = false;
             this.MovementControl.VerticalScrollbarSize = 2;
             // 
+            // metroLabel72
+            // 
+            this.metroLabel72.AutoSize = true;
+            this.metroLabel72.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel72.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel72.Location = new System.Drawing.Point(53, 567);
+            this.metroLabel72.Name = "metroLabel72";
+            this.metroLabel72.Size = new System.Drawing.Size(138, 25);
+            this.metroLabel72.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel72.TabIndex = 123;
+            this.metroLabel72.Text = "Translation(mm)";
+            this.metroLabel72.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel72.UseStyleColors = true;
+            // 
+            // metroLabel73
+            // 
+            this.metroLabel73.AutoSize = true;
+            this.metroLabel73.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel73.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel73.Location = new System.Drawing.Point(53, 531);
+            this.metroLabel73.Name = "metroLabel73";
+            this.metroLabel73.Size = new System.Drawing.Size(123, 25);
+            this.metroLabel73.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel73.TabIndex = 122;
+            this.metroLabel73.Text = "Rotation(DEG)";
+            this.metroLabel73.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel73.UseStyleColors = true;
+            // 
+            // metroLabel71
+            // 
+            this.metroLabel71.AutoSize = true;
+            this.metroLabel71.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel71.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel71.Location = new System.Drawing.Point(333, 571);
+            this.metroLabel71.Name = "metroLabel71";
+            this.metroLabel71.Size = new System.Drawing.Size(32, 25);
+            this.metroLabel71.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel71.TabIndex = 121;
+            this.metroLabel71.Text = "10";
+            this.metroLabel71.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel71.UseStyleColors = true;
+            // 
+            // metroLabel70
+            // 
+            this.metroLabel70.AutoSize = true;
+            this.metroLabel70.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel70.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel70.Location = new System.Drawing.Point(333, 533);
+            this.metroLabel70.Name = "metroLabel70";
+            this.metroLabel70.Size = new System.Drawing.Size(46, 25);
+            this.metroLabel70.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel70.TabIndex = 120;
+            this.metroLabel70.Text = "22.5";
+            this.metroLabel70.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel70.UseStyleColors = true;
+            // 
+            // ScTrStepSizeTxtbox
+            // 
+            // 
+            // 
+            // 
+            this.ScTrStepSizeTxtbox.CustomButton.Image = null;
+            this.ScTrStepSizeTxtbox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.ScTrStepSizeTxtbox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ScTrStepSizeTxtbox.CustomButton.Name = "";
+            this.ScTrStepSizeTxtbox.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.ScTrStepSizeTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ScTrStepSizeTxtbox.CustomButton.TabIndex = 1;
+            this.ScTrStepSizeTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ScTrStepSizeTxtbox.CustomButton.UseSelectable = true;
+            this.ScTrStepSizeTxtbox.CustomButton.Visible = false;
+            this.ScTrStepSizeTxtbox.Lines = new string[0];
+            this.ScTrStepSizeTxtbox.Location = new System.Drawing.Point(198, 571);
+            this.ScTrStepSizeTxtbox.MaxLength = 32767;
+            this.ScTrStepSizeTxtbox.Name = "ScTrStepSizeTxtbox";
+            this.ScTrStepSizeTxtbox.PasswordChar = '\0';
+            this.ScTrStepSizeTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ScTrStepSizeTxtbox.SelectedText = "";
+            this.ScTrStepSizeTxtbox.SelectionLength = 0;
+            this.ScTrStepSizeTxtbox.SelectionStart = 0;
+            this.ScTrStepSizeTxtbox.ShortcutsEnabled = true;
+            this.ScTrStepSizeTxtbox.Size = new System.Drawing.Size(100, 23);
+            this.ScTrStepSizeTxtbox.TabIndex = 119;
+            this.ScTrStepSizeTxtbox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ScTrStepSizeTxtbox.UseSelectable = true;
+            this.ScTrStepSizeTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ScTrStepSizeTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel65
+            // 
+            this.metroLabel65.AutoSize = true;
+            this.metroLabel65.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel65.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel65.Location = new System.Drawing.Point(56, 484);
+            this.metroLabel65.Name = "metroLabel65";
+            this.metroLabel65.Size = new System.Drawing.Size(120, 25);
+            this.metroLabel65.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel65.TabIndex = 118;
+            this.metroLabel65.Text = "StepSize(mm)";
+            this.metroLabel65.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel65.UseStyleColors = true;
+            // 
             // ScStepupBtn2
             // 
             this.ScStepupBtn2.DisplayFocus = true;
@@ -1826,6 +1926,7 @@ namespace DynaDrive
             this.ScStepupBtn2.Text = "UP";
             this.ScStepupBtn2.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ScStepupBtn2.UseSelectable = true;
+            this.ScStepupBtn2.Click += new System.EventHandler(this.ScStepupBtn2_Click);
             // 
             // ScStepDownBtn2
             // 
@@ -1838,6 +1939,7 @@ namespace DynaDrive
             this.ScStepDownBtn2.Text = "DN";
             this.ScStepDownBtn2.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ScStepDownBtn2.UseSelectable = true;
+            this.ScStepDownBtn2.Click += new System.EventHandler(this.ScStepDownBtn2_Click);
             // 
             // ScStepupBtn4
             // 
@@ -1850,6 +1952,7 @@ namespace DynaDrive
             this.ScStepupBtn4.Text = "UP";
             this.ScStepupBtn4.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ScStepupBtn4.UseSelectable = true;
+            this.ScStepupBtn4.Click += new System.EventHandler(this.ScStepupBtn4_Click);
             // 
             // ScStepDownBtn4
             // 
@@ -1862,6 +1965,7 @@ namespace DynaDrive
             this.ScStepDownBtn4.Text = "DN";
             this.ScStepDownBtn4.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ScStepDownBtn4.UseSelectable = true;
+            this.ScStepDownBtn4.Click += new System.EventHandler(this.ScStepDownBtn4_Click);
             // 
             // ScStepupBtn1
             // 
@@ -1874,6 +1978,7 @@ namespace DynaDrive
             this.ScStepupBtn1.Text = "UP";
             this.ScStepupBtn1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ScStepupBtn1.UseSelectable = true;
+            this.ScStepupBtn1.Click += new System.EventHandler(this.ScStepupBtn1_Click);
             // 
             // ScStepDownBtn1
             // 
@@ -1886,6 +1991,7 @@ namespace DynaDrive
             this.ScStepDownBtn1.Text = "DN";
             this.ScStepDownBtn1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ScStepDownBtn1.UseSelectable = true;
+            this.ScStepDownBtn1.Click += new System.EventHandler(this.ScStepDownBtn1_Click);
             // 
             // metroLabel68
             // 
@@ -1940,6 +2046,7 @@ namespace DynaDrive
             this.ScStepupBtn3.Text = "UP";
             this.ScStepupBtn3.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ScStepupBtn3.UseSelectable = true;
+            this.ScStepupBtn3.Click += new System.EventHandler(this.ScStepupBtn3_Click);
             // 
             // metroLabel64
             // 
@@ -1955,18 +2062,6 @@ namespace DynaDrive
             this.metroLabel64.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroLabel64.UseStyleColors = true;
             // 
-            // ScStepSizeSetBtn
-            // 
-            this.ScStepSizeSetBtn.DisplayFocus = true;
-            this.ScStepSizeSetBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.ScStepSizeSetBtn.Location = new System.Drawing.Point(412, 532);
-            this.ScStepSizeSetBtn.Name = "ScStepSizeSetBtn";
-            this.ScStepSizeSetBtn.Size = new System.Drawing.Size(60, 61);
-            this.ScStepSizeSetBtn.TabIndex = 97;
-            this.ScStepSizeSetBtn.Text = "SET";
-            this.ScStepSizeSetBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ScStepSizeSetBtn.UseSelectable = true;
-            // 
             // ScStepDownBtn3
             // 
             this.ScStepDownBtn3.DisplayFocus = true;
@@ -1978,38 +2073,39 @@ namespace DynaDrive
             this.ScStepDownBtn3.Text = "DN";
             this.ScStepDownBtn3.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ScStepDownBtn3.UseSelectable = true;
+            this.ScStepDownBtn3.Click += new System.EventHandler(this.ScStepDownBtn3_Click);
             // 
-            // ScStepSizeTxtbox
+            // ScRtStepSizeTxtbox
             // 
             // 
             // 
             // 
-            this.ScStepSizeTxtbox.CustomButton.Image = null;
-            this.ScStepSizeTxtbox.CustomButton.Location = new System.Drawing.Point(61, 1);
-            this.ScStepSizeTxtbox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.ScStepSizeTxtbox.CustomButton.Name = "";
-            this.ScStepSizeTxtbox.CustomButton.Size = new System.Drawing.Size(16, 16);
-            this.ScStepSizeTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.ScStepSizeTxtbox.CustomButton.TabIndex = 1;
-            this.ScStepSizeTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ScStepSizeTxtbox.CustomButton.UseSelectable = true;
-            this.ScStepSizeTxtbox.CustomButton.Visible = false;
-            this.ScStepSizeTxtbox.Lines = new string[0];
-            this.ScStepSizeTxtbox.Location = new System.Drawing.Point(198, 533);
-            this.ScStepSizeTxtbox.MaxLength = 32767;
-            this.ScStepSizeTxtbox.Name = "ScStepSizeTxtbox";
-            this.ScStepSizeTxtbox.PasswordChar = '\0';
-            this.ScStepSizeTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ScStepSizeTxtbox.SelectedText = "";
-            this.ScStepSizeTxtbox.SelectionLength = 0;
-            this.ScStepSizeTxtbox.SelectionStart = 0;
-            this.ScStepSizeTxtbox.ShortcutsEnabled = true;
-            this.ScStepSizeTxtbox.Size = new System.Drawing.Size(100, 23);
-            this.ScStepSizeTxtbox.TabIndex = 106;
-            this.ScStepSizeTxtbox.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ScStepSizeTxtbox.UseSelectable = true;
-            this.ScStepSizeTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.ScStepSizeTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.ScRtStepSizeTxtbox.CustomButton.Image = null;
+            this.ScRtStepSizeTxtbox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.ScRtStepSizeTxtbox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ScRtStepSizeTxtbox.CustomButton.Name = "";
+            this.ScRtStepSizeTxtbox.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.ScRtStepSizeTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ScRtStepSizeTxtbox.CustomButton.TabIndex = 1;
+            this.ScRtStepSizeTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ScRtStepSizeTxtbox.CustomButton.UseSelectable = true;
+            this.ScRtStepSizeTxtbox.CustomButton.Visible = false;
+            this.ScRtStepSizeTxtbox.Lines = new string[0];
+            this.ScRtStepSizeTxtbox.Location = new System.Drawing.Point(198, 533);
+            this.ScRtStepSizeTxtbox.MaxLength = 32767;
+            this.ScRtStepSizeTxtbox.Name = "ScRtStepSizeTxtbox";
+            this.ScRtStepSizeTxtbox.PasswordChar = '\0';
+            this.ScRtStepSizeTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ScRtStepSizeTxtbox.SelectedText = "";
+            this.ScRtStepSizeTxtbox.SelectionLength = 0;
+            this.ScRtStepSizeTxtbox.SelectionStart = 0;
+            this.ScRtStepSizeTxtbox.ShortcutsEnabled = true;
+            this.ScRtStepSizeTxtbox.Size = new System.Drawing.Size(100, 23);
+            this.ScRtStepSizeTxtbox.TabIndex = 106;
+            this.ScRtStepSizeTxtbox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ScRtStepSizeTxtbox.UseSelectable = true;
+            this.ScRtStepSizeTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ScRtStepSizeTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel74
             // 
@@ -2760,7 +2856,7 @@ namespace DynaDrive
             this.PositionControl.HorizontalScrollbarSize = 2;
             this.PositionControl.Location = new System.Drawing.Point(4, 38);
             this.PositionControl.Name = "PositionControl";
-            this.PositionControl.Size = new System.Drawing.Size(1042, 570);
+            this.PositionControl.Size = new System.Drawing.Size(1097, 641);
             this.PositionControl.TabIndex = 4;
             this.PositionControl.Text = "PositionControl";
             this.PositionControl.UseCustomBackColor = true;
@@ -3631,7 +3727,7 @@ namespace DynaDrive
             this.About.HorizontalScrollbarSize = 2;
             this.About.Location = new System.Drawing.Point(4, 38);
             this.About.Name = "About";
-            this.About.Size = new System.Drawing.Size(1042, 570);
+            this.About.Size = new System.Drawing.Size(1097, 641);
             this.About.TabIndex = 2;
             this.About.Text = "About";
             this.About.UseCustomBackColor = true;
@@ -3653,108 +3749,6 @@ namespace DynaDrive
     "ics";
             this.metroLabel34.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroLabel34.UseStyleColors = true;
-            // 
-            // metroLabel65
-            // 
-            this.metroLabel65.AutoSize = true;
-            this.metroLabel65.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel65.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel65.Location = new System.Drawing.Point(56, 484);
-            this.metroLabel65.Name = "metroLabel65";
-            this.metroLabel65.Size = new System.Drawing.Size(120, 25);
-            this.metroLabel65.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel65.TabIndex = 118;
-            this.metroLabel65.Text = "StepSize(mm)";
-            this.metroLabel65.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel65.UseStyleColors = true;
-            // 
-            // metroTextBox2
-            // 
-            // 
-            // 
-            // 
-            this.metroTextBox2.CustomButton.Image = null;
-            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(78, 1);
-            this.metroTextBox2.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.metroTextBox2.CustomButton.Name = "";
-            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox2.CustomButton.TabIndex = 1;
-            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox2.CustomButton.UseSelectable = true;
-            this.metroTextBox2.CustomButton.Visible = false;
-            this.metroTextBox2.Lines = new string[0];
-            this.metroTextBox2.Location = new System.Drawing.Point(198, 571);
-            this.metroTextBox2.MaxLength = 32767;
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.SelectionLength = 0;
-            this.metroTextBox2.SelectionStart = 0;
-            this.metroTextBox2.ShortcutsEnabled = true;
-            this.metroTextBox2.Size = new System.Drawing.Size(100, 23);
-            this.metroTextBox2.TabIndex = 119;
-            this.metroTextBox2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox2.UseSelectable = true;
-            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel70
-            // 
-            this.metroLabel70.AutoSize = true;
-            this.metroLabel70.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel70.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel70.Location = new System.Drawing.Point(333, 533);
-            this.metroLabel70.Name = "metroLabel70";
-            this.metroLabel70.Size = new System.Drawing.Size(69, 25);
-            this.metroLabel70.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel70.TabIndex = 120;
-            this.metroLabel70.Text = "Default";
-            this.metroLabel70.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel70.UseStyleColors = true;
-            // 
-            // metroLabel71
-            // 
-            this.metroLabel71.AutoSize = true;
-            this.metroLabel71.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel71.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel71.Location = new System.Drawing.Point(333, 571);
-            this.metroLabel71.Name = "metroLabel71";
-            this.metroLabel71.Size = new System.Drawing.Size(69, 25);
-            this.metroLabel71.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel71.TabIndex = 121;
-            this.metroLabel71.Text = "Default";
-            this.metroLabel71.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel71.UseStyleColors = true;
-            // 
-            // metroLabel72
-            // 
-            this.metroLabel72.AutoSize = true;
-            this.metroLabel72.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel72.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel72.Location = new System.Drawing.Point(53, 567);
-            this.metroLabel72.Name = "metroLabel72";
-            this.metroLabel72.Size = new System.Drawing.Size(138, 25);
-            this.metroLabel72.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel72.TabIndex = 123;
-            this.metroLabel72.Text = "Translation(mm)";
-            this.metroLabel72.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel72.UseStyleColors = true;
-            // 
-            // metroLabel73
-            // 
-            this.metroLabel73.AutoSize = true;
-            this.metroLabel73.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel73.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel73.Location = new System.Drawing.Point(53, 531);
-            this.metroLabel73.Name = "metroLabel73";
-            this.metroLabel73.Size = new System.Drawing.Size(123, 25);
-            this.metroLabel73.Style = MetroFramework.MetroColorStyle.White;
-            this.metroLabel73.TabIndex = 122;
-            this.metroLabel73.Text = "Rotation(DEG)";
-            this.metroLabel73.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroLabel73.UseStyleColors = true;
             // 
             // Form1
             // 
@@ -3964,8 +3958,6 @@ namespace DynaDrive
         private MetroFramework.Controls.MetroLabel metroLabel60;
         private MetroFramework.Controls.MetroLabel metroLabel63;
         private MetroFramework.Controls.MetroLabel metroLabel64;
-        private MetroFramework.Controls.MetroButton ScStepSizeSetBtn;
-        private MetroFramework.Controls.MetroTextBox ScStepSizeTxtbox;
         private MetroFramework.Controls.MetroButton ScStepDownBtn3;
         private MetroFramework.Controls.MetroLabel metroLabel74;
         private MetroFramework.Controls.MetroLabel metroLabel75;
@@ -3983,8 +3975,9 @@ namespace DynaDrive
         private MetroFramework.Controls.MetroLabel metroLabel73;
         private MetroFramework.Controls.MetroLabel metroLabel71;
         private MetroFramework.Controls.MetroLabel metroLabel70;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
         private MetroFramework.Controls.MetroLabel metroLabel65;
+        public MetroFramework.Controls.MetroTextBox ScRtStepSizeTxtbox;
+        public MetroFramework.Controls.MetroTextBox ScTrStepSizeTxtbox;
     }
 }
 

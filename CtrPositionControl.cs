@@ -60,7 +60,6 @@ namespace DynaDrive
             {
                 curvature = 0;
                 tubeExist = 0;
-                
             }
             else curvature = K;
             //Console.WriteLine(K);

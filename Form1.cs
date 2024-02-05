@@ -35,6 +35,7 @@ namespace DynaDrive
         // JHC
         private CtrMovementControl CtrMC;
         private CtrPositionControl CtrPos;
+        private CtrStepControl CtrSc;
         public MetroTextBox[] mtMcTargets = new MetroTextBox[4];
 
         public Form1()
@@ -58,6 +59,7 @@ namespace DynaDrive
 
             CtrMC = new CtrMovementControl(this, openRB);
             CtrPos = new CtrPositionControl(this, openRB);
+            CtrSc = new CtrStepControl(this, openRB);
         }
 
         private void updateSerialPort()
@@ -242,6 +244,21 @@ namespace DynaDrive
 
         ////////////// JHC
         ///
+        ////// System //////
+        private void metroComboBox1_DropDown(object sender, EventArgs e)
+        {
+            updateSerialPort();
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                McCenterBtn_Click(sender, e);
+            }
+            catch (Exception) { }
+        }
+
+        ////// Movement Control //////
         private void McGoBt_Click(object sender, EventArgs e)
         {
             CtrMC.MovementControlGo(this, openRB);
@@ -261,18 +278,6 @@ namespace DynaDrive
             serialSend();
             CtrPos.PcGetXyzPos(this, openRB);
         }
-        private void metroComboBox1_DropDown(object sender, EventArgs e)
-        {
-            updateSerialPort();
-        }
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            try
-            {
-                McCenterBtn_Click(sender, e);
-            }
-            catch (Exception) { }
-        }
         private void MC_TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -281,8 +286,66 @@ namespace DynaDrive
             }
         }
 
+        ////// Position Control //////
         private void PcGetXyzPosBtn_Click(object sender, EventArgs e)
         {
+            CtrPos.PcGetXyzPos(this, openRB);
+        }
+
+        ////// step up //////
+        private void ScStepupBtn3_Click(object sender, EventArgs e)
+        {
+            CtrSc.StepControlup3(this,openRB);
+            serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
+        }
+
+        private void ScStepDownBtn3_Click(object sender, EventArgs e)
+        {
+            CtrSc.StepControldown3(this, openRB);
+            serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
+        }
+
+        private void ScStepupBtn4_Click(object sender, EventArgs e)
+        {
+            CtrSc.StepControlup4(this, openRB);
+            serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
+        }
+
+        private void ScStepDownBtn4_Click(object sender, EventArgs e)
+        {
+            CtrSc.StepControldown4(this, openRB);
+            serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
+        }
+
+        private void ScStepupBtn1_Click(object sender, EventArgs e)
+        {
+            CtrSc.StepControlup1(this, openRB);
+            serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
+        }
+
+        private void ScStepDownBtn1_Click(object sender, EventArgs e)
+        {
+            CtrSc.StepControldown1(this, openRB);
+            serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
+        }
+
+        private void ScStepupBtn2_Click(object sender, EventArgs e)
+        {
+            CtrSc.StepControlup2(this, openRB);
+            serialSend();
+            CtrPos.PcGetXyzPos(this, openRB);
+        }
+
+        private void ScStepDownBtn2_Click(object sender, EventArgs e)
+        {
+            CtrSc.StepControldown2(this, openRB);
+            serialSend();
             CtrPos.PcGetXyzPos(this, openRB);
         }
     }
