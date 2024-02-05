@@ -232,7 +232,7 @@ namespace DynaDrive
         }
         private void autoStepper_LabelTrigger(bool isRunning)
         {
-            if (isRunning && !autoBendRunning)
+            if (isRunning && stepRun)
             {
                 AutoStepperRunLabel.Text = "AutoStep Running";
                 StepCounterLabel.Text = "Step " + stepTimerCnt.ToString() + " / " + stepdataArray.GetLength(0);
