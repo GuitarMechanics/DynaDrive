@@ -13,7 +13,6 @@ namespace DynaDrive
 
         public CtrStepControl(Form1 Form, OpenRBSerialGen openRB) : base(Form, openRB)
         {
-
         }
         public new void updateVal(Form1 Form)
         {
@@ -22,7 +21,7 @@ namespace DynaDrive
             try { stepsize[1] = Convert.ToDouble(Form.ScTrStepSizeTxtbox.Text.ToString()); }
             catch { stepsize[1] = 10; }
         }
-
+        
         /////////// Step up Control ///////////
         public void StepControlup1(Form1 Form, OpenRBSerialGen openRB)
         {
@@ -32,6 +31,7 @@ namespace DynaDrive
                 if (Form.mtToggles[0].Checked) openRB.goalPos[0] += Convert.ToInt32(Math.Round(stepsize[0]) / 360 * 4096);
             }
             catch (Exception) { }
+            getCurrentPos(Form,openRB);
         }
         public void StepControlup2(Form1 Form, OpenRBSerialGen openRB)
         {
@@ -48,6 +48,7 @@ namespace DynaDrive
                 }
             }
             catch (Exception) { }
+            getCurrentPos(Form,openRB);
         }
         public void StepControlup3(Form1 Form, OpenRBSerialGen openRB)
         {
@@ -57,6 +58,7 @@ namespace DynaDrive
                 if (Form.mtToggles[2].Checked) openRB.goalPos[2] += Convert.ToInt32(Math.Round(stepsize[0]) / 360 * 4096);
             }
             catch (Exception) { }
+            getCurrentPos(Form, openRB);
         }
         public void StepControlup4(Form1 Form, OpenRBSerialGen openRB)
         {
@@ -73,6 +75,7 @@ namespace DynaDrive
                 }
             }
             catch (Exception) { }
+            getCurrentPos(Form, openRB);
         }
 
         /////////// Step down Control ///////////
@@ -84,6 +87,7 @@ namespace DynaDrive
                 if (Form.mtToggles[0].Checked) openRB.goalPos[0] -= Convert.ToInt32(Math.Round(stepsize[0]) / 360 * 4096);
             }
             catch (Exception) { }
+            getCurrentPos(Form, openRB);
         }
         public void StepControldown2(Form1 Form, OpenRBSerialGen openRB)
         {
@@ -99,7 +103,8 @@ namespace DynaDrive
                     }
                 }                
             }
-            catch (Exception) { }                                                                                                                                                                                                                                                                                                                                                         
+            catch (Exception) { }
+            getCurrentPos(Form, openRB);
         }
         public void StepControldown3(Form1 Form, OpenRBSerialGen openRB)
         {
@@ -109,6 +114,7 @@ namespace DynaDrive
                 if (Form.mtToggles[2].Checked) openRB.goalPos[2] -= Convert.ToInt32(Math.Round(stepsize[0]) / 360 * 4096);
             }
             catch (Exception) { }
+            getCurrentPos(Form, openRB);
         }
         public void StepControldown4(Form1 Form, OpenRBSerialGen openRB)
         {
@@ -125,6 +131,7 @@ namespace DynaDrive
                 }
             }
             catch (Exception) { }
+            getCurrentPos(Form, openRB);
         }
     }
 }

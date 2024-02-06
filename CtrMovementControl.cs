@@ -29,6 +29,13 @@ namespace DynaDrive
             mtZeroPos[0] = Convert.ToInt32(Form.mtZeroPos1.Text.ToString()); mtZeroPos[1] = Convert.ToInt32(Form.mtZeroPos2.Text.ToString());
             mtZeroPos[2] = Convert.ToInt32(Form.mtZeroPos3.Text.ToString()); mtZeroPos[3] = Convert.ToInt32(Form.mtZeroPos4.Text.ToString());
         }
+        public void getCurrentPos(Form1 Form, OpenRBSerialGen openRB)
+        {
+            Form.MC_tube2_rt.Text = Math.Round(((openRB.goalPos[0] - mtZeroPos[0]) / 4096.0 * 360),1).ToString();
+            Form.MC_tube2_tr.Text = Math.Round(((mtZeroPos[1] - openRB.goalPos[1]) / 4096.0 * 14 * 2 * Math.PI + 3),1).ToString();
+            Form.MC_tube1_rt.Text = Math.Round(((openRB.goalPos[2] - mtZeroPos[2]) / 4096.0 * 360),1).ToString();
+            Form.MC_tube1_tr.Text = Math.Round(((mtZeroPos[3] - openRB.goalPos[3]) / 4096.0 * 14 * 2 * Math.PI),1).ToString(); ;
+        }
         public void McCenter(Form1 Form, OpenRBSerialGen openRB)
         {
             updateVal(Form);
@@ -36,6 +43,7 @@ namespace DynaDrive
             {
                 openRB.goalPos[i] = mtCenterPos[i];
             }
+            getCurrentPos(Form, openRB);
         }
         public void McZero(Form1 Form, OpenRBSerialGen openRB)
         {
@@ -44,6 +52,7 @@ namespace DynaDrive
             {
                 openRB.goalPos[i] = mtZeroPos[i];
             }
+            getCurrentPos(Form, openRB);
         }
 
         public void MovementControlGo(Form1 Form, OpenRBSerialGen openRB)
@@ -58,7 +67,7 @@ namespace DynaDrive
             {
                 if (Form.mtToggles[1].Checked)
                 {
-                    openRB.goalPos[1] = mtZeroPos[1] - Convert.ToInt32(Math.Round((Convert.ToDouble(mtMcTargets[1].Text.ToString())-3) * 4096 / (14 * 2 * Math.PI)));
+                    openRB.goalPos[1] = mtZeroPos[1] - Convert.ToInt32(Math.Round((Convert.ToDouble(mtMcTargets[1].Text.ToString()) - 3) * 4096 / (14 * 2 * Math.PI)));
                     if (Convert.ToInt32(mtMcTargets[1].Text.ToString()) > 75) openRB.goalPos[1] = mtZeroPos[1] - Convert.ToInt32(Math.Round(72 * 4096 / (14 * 2 * Math.PI)));
                     if (Convert.ToInt32(mtMcTargets[1].Text.ToString()) < 4) openRB.goalPos[1] = mtZeroPos[1];
                 }
@@ -79,6 +88,7 @@ namespace DynaDrive
                 }
             }
             catch (Exception) { }
+            getCurrentPos(Form, openRB);
         }
     }
 }

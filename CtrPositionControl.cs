@@ -274,8 +274,8 @@ namespace DynaDrive
             Ori = arrayMath.multArray(R, Ori);
            for(int i = 0; i < 3; i++)
             {
-                ans[i, 0] = P[i, 0];
-                ans[i, 1] = Ori[i, 0];
+                ans[i, 0] = Math.Round(P[i, 0],3);
+                ans[i, 1] = Math.Round(Ori[i, 0],5);
             }
 
             Form.PcXPosTxtbox.Text = ans[0, 0].ToString();
