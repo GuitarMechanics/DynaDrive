@@ -348,5 +348,30 @@ namespace DynaDrive
             serialSend();
             CtrPos.PcGetXyzPos(this, openRB);
         }
+
+        private void ScCopyRowBtn_Click(object sender, EventArgs e)
+        {
+            CtrSc.CopyRow();
+        }
+
+        private void ScDeleteRowBtn_Click(object sender, EventArgs e)
+        {
+            CtrSc.DeleteRow();
+        }
+
+        private void ScClearAllBtn_Click(object sender, EventArgs e)
+        {
+            CtrSc.Clear();
+        }
+
+        private void ScGoBtn_Click(object sender, EventArgs e)
+        {
+            CtrSc.AutoStepControlGO(this);
+        }
+
+        private void ScStopBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
