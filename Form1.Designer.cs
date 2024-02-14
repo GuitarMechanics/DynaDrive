@@ -33,9 +33,9 @@ namespace DynaDrive
             MetroFramework.Controls.MetroTabPage Setup;
             MetroFramework.Controls.MetroLabel metroLabel36;
             MetroFramework.Controls.MetroLabel metroLabel69;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.setApplyBtn = new MetroFramework.Controls.MetroButton();
             this.spdAutoAdjToggle = new MetroFramework.Controls.MetroToggle();
             this.metroLabel33 = new MetroFramework.Controls.MetroLabel();
@@ -122,12 +122,18 @@ namespace DynaDrive
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.MovementControl = new MetroFramework.Controls.MetroTabPage();
+            this.ScStopBtn = new MetroFramework.Controls.MetroButton();
+            this.ScGoBtn = new MetroFramework.Controls.MetroButton();
             this.ScClearAllBtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel77 = new MetroFramework.Controls.MetroLabel();
             this.ScIntervalTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.ScDeleteRowBtn = new MetroFramework.Controls.MetroButton();
             this.ScCopyRowBtn = new MetroFramework.Controls.MetroButton();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLabel76 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel72 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel73 = new MetroFramework.Controls.MetroLabel();
@@ -219,12 +225,8 @@ namespace DynaDrive
             this.metroLabel60 = new MetroFramework.Controls.MetroLabel();
             this.About = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel34 = new MetroFramework.Controls.MetroLabel();
-            this.ScGoBtn = new MetroFramework.Controls.MetroButton();
-            this.ScStopBtn = new MetroFramework.Controls.MetroButton();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScReadyTxtbox = new MetroFramework.Controls.MetroLabel();
+            this.ScActiveTxtbox = new MetroFramework.Controls.MetroLabel();
             Setup = new MetroFramework.Controls.MetroTabPage();
             metroLabel36 = new MetroFramework.Controls.MetroLabel();
             metroLabel69 = new MetroFramework.Controls.MetroLabel();
@@ -1766,6 +1768,8 @@ namespace DynaDrive
             // MovementControl
             // 
             this.MovementControl.BackColor = System.Drawing.Color.Transparent;
+            this.MovementControl.Controls.Add(this.ScActiveTxtbox);
+            this.MovementControl.Controls.Add(this.ScReadyTxtbox);
             this.MovementControl.Controls.Add(this.ScStopBtn);
             this.MovementControl.Controls.Add(this.ScGoBtn);
             this.MovementControl.Controls.Add(this.ScClearAllBtn);
@@ -1838,6 +1842,32 @@ namespace DynaDrive
             this.MovementControl.VerticalScrollbarBarColor = true;
             this.MovementControl.VerticalScrollbarHighlightOnWheel = false;
             this.MovementControl.VerticalScrollbarSize = 2;
+            // 
+            // ScStopBtn
+            // 
+            this.ScStopBtn.DisplayFocus = true;
+            this.ScStopBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.ScStopBtn.Location = new System.Drawing.Point(593, 586);
+            this.ScStopBtn.Name = "ScStopBtn";
+            this.ScStopBtn.Size = new System.Drawing.Size(117, 52);
+            this.ScStopBtn.TabIndex = 132;
+            this.ScStopBtn.Text = "STOP";
+            this.ScStopBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ScStopBtn.UseSelectable = true;
+            this.ScStopBtn.Click += new System.EventHandler(this.ScStopBtn_Click);
+            // 
+            // ScGoBtn
+            // 
+            this.ScGoBtn.DisplayFocus = true;
+            this.ScGoBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.ScGoBtn.Location = new System.Drawing.Point(593, 531);
+            this.ScGoBtn.Name = "ScGoBtn";
+            this.ScGoBtn.Size = new System.Drawing.Size(117, 49);
+            this.ScGoBtn.TabIndex = 131;
+            this.ScGoBtn.Text = "GO";
+            this.ScGoBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ScGoBtn.UseSelectable = true;
+            this.ScGoBtn.Click += new System.EventHandler(this.ScGoBtn_Click);
             // 
             // ScClearAllBtn
             // 
@@ -1932,42 +1962,42 @@ namespace DynaDrive
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle8;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.metroGrid1.Location = new System.Drawing.Point(763, 386);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.RowTemplate.Height = 23;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1978,6 +2008,26 @@ namespace DynaDrive
             this.metroGrid1.UseCustomBackColor = true;
             this.metroGrid1.UseCustomForeColor = true;
             this.metroGrid1.UseStyleColors = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Column4";
+            this.Column4.Name = "Column4";
             // 
             // metroLabel76
             // 
@@ -3930,51 +3980,32 @@ namespace DynaDrive
             this.metroLabel34.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroLabel34.UseStyleColors = true;
             // 
-            // ScGoBtn
+            // ScReadyTxtbox
             // 
-            this.ScGoBtn.DisplayFocus = true;
-            this.ScGoBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.ScGoBtn.Location = new System.Drawing.Point(593, 531);
-            this.ScGoBtn.Name = "ScGoBtn";
-            this.ScGoBtn.Size = new System.Drawing.Size(117, 49);
-            this.ScGoBtn.TabIndex = 131;
-            this.ScGoBtn.Text = "GO";
-            this.ScGoBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ScGoBtn.UseSelectable = true;
-            this.ScGoBtn.Click += new System.EventHandler(this.ScGoBtn_Click);
+            this.ScReadyTxtbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(210)))), ((int)(((byte)(0)))));
+            this.ScReadyTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.ScReadyTxtbox.Location = new System.Drawing.Point(763, 363);
+            this.ScReadyTxtbox.Name = "ScReadyTxtbox";
+            this.ScReadyTxtbox.Size = new System.Drawing.Size(71, 20);
+            this.ScReadyTxtbox.TabIndex = 133;
+            this.ScReadyTxtbox.Text = "Ready";
+            this.ScReadyTxtbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ScReadyTxtbox.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ScReadyTxtbox.UseCustomBackColor = true;
+            this.ScReadyTxtbox.UseCustomForeColor = true;
             // 
-            // ScStopBtn
+            // ScActiveTxtbox
             // 
-            this.ScStopBtn.DisplayFocus = true;
-            this.ScStopBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.ScStopBtn.Location = new System.Drawing.Point(593, 586);
-            this.ScStopBtn.Name = "ScStopBtn";
-            this.ScStopBtn.Size = new System.Drawing.Size(117, 52);
-            this.ScStopBtn.TabIndex = 132;
-            this.ScStopBtn.Text = "STOP";
-            this.ScStopBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ScStopBtn.UseSelectable = true;
-            this.ScStopBtn.Click += new System.EventHandler(this.ScStopBtn_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
+            this.ScActiveTxtbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.ScActiveTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.ScActiveTxtbox.Location = new System.Drawing.Point(837, 363);
+            this.ScActiveTxtbox.Name = "ScActiveTxtbox";
+            this.ScActiveTxtbox.Size = new System.Drawing.Size(71, 20);
+            this.ScActiveTxtbox.TabIndex = 134;
+            this.ScActiveTxtbox.Text = "Activating";
+            this.ScActiveTxtbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ScActiveTxtbox.UseCustomBackColor = true;
+            this.ScActiveTxtbox.UseCustomForeColor = true;
             // 
             // Form1
             // 
@@ -4129,7 +4160,6 @@ namespace DynaDrive
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton CtrCenterBtn;
-        private MetroFramework.Controls.MetroButton McGoBt;
         private MetroFramework.Controls.MetroLabel metroLabel42;
         private MetroFramework.Controls.MetroLabel metroLabel41;
         private MetroFramework.Controls.MetroLabel metroLabel40;
@@ -4207,18 +4237,21 @@ namespace DynaDrive
         public MetroFramework.Controls.MetroTextBox ScRtStepSizeTxtbox;
         public MetroFramework.Controls.MetroTextBox ScTrStepSizeTxtbox;
         private MetroFramework.Controls.MetroLabel metroLabel76;
-        private MetroFramework.Controls.MetroButton ScCopyRowBtn;
         private MetroFramework.Controls.MetroLabel metroLabel77;
         public MetroFramework.Controls.MetroTextBox ScIntervalTxtbox;
-        private MetroFramework.Controls.MetroButton ScDeleteRowBtn;
         public MetroFramework.Controls.MetroGrid metroGrid1;
-        private MetroFramework.Controls.MetroButton ScClearAllBtn;
-        private MetroFramework.Controls.MetroButton ScStopBtn;
-        private MetroFramework.Controls.MetroButton ScGoBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        public MetroFramework.Controls.MetroButton ScCopyRowBtn;
+        public MetroFramework.Controls.MetroButton ScDeleteRowBtn;
+        public MetroFramework.Controls.MetroButton ScClearAllBtn;
+        public MetroFramework.Controls.MetroButton ScStopBtn;
+        public MetroFramework.Controls.MetroButton ScGoBtn;
+        public MetroFramework.Controls.MetroLabel ScReadyTxtbox;
+        public MetroFramework.Controls.MetroLabel ScActiveTxtbox;
+        public MetroFramework.Controls.MetroButton McGoBt;
     }
 }
 

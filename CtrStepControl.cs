@@ -7,7 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Controls;
-using System.Timers;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Drawing;
 
 namespace DynaDrive
 {
@@ -17,11 +19,21 @@ namespace DynaDrive
         public MetroGrid table = new MetroGrid();
         public DataGridView dataGridView1 = new DataGridView();
         public MetroTextBox[] Mc_tube = new MetroTextBox[4];
+        public int interval = new int();
+        private static CancellationTokenSource CancellationTokenSource;
+        private static SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+        public Color ReadyColor = new Color();
+        public Color ActiveColor = new Color();
+        public Color OffColor = new Color();
         public CtrStepControl(Form1 Form, OpenRBSerialGen openRB) : base(Form, openRB)
         {
             table = Form.metroGrid1;
             Mc_tube[0] = Form.MC_tube2_rt; Mc_tube[1] = Form.MC_tube2_tr;
             Mc_tube[2] = Form.MC_tube1_rt; Mc_tube[3] = Form.MC_tube1_tr;
+            ReadyColor = Color.FromArgb(0, 210, 0);
+            ActiveColor = Color.FromArgb(210, 0, 0);
+            OffColor = Color.FromArgb(17, 17, 17);
+
         }
         public new void updateVal(Form1 Form)
         {
@@ -29,6 +41,8 @@ namespace DynaDrive
             catch { stepsize[0] = 22.5; }
             try { stepsize[1] = Convert.ToDouble(Form.ScTrStepSizeTxtbox.Text.ToString()); }
             catch { stepsize[1] = 10; }
+            try { interval = Convert.ToInt32(Convert.ToDouble(Form.ScIntervalTxtbox.Text.ToString()) * 1000.0); }
+            catch { interval = 3000; }
         }
 
         /////////// Auto Step Control ///////////
@@ -60,12 +74,26 @@ namespace DynaDrive
         {
             table.Rows.Clear();
         }
-        public void AutoStepControlGO(Form1 Form) 
+        public void ActivateAlert(Form1 Form, bool IsActive)
         {
-            double interval;
-            try { interval = Convert.ToDouble(Form.ScIntervalTxtbox.ToString())*1000.0; }
-            catch { interval = 3000; }
-            Convert.ToInt32(interval);
+            if (IsActive)
+            {
+                Form.ScActiveTxtbox.BackColor = ActiveColor;
+                Form.ScReadyTxtbox.BackColor = OffColor;
+            }
+            else
+            {
+                Form.ScActiveTxtbox.BackColor = OffColor;
+                Form.ScReadyTxtbox.BackColor = ReadyColor;
+            }
+        }
+        public async void AutoStepControlGO(Form1 Form) 
+        {
+            ActivateAlert(Form, true);
+            Form.ScGoBtn.Enabled = false;
+            updateVal(Form);
+            CancellationTokenSource = new CancellationTokenSource();
+            CancellationToken cancellationToken = CancellationTokenSource.Token;
 
             DataGridViewRow row;
             for (int i = 0; i < table.RowCount; i++)
@@ -75,15 +103,18 @@ namespace DynaDrive
                 {
                     if (row.Cells[j].Value == null) continue;
                     Mc_tube[j].Text = row.Cells[j].Value.ToString();
-                    
                 }
-
-                
+                Form.McGoBt.PerformClick();
+                try { await Task.Delay(interval, cancellationToken); }
+                catch { break; }                
             }
-
-            
+            Form.ScGoBtn.Enabled = true;
+            ActivateAlert(Form, false);
         }
-        public void AutoStepControlSTOP() { }
+        public void AutoStepControlSTOP() 
+        {
+            CancellationTokenSource?.Cancel();
+        }
 
 
         /////////// Step up Control ///////////

@@ -371,7 +371,7 @@ namespace DynaDrive
 
         private void ScStopBtn_Click(object sender, EventArgs e)
         {
-
+            CtrSc.AutoStepControlSTOP();
         }
     }
 }
