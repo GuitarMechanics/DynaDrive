@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
@@ -75,7 +76,8 @@ namespace DynaDrive
         public double angle_f;
         public double E;
         public double angleRt_f;
-        public bool[] PcToggles = new bool[2];
+        public bool[] PcToggles = new bool[3];
+        public string filePath, recordPath, directoryPath;
         Tube tube1 = new Tube();
         Tube tube2 = new Tube();
         ArrayMath arrayMath = new ArrayMath();
@@ -159,6 +161,7 @@ namespace DynaDrive
             
             PcToggles[0] = Form.PcTolToggle.Checked;
             PcToggles[1] = Form.PcTboToggle.Checked;
+            PcToggles[2] = Form.PcRecordToggle.Checked;
             PcPreset(Form);
             updateVal(openRB);
             double theta_0 = 0.07;
@@ -177,6 +180,7 @@ namespace DynaDrive
             double[,] R_t = new double[3, 3];
             double[,] ans = new double[3, 2];
             bool IsTol1 = true, IsTol2 = true;
+
 
             foreach (double length in L_c)
             {
@@ -285,6 +289,28 @@ namespace DynaDrive
             Form.PcXOriTxtbox.Text = ans[0, 1].ToString();
             Form.PcYOriTxtbox.Text = ans[1, 1].ToString();
             Form.PcZOriTxtbox.Text = ans[2, 1].ToString();
+
+            // csv 파일로 기록
+            if (PcToggles[2])
+            {
+
+                
+            }
+        }
+        public void CreateFile(Form1 Form)
+        {
+            recordPath = Form.PcPathTxtbox.Text;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                recordPath = openFileDialog.FileName;
+                using (StreamWriter wr = new StreamWriter(recordPath))
+                {
+                    wr.WriteLine("Tube1 Rt", "Tube2 Rt", "Tube1 Tr", "Tube2 Tr");
+
+                }
+            }
         }
     }
 }

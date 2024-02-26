@@ -122,6 +122,8 @@ namespace DynaDrive
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.MovementControl = new MetroFramework.Controls.MetroTabPage();
+            this.ScActiveTxtbox = new MetroFramework.Controls.MetroLabel();
+            this.ScReadyTxtbox = new MetroFramework.Controls.MetroLabel();
             this.ScStopBtn = new MetroFramework.Controls.MetroButton();
             this.ScGoBtn = new MetroFramework.Controls.MetroButton();
             this.ScClearAllBtn = new MetroFramework.Controls.MetroButton();
@@ -225,8 +227,13 @@ namespace DynaDrive
             this.metroLabel60 = new MetroFramework.Controls.MetroLabel();
             this.About = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel34 = new MetroFramework.Controls.MetroLabel();
-            this.ScReadyTxtbox = new MetroFramework.Controls.MetroLabel();
-            this.ScActiveTxtbox = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel78 = new MetroFramework.Controls.MetroLabel();
+            this.PcRecordToggle = new MetroFramework.Controls.MetroToggle();
+            this.PcPathTxtbox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel79 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel80 = new MetroFramework.Controls.MetroLabel();
+            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             Setup = new MetroFramework.Controls.MetroTabPage();
             metroLabel36 = new MetroFramework.Controls.MetroLabel();
             metroLabel69 = new MetroFramework.Controls.MetroLabel();
@@ -1768,6 +1775,13 @@ namespace DynaDrive
             // MovementControl
             // 
             this.MovementControl.BackColor = System.Drawing.Color.Transparent;
+            this.MovementControl.Controls.Add(this.metroButton1);
+            this.MovementControl.Controls.Add(this.metroTextBox2);
+            this.MovementControl.Controls.Add(this.metroLabel80);
+            this.MovementControl.Controls.Add(this.metroLabel79);
+            this.MovementControl.Controls.Add(this.PcPathTxtbox);
+            this.MovementControl.Controls.Add(this.PcRecordToggle);
+            this.MovementControl.Controls.Add(this.metroLabel78);
             this.MovementControl.Controls.Add(this.ScActiveTxtbox);
             this.MovementControl.Controls.Add(this.ScReadyTxtbox);
             this.MovementControl.Controls.Add(this.ScStopBtn);
@@ -1842,6 +1856,33 @@ namespace DynaDrive
             this.MovementControl.VerticalScrollbarBarColor = true;
             this.MovementControl.VerticalScrollbarHighlightOnWheel = false;
             this.MovementControl.VerticalScrollbarSize = 2;
+            // 
+            // ScActiveTxtbox
+            // 
+            this.ScActiveTxtbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.ScActiveTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.ScActiveTxtbox.Location = new System.Drawing.Point(837, 363);
+            this.ScActiveTxtbox.Name = "ScActiveTxtbox";
+            this.ScActiveTxtbox.Size = new System.Drawing.Size(71, 20);
+            this.ScActiveTxtbox.TabIndex = 134;
+            this.ScActiveTxtbox.Text = "Activating";
+            this.ScActiveTxtbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ScActiveTxtbox.UseCustomBackColor = true;
+            this.ScActiveTxtbox.UseCustomForeColor = true;
+            // 
+            // ScReadyTxtbox
+            // 
+            this.ScReadyTxtbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(210)))), ((int)(((byte)(0)))));
+            this.ScReadyTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.ScReadyTxtbox.Location = new System.Drawing.Point(763, 363);
+            this.ScReadyTxtbox.Name = "ScReadyTxtbox";
+            this.ScReadyTxtbox.Size = new System.Drawing.Size(71, 20);
+            this.ScReadyTxtbox.TabIndex = 133;
+            this.ScReadyTxtbox.Text = "Ready";
+            this.ScReadyTxtbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ScReadyTxtbox.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ScReadyTxtbox.UseCustomBackColor = true;
+            this.ScReadyTxtbox.UseCustomForeColor = true;
             // 
             // ScStopBtn
             // 
@@ -2398,7 +2439,7 @@ namespace DynaDrive
             this.metroLabel57.AutoSize = true;
             this.metroLabel57.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel57.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel57.Location = new System.Drawing.Point(597, 170);
+            this.metroLabel57.Location = new System.Drawing.Point(855, 135);
             this.metroLabel57.Name = "metroLabel57";
             this.metroLabel57.Size = new System.Drawing.Size(115, 25);
             this.metroLabel57.Style = MetroFramework.MetroColorStyle.White;
@@ -2425,7 +2466,7 @@ namespace DynaDrive
             // 
             this.PcTboToggle.AutoSize = true;
             this.PcTboToggle.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.PcTboToggle.Location = new System.Drawing.Point(739, 173);
+            this.PcTboToggle.Location = new System.Drawing.Point(993, 139);
             this.PcTboToggle.Name = "PcTboToggle";
             this.PcTboToggle.Size = new System.Drawing.Size(80, 20);
             this.PcTboToggle.TabIndex = 92;
@@ -3980,32 +4021,139 @@ namespace DynaDrive
             this.metroLabel34.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroLabel34.UseStyleColors = true;
             // 
-            // ScReadyTxtbox
+            // metroLabel78
             // 
-            this.ScReadyTxtbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(210)))), ((int)(((byte)(0)))));
-            this.ScReadyTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.ScReadyTxtbox.Location = new System.Drawing.Point(763, 363);
-            this.ScReadyTxtbox.Name = "ScReadyTxtbox";
-            this.ScReadyTxtbox.Size = new System.Drawing.Size(71, 20);
-            this.ScReadyTxtbox.TabIndex = 133;
-            this.ScReadyTxtbox.Text = "Ready";
-            this.ScReadyTxtbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ScReadyTxtbox.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ScReadyTxtbox.UseCustomBackColor = true;
-            this.ScReadyTxtbox.UseCustomForeColor = true;
+            this.metroLabel78.AutoSize = true;
+            this.metroLabel78.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel78.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel78.Location = new System.Drawing.Point(595, 165);
+            this.metroLabel78.Name = "metroLabel78";
+            this.metroLabel78.Size = new System.Drawing.Size(67, 25);
+            this.metroLabel78.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel78.TabIndex = 135;
+            this.metroLabel78.Text = "Record";
+            this.metroLabel78.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel78.UseStyleColors = true;
             // 
-            // ScActiveTxtbox
+            // PcRecordToggle
             // 
-            this.ScActiveTxtbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.ScActiveTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.ScActiveTxtbox.Location = new System.Drawing.Point(837, 363);
-            this.ScActiveTxtbox.Name = "ScActiveTxtbox";
-            this.ScActiveTxtbox.Size = new System.Drawing.Size(71, 20);
-            this.ScActiveTxtbox.TabIndex = 134;
-            this.ScActiveTxtbox.Text = "Activating";
-            this.ScActiveTxtbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ScActiveTxtbox.UseCustomBackColor = true;
-            this.ScActiveTxtbox.UseCustomForeColor = true;
+            this.PcRecordToggle.AutoSize = true;
+            this.PcRecordToggle.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.PcRecordToggle.Location = new System.Drawing.Point(738, 170);
+            this.PcRecordToggle.Name = "PcRecordToggle";
+            this.PcRecordToggle.Size = new System.Drawing.Size(80, 20);
+            this.PcRecordToggle.TabIndex = 136;
+            this.PcRecordToggle.Text = "Off";
+            this.PcRecordToggle.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PcRecordToggle.UseSelectable = true;
+            // 
+            // PcPathTxtbox
+            // 
+            // 
+            // 
+            // 
+            this.PcPathTxtbox.CustomButton.Image = null;
+            this.PcPathTxtbox.CustomButton.Location = new System.Drawing.Point(242, 1);
+            this.PcPathTxtbox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.PcPathTxtbox.CustomButton.Name = "";
+            this.PcPathTxtbox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.PcPathTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.PcPathTxtbox.CustomButton.TabIndex = 1;
+            this.PcPathTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.PcPathTxtbox.CustomButton.UseSelectable = true;
+            this.PcPathTxtbox.CustomButton.Visible = false;
+            this.PcPathTxtbox.Lines = new string[] {
+        "C:\\Users\\littl\\OneDrive - 경희대학교\\바탕 화면\\BMIR\\CTR2"};
+            this.PcPathTxtbox.Location = new System.Drawing.Point(830, 206);
+            this.PcPathTxtbox.MaxLength = 32767;
+            this.PcPathTxtbox.Name = "PcPathTxtbox";
+            this.PcPathTxtbox.PasswordChar = '\0';
+            this.PcPathTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.PcPathTxtbox.SelectedText = "";
+            this.PcPathTxtbox.SelectionLength = 0;
+            this.PcPathTxtbox.SelectionStart = 0;
+            this.PcPathTxtbox.ShortcutsEnabled = true;
+            this.PcPathTxtbox.Size = new System.Drawing.Size(264, 23);
+            this.PcPathTxtbox.TabIndex = 137;
+            this.PcPathTxtbox.Text = "C:\\Users\\littl\\OneDrive - 경희대학교\\바탕 화면\\BMIR\\CTR2";
+            this.PcPathTxtbox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PcPathTxtbox.UseSelectable = true;
+            this.PcPathTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.PcPathTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel79
+            // 
+            this.metroLabel79.AutoSize = true;
+            this.metroLabel79.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel79.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel79.Location = new System.Drawing.Point(681, 203);
+            this.metroLabel79.Name = "metroLabel79";
+            this.metroLabel79.Size = new System.Drawing.Size(131, 25);
+            this.metroLabel79.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel79.TabIndex = 138;
+            this.metroLabel79.Text = "Recording Path";
+            this.metroLabel79.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel79.UseStyleColors = true;
+            // 
+            // metroLabel80
+            // 
+            this.metroLabel80.AutoSize = true;
+            this.metroLabel80.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel80.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel80.Location = new System.Drawing.Point(681, 237);
+            this.metroLabel80.Name = "metroLabel80";
+            this.metroLabel80.Size = new System.Drawing.Size(87, 25);
+            this.metroLabel80.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel80.TabIndex = 139;
+            this.metroLabel80.Text = "File name";
+            this.metroLabel80.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel80.UseStyleColors = true;
+            // 
+            // metroTextBox2
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBox2.CustomButton.Image = null;
+            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(56, 1);
+            this.metroTextBox2.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.metroTextBox2.CustomButton.Name = "";
+            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox2.CustomButton.TabIndex = 1;
+            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox2.CustomButton.UseSelectable = true;
+            this.metroTextBox2.CustomButton.Visible = false;
+            this.metroTextBox2.Lines = new string[] {
+        "test1.csv"};
+            this.metroTextBox2.Location = new System.Drawing.Point(830, 239);
+            this.metroTextBox2.MaxLength = 32767;
+            this.metroTextBox2.Name = "metroTextBox2";
+            this.metroTextBox2.PasswordChar = '\0';
+            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox2.SelectedText = "";
+            this.metroTextBox2.SelectionLength = 0;
+            this.metroTextBox2.SelectionStart = 0;
+            this.metroTextBox2.ShortcutsEnabled = true;
+            this.metroTextBox2.Size = new System.Drawing.Size(78, 23);
+            this.metroTextBox2.TabIndex = 140;
+            this.metroTextBox2.Text = "test1.csv";
+            this.metroTextBox2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTextBox2.UseSelectable = true;
+            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.DisplayFocus = true;
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton1.Location = new System.Drawing.Point(914, 239);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(103, 25);
+            this.metroButton1.TabIndex = 141;
+            this.metroButton1.Text = "Create file";
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton1.UseSelectable = true;
             // 
             // Form1
             // 
@@ -4252,6 +4400,13 @@ namespace DynaDrive
         public MetroFramework.Controls.MetroLabel ScReadyTxtbox;
         public MetroFramework.Controls.MetroLabel ScActiveTxtbox;
         public MetroFramework.Controls.MetroButton McGoBt;
+        public MetroFramework.Controls.MetroToggle PcRecordToggle;
+        private MetroFramework.Controls.MetroLabel metroLabel78;
+        public MetroFramework.Controls.MetroTextBox PcPathTxtbox;
+        private MetroFramework.Controls.MetroLabel metroLabel79;
+        public MetroFramework.Controls.MetroTextBox metroTextBox2;
+        private MetroFramework.Controls.MetroLabel metroLabel80;
+        public MetroFramework.Controls.MetroButton metroButton1;
     }
 }
 
