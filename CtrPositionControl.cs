@@ -77,7 +77,7 @@ namespace DynaDrive
         public double E;
         public double angleRt_f;
         public bool[] PcToggles = new bool[3];
-        public string filePath, recordPath, directoryPath;
+        public string filePath, recordPath, fileName;
         Tube tube1 = new Tube();
         Tube tube2 = new Tube();
         ArrayMath arrayMath = new ArrayMath();
@@ -293,22 +293,43 @@ namespace DynaDrive
             // csv 파일로 기록
             if (PcToggles[2])
             {
-
-                
+                if (!File.Exists(filePath))
+                {
+                    CreateFile(Form);
+                }
+                using (FileStream fs = new FileStream(filePath, FileMode.Append))
+                {
+                    using (StreamWriter writer = new StreamWriter(fs))
+                    {
+                        string txt = Form.MC_tube2_rt.Text + "," + Form.MC_tube2_tr.Text + "," + Form.MC_tube1_rt.Text + "," + Form.MC_tube1_tr.Text + ","
+                            + Form.PcXPosTxtbox.Text + "," + Form.PcYPosTxtbox.Text + "," + Form.PcZPosTxtbox.Text;
+                        writer.WriteLine(txt);
+                    }
+                        
+                }
             }
         }
         public void CreateFile(Form1 Form)
         {
             recordPath = Form.PcPathTxtbox.Text;
+            filePath = Path.Combine(recordPath, Form.PcFileNameTxtbox.Text);
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            byte[] textToWrite = Encoding.UTF8.GetBytes("Tube2 Rt,Tube2 Tr,Tube1 Rt,Tube1 Tr,X,Y,Z\n");
+            using (FileStream fs = File.Create(filePath)) 
             {
-                recordPath = openFileDialog.FileName;
-                using (StreamWriter wr = new StreamWriter(recordPath))
-                {
-                    wr.WriteLine("Tube1 Rt", "Tube2 Rt", "Tube1 Tr", "Tube2 Tr");
+                fs.Write(textToWrite, 0, textToWrite.Length);
+            }
+        }
+        public void BrowseFile(Form1 Form)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
 
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    Form.PcPathTxtbox.Text = fbd.SelectedPath;
+                    CreateFile(Form);
                 }
             }
         }

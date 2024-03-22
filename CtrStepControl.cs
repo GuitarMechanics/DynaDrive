@@ -20,6 +20,7 @@ namespace DynaDrive
         public DataGridView dataGridView1 = new DataGridView();
         public MetroTextBox[] Mc_tube = new MetroTextBox[4];
         public int interval = new int();
+        public int repetition = new int();
         private static CancellationTokenSource CancellationTokenSource;
         private static SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
         public Color ReadyColor = new Color();
@@ -43,6 +44,8 @@ namespace DynaDrive
             catch { stepsize[1] = 10; }
             try { interval = Convert.ToInt32(Convert.ToDouble(Form.ScIntervalTxtbox.Text.ToString()) * 1000.0); }
             catch { interval = 3000; }
+            try { repetition = Convert.ToInt32(Convert.ToDouble(Form.ScRepetitionTxtbox.Text.ToString())); }
+            catch { repetition = 1; }
         }
 
         /////////// Auto Step Control ///////////
@@ -96,17 +99,29 @@ namespace DynaDrive
             CancellationToken cancellationToken = CancellationTokenSource.Token;
 
             DataGridViewRow row;
-            for (int i = 0; i < table.RowCount; i++)
-            {   
-                row = table.Rows[i];
-                for (int j = 0; j < 4; j++)
+            bool IsNull;    // 빈칸 건너뛰기
+            for (int r = 0; r < repetition; r++)
+            {
+                for (int i = 0; i < table.RowCount; i++)
                 {
-                    if (row.Cells[j].Value == null) continue;
-                    Mc_tube[j].Text = row.Cells[j].Value.ToString();
+                    row = table.Rows[i];
+                    IsNull = false;
+                    for (int j = 0; j < 4; j++)
+                    {
+                        if (row.Cells[j].Value == null)
+                        {
+                            IsNull = true;
+                            continue;
+                        }
+                        Mc_tube[j].Text = row.Cells[j].Value.ToString();
+                    }
+                    if (!IsNull)
+                    {
+                        Form.McGoBt.PerformClick();
+                        try { await Task.Delay(interval, cancellationToken); }
+                        catch { break; }
+                    }
                 }
-                Form.McGoBt.PerformClick();
-                try { await Task.Delay(interval, cancellationToken); }
-                catch { break; }                
             }
             Form.ScGoBtn.Enabled = true;
             ActivateAlert(Form, false);

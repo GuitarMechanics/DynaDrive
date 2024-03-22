@@ -373,5 +373,15 @@ namespace DynaDrive
         {
             CtrSc.AutoStepControlSTOP();
         }
+
+        private void PcBrowseBtn_Click(object sender, EventArgs e)
+        {
+            CtrPos.BrowseFile(this);
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            CtrPos.CreateFile(this);
+        }
     }
 }
