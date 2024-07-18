@@ -2565,7 +2565,7 @@
             this.Style = MetroFramework.MetroColorStyle.White;
             this.Text = "DynaDrive beta";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            //this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             Setup.ResumeLayout(false);
             Setup.PerformLayout();
