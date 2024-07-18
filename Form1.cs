@@ -390,10 +390,10 @@ namespace DynaDrive
             updateSerialPort();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            openRB.writeGoalCenter();
-            serialSend();
-        }
+        //private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    openRB.writeGoalCenter();
+        //    serialSend();
+        //}
     }
 }
