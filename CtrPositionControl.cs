@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Controls;
-
+//안녕
 namespace DynaDrive
 {
     public class ArrayMath
@@ -78,6 +78,7 @@ namespace DynaDrive
         public double angleRt_f;
         public bool[] PcToggles = new bool[3];
         public string filePath, recordPath, fileName;
+        int index = 0;
         Tube tube1 = new Tube();
         Tube tube2 = new Tube();
         ArrayMath arrayMath = new ArrayMath();
@@ -164,7 +165,8 @@ namespace DynaDrive
             PcToggles[2] = Form.PcRecordToggle.Checked;
             PcPreset(Form);
             updateVal(openRB);
-            double theta_0 = 0.07;
+            double[] tmp = new double[10] { 0.2195, 0.2183, 0.2042, 0.2355, 0.2513, 0.2743, 0.2541, 0.2678, 0.3168, 0.3283 };
+
             double K_x, K_y, K_f = 0, K_t1 = 0,K_t2 = 0, K_tx = 0, K_ty = 0, K_t = 0;
             double angleRt1 = tube1.angleRt;
             double angleRt2 = tube2.angleRt;
@@ -179,6 +181,8 @@ namespace DynaDrive
             double[,] R = new double[3, 3] { { 1, 0, 0 },{ 0, 1, 0 },{ 0, 0, 1 } };
             double[,] R_t = new double[3, 3];
             double[,] ans = new double[3, 2];
+            double[,] P_Tube2 = new double[3, 1];
+            double[,] Ori_Tube2 = new double[3, 1];
             bool IsTol1 = true, IsTol2 = true;
 
 
@@ -192,8 +196,17 @@ namespace DynaDrive
                 // 현재 구간 각각의 튜브 곡률
                 K_1 = tube1.curvature(tube1.lengthTr, length);
                 K_2 = tube2.curvature(tube2.lengthTr, length);
-                
+
+
+                // Tube 2 Pos 및 Ori 구하기
+                if (tube2.tubeExist == 0) 
+                {
+                    P_Tube2 = P;
+                    Ori_Tube2 = arrayMath.multArray(R,Ori);
+                }
+
                 // 튜브 공차 offset rotation matrix
+                /*
                 if (tube1.tubeExist == 0)
                 {
 
@@ -208,7 +221,7 @@ namespace DynaDrive
                     K_t = Math.Sqrt(Math.Pow(K_tx, 2) + Math.Pow(K_ty, 2));
                     angle_t = Math.Atan2(K_ty, K_tx);
 
-                    
+
                     if (1 / K_t - 1 / K_t * Math.Cos(L_t * K_t / 2) > d / 2)
                     {   
                         K_t = 1 / (Math.Pow(L_t,2) / 5.6 + 0.35);
@@ -225,8 +238,8 @@ namespace DynaDrive
                 K_t1 += K_1 * L;
                 K_t2 += K_2 * L;
                 L_t += L;
-                
-                
+                */
+
                 // 현재 구간 튜브 최종 곡률
                 K_x = (E * tube1.I * K_1 * Math.Cos(angleRt1) + tube2.I * K_2 * Math.Cos(angleRt2)) / ((E * tube1.I * tube1.tubeExist) + (tube2.I * tube2.tubeExist));
                 K_y = (E * tube1.I * K_1 * Math.Sin(angleRt1) + tube2.I * K_2 * Math.Sin(angleRt2)) / ((E * tube1.I * tube1.tubeExist) + (tube2.I * tube2.tubeExist));
@@ -266,11 +279,14 @@ namespace DynaDrive
                     
                 if (IsTol1 && PcToggles[1]) // base frame 공차 offset rotation matrix
                 {
-                    R = arrayMath.multArray(R, rotationY(theta_0));
+
+                    R = arrayMath.multArray(R, rotationY(tmp[index]));
+                    index++;
                     IsTol1 = false;
                 }
 
                 R = arrayMath.multArray(R, rotationY(theta));
+
 
             }
 
@@ -302,7 +318,9 @@ namespace DynaDrive
                     using (StreamWriter writer = new StreamWriter(fs))
                     {
                         string txt = Form.MC_tube2_rt.Text + "," + Form.MC_tube2_tr.Text + "," + Form.MC_tube1_rt.Text + "," + Form.MC_tube1_tr.Text + ","
-                            + Form.PcXPosTxtbox.Text + "," + Form.PcYPosTxtbox.Text + "," + Form.PcZPosTxtbox.Text;
+                            + Form.PcXPosTxtbox.Text + "," + Form.PcYPosTxtbox.Text + "," + Form.PcZPosTxtbox.Text + "," + Form.PcXOriTxtbox.Text + ","
+                            + Form.PcYOriTxtbox.Text + "," + Form.PcZOriTxtbox.Text + "," + P_Tube2[0,0].ToString() + "," + P_Tube2[1,0].ToString() + "," 
+                            + P_Tube2[2,0].ToString() + "," + Ori_Tube2[0, 0].ToString() + "," + Ori_Tube2[1, 0].ToString() + "," + Ori_Tube2[2, 0].ToString();
                         writer.WriteLine(txt);
                     }
                         
@@ -314,7 +332,7 @@ namespace DynaDrive
             recordPath = Form.PcPathTxtbox.Text;
             filePath = Path.Combine(recordPath, Form.PcFileNameTxtbox.Text);
 
-            byte[] textToWrite = Encoding.UTF8.GetBytes("Tube2 Rt,Tube2 Tr,Tube1 Rt,Tube1 Tr,X,Y,Z\n");
+            byte[] textToWrite = Encoding.UTF8.GetBytes("Tube2 Rt,Tube2 Tr,Tube1 Rt,Tube1 Tr,X,Y,Z,vX,vY,vZ,Tube2 X, Tube2 Y, Tube2 Z, Tube2 vX, Tube2 vY, Tube2 vZ,\n");
             using (FileStream fs = File.Create(filePath)) 
             {
                 fs.Write(textToWrite, 0, textToWrite.Length);

@@ -2013,7 +2013,7 @@ namespace DynaDrive
             this.PcPathTxtbox.CustomButton.UseSelectable = true;
             this.PcPathTxtbox.CustomButton.Visible = false;
             this.PcPathTxtbox.Lines = new string[] {
-        "C:\\Users\\littl\\OneDrive - 경희대학교\\바탕 화면\\BMIR\\CTR2"};
+        "C:\\Users\\littl\\OneDrive - 경희대학교 (1)\\바탕 화면 (1)\\BMIR\\CTR2\\Tracking data"};
             this.PcPathTxtbox.Location = new System.Drawing.Point(830, 206);
             this.PcPathTxtbox.MaxLength = 32767;
             this.PcPathTxtbox.Name = "PcPathTxtbox";
@@ -2025,7 +2025,7 @@ namespace DynaDrive
             this.PcPathTxtbox.ShortcutsEnabled = true;
             this.PcPathTxtbox.Size = new System.Drawing.Size(140, 23);
             this.PcPathTxtbox.TabIndex = 137;
-            this.PcPathTxtbox.Text = "C:\\Users\\littl\\OneDrive - 경희대학교\\바탕 화면\\BMIR\\CTR2";
+            this.PcPathTxtbox.Text = "C:\\Users\\littl\\OneDrive - 경희대학교 (1)\\바탕 화면 (1)\\BMIR\\CTR2\\Tracking data";
             this.PcPathTxtbox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.PcPathTxtbox.UseSelectable = true;
             this.PcPathTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
