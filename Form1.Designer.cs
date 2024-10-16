@@ -214,6 +214,7 @@
             this.metroLabel51 = new MetroFramework.Controls.MetroLabel();
             this.bendCtrSetBtn = new MetroFramework.Controls.MetroButton();
             this.bendCtrCenterBtn = new MetroFramework.Controls.MetroButton();
+            this.consolemonitorChkBox = new MetroFramework.Controls.MetroCheckBox();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -3820,11 +3821,24 @@
             this.bendCtrCenterBtn.UseSelectable = true;
             this.bendCtrCenterBtn.Click += new System.EventHandler(this.bendCtrCenterBtn_Click);
             // 
+            // consolemonitorChkBox
+            // 
+            this.consolemonitorChkBox.AutoSize = true;
+            this.consolemonitorChkBox.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.consolemonitorChkBox.Location = new System.Drawing.Point(907, 539);
+            this.consolemonitorChkBox.Name = "consolemonitorChkBox";
+            this.consolemonitorChkBox.Size = new System.Drawing.Size(161, 19);
+            this.consolemonitorChkBox.TabIndex = 32;
+            this.consolemonitorChkBox.Text = "Console Monitor Only";
+            this.consolemonitorChkBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.consolemonitorChkBox.UseSelectable = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1147, 634);
+            this.Controls.Add(this.consolemonitorChkBox);
             this.Controls.Add(this.tableLayoutPanel7);
             this.Controls.Add(this.setTransConvBtn);
             this.Controls.Add(this.setRotRawModeBtn);
@@ -4071,6 +4085,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel68;
         private MetroFramework.Controls.MetroToggle AutobendDTPToggle;
         private MetroFramework.Controls.MetroButton AutobendStopBtn;
+        private MetroFramework.Controls.MetroCheckBox consolemonitorChkBox;
     }
 }
 

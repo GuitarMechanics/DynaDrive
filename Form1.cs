@@ -530,8 +530,20 @@ namespace DynaDrive
             {
                 convVal[i] = screwDrive.trans2rot(outval[i]);
             }
-            openRB.writeGoalPos(convVal);
-            serialSend();
+            if (consolemonitorChkBox.Checked)
+            {
+                for(int i = 0 ; i < outval.Length ; i++)
+                {
+                    Console.Write(outval[i].ToString());
+                    Console.Write(",");
+                }
+                Console.WriteLine("0");
+            }
+            else
+            {
+                openRB.writeGoalPos(convVal);
+                serialSend();
+            }             
             double[] angleVal = dualBend.getDistalOrient();
             string distalStr = "Dist Angle Vct : ";
             foreach(double var in angleVal)
@@ -539,10 +551,10 @@ namespace DynaDrive
                 distalStr += (Math.Round(var * 100) / 100).ToString() + "  ";
             }
             distalAngleLabel.Text = distalStr;
-            double[] distPos = dualBend.getDistalPos();
-            string distalPosStr = "Dist.Tip Pos : " + distPos[0] + " " + distPos[1] + " " + distPos[2];
-            Console.WriteLine("Dist Pos Debug : " + distPos[0] + " , " + distPos[1] + " , " + distPos[2]);
-            distPosLabel.Text = distalPosStr;
+            //double[] distPos = dualBend.getDistalPos();
+            //string distalPosStr = "Dist.Tip Pos : " + distPos[0] + " " + distPos[1] + " " + distPos[2];
+            //Console.WriteLine("Dist Pos Debug : " + distPos[0] + " , " + distPos[1] + " , " + distPos[2]);
+            //distPosLabel.Text = distalPosStr;
         }
 
         private void BendSetupSetBtn_Click(object sender, EventArgs e)
@@ -656,7 +668,7 @@ namespace DynaDrive
 
         private void bendTimerTickWritelines(double[,] values, int rowcount)
         {
-            Console.WriteLine("bendTimerTick run");
+            //Console.WriteLine("bendTimerTick run");
             seg1BendTxtBox.Text = values[rowcount, 0].ToString();
             seg1DirTxtBox.Text = values[rowcount, 1].ToString();
             seg2BendTxtBox.Text = values[rowcount, 2].ToString();

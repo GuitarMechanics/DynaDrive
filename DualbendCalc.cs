@@ -153,7 +153,7 @@ namespace DynaDrive
             double[] vct1 = matVctMul(initUnit,matMul(matMul(matMul(rotMatrixZ(dir1),rotMatrixY(bend1)),rotMatrixZ(dir2)),rotMatrixY(bend2)));
             string consoleStr = "";
             foreach (double var in vct1) consoleStr += var + " ";
-            Console.WriteLine(consoleStr);
+            //Console.WriteLine(consoleStr);
             return retVct;
         }
         public double[] getDistalPos()
