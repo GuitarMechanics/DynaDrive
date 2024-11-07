@@ -50,6 +50,7 @@ namespace DynaDrive
 
         Timer SteppingTimer = new Timer();
         Timer BendingTimer = new Timer();
+        Timer CSVTimer = new Timer();
         private int stepTimerCnt = 0;
         private int stepRepeatTarget = 0;
         private int stepRepeatCurrent = 0;
@@ -59,6 +60,7 @@ namespace DynaDrive
 
         private bool autoBendRunning = false;
         private int autobendsteps = 0;
+        private int csvAutoRowIndex = 0;
 
 
         public Form1()
@@ -104,6 +106,7 @@ namespace DynaDrive
             SteppingTimer.Tick += new EventHandler(stepTimerTick);
             //updateSerialPort();
             BendingTimer.Tick += new EventHandler(bendTimerTick);
+            CSVTimer.Tick += new EventHandler(CSVTimerTick);
 
             screwDrive = new leadscrew_drive(leadLength, openRB);
             dualBend = new DualbendCalc(bendSets);
@@ -268,7 +271,7 @@ namespace DynaDrive
                     catch (Exception) { }
 
                 }
-                mySerial.WriteLine(openRB.serialGen()[0]);
+                serialSend();
             }
             else
             {
@@ -318,7 +321,8 @@ namespace DynaDrive
 
         private void serialSend()
         {
-            mySerial.WriteLine(openRB.serialGen()[0]);
+            if (consolemonitorChkBox.Checked) Console.WriteLine(openRB.serialGen()[0]);
+            else mySerial.WriteLine(openRB.serialGen()[0]);
         }
 
         private void mt1StepUpBtn_Click(object sender, EventArgs e)
@@ -754,15 +758,58 @@ namespace DynaDrive
                 string filePath = openFileDialog.FileName;
                 List<string[]> csvData = ReadCSV(filePath);
                 //console test
-                foreach (var row in csvData) Console.WriteLine(string.Join(",", row));
+                //foreach (var row in csvData) Console.WriteLine(string.Join(",", row));
                 DisplayDataInGrid(csvData);
             }
 
         }
 
-        private void csvGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CSVRunBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int interval = Convert.ToInt32(CSVIntervalTxtBox.Text);
+                CSVTimer.Interval = interval;
+            }
+            catch (Exception)
+            {
+                CSVIntervalTxtBox.Text = "2000";
+                CSVTimer.Interval = Convert.ToInt32(CSVIntervalTxtBox.Text);
+            }
+            if (csvGrid.Rows.Count > 0)
+            {
+                csvAutoRowIndex = 0;
+                CSVTimer.Start();
+            }
+            else MessageBox.Show("No data imported");
+        }
 
+        private void CSVTimerTick(object sender, EventArgs e)
+        {
+            if (csvAutoRowIndex < csvGrid.Rows.Count)
+            {
+                if (!csvGrid.Rows[csvAutoRowIndex].IsNewRow)
+                {
+                    foreach (DataGridViewRow row in csvGrid.Rows) row.Selected = false; // clear selection
+                    csvGrid.Rows[csvAutoRowIndex].Selected = true; // highlighting current row
+                    csvGrid.FirstDisplayedScrollingRowIndex = csvAutoRowIndex; // auto-scroll
+                    for (int i = 0; i < csvGrid.Rows[csvAutoRowIndex].Cells.Count; i++)
+                    {
+                        openRB.goalPos[i] = (CSVmmconvToggle.Checked) ?
+                            Convert.ToInt32(screwDrive.trans2rot(csvGrid.Rows[csvAutoRowIndex].Cells[i].Value.ToString())) :
+                            Convert.ToInt32(csvGrid.Rows[csvAutoRowIndex].Cells[i].Value.ToString());
+                    }
+                    serialSend();
+                }
+                else CSVTimer.Stop();
+            }
+            else CSVTimer.Stop();
+            csvAutoRowIndex++;
+        }
+
+        private void CSVStopBtn_Click(object sender, EventArgs e)
+        {
+            CSVTimer.Stop();
         }
     }
 }

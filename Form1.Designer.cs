@@ -187,8 +187,13 @@
             this.AutobendStopBtn = new MetroFramework.Controls.MetroButton();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.metroLabel69 = new MetroFramework.Controls.MetroLabel();
+            this.CSVmmconvToggle = new MetroFramework.Controls.MetroToggle();
+            this.CSVIntervalTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel67 = new MetroFramework.Controls.MetroLabel();
+            this.csvGrid = new MetroFramework.Controls.MetroGrid();
             this.CSVOpenBtn = new MetroFramework.Controls.MetroButton();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
+            this.CSVRunBtn = new MetroFramework.Controls.MetroButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.distPosLabel = new MetroFramework.Controls.MetroLabel();
             this.distalAngleLabel = new MetroFramework.Controls.MetroLabel();
@@ -222,7 +227,7 @@
             this.bendCtrSetBtn = new MetroFramework.Controls.MetroButton();
             this.bendCtrCenterBtn = new MetroFramework.Controls.MetroButton();
             this.consolemonitorChkBox = new MetroFramework.Controls.MetroCheckBox();
-            this.csvGrid = new MetroFramework.Controls.MetroGrid();
+            this.CSVStopBtn = new MetroFramework.Controls.MetroButton();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -237,12 +242,12 @@
             this.tableLayoutPanel9.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.csvGrid)).BeginInit();
             this.metroTabPage2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.csvGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Setup
@@ -3245,14 +3250,139 @@
             // panel1
             // 
             this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.CSVStopBtn);
+            this.panel1.Controls.Add(this.metroLabel69);
+            this.panel1.Controls.Add(this.CSVmmconvToggle);
+            this.panel1.Controls.Add(this.CSVIntervalTxtBox);
+            this.panel1.Controls.Add(this.metroLabel67);
             this.panel1.Controls.Add(this.csvGrid);
             this.panel1.Controls.Add(this.CSVOpenBtn);
-            this.panel1.Controls.Add(this.metroButton4);
+            this.panel1.Controls.Add(this.CSVRunBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(578, 248);
             this.panel1.TabIndex = 40;
+            // 
+            // metroLabel69
+            // 
+            this.metroLabel69.AutoSize = true;
+            this.metroLabel69.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel69.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel69.Location = new System.Drawing.Point(484, 175);
+            this.metroLabel69.Name = "metroLabel69";
+            this.metroLabel69.Size = new System.Drawing.Size(94, 25);
+            this.metroLabel69.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel69.TabIndex = 44;
+            this.metroLabel69.Text = "mm Conv.";
+            this.metroLabel69.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel69.UseStyleColors = true;
+            // 
+            // CSVmmconvToggle
+            // 
+            this.CSVmmconvToggle.AutoSize = true;
+            this.CSVmmconvToggle.Checked = true;
+            this.CSVmmconvToggle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CSVmmconvToggle.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.CSVmmconvToggle.Location = new System.Drawing.Point(492, 206);
+            this.CSVmmconvToggle.Name = "CSVmmconvToggle";
+            this.CSVmmconvToggle.Size = new System.Drawing.Size(80, 20);
+            this.CSVmmconvToggle.TabIndex = 43;
+            this.CSVmmconvToggle.Text = "On";
+            this.CSVmmconvToggle.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CSVmmconvToggle.UseSelectable = true;
+            // 
+            // CSVIntervalTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.CSVIntervalTxtBox.CustomButton.Image = null;
+            this.CSVIntervalTxtBox.CustomButton.Location = new System.Drawing.Point(51, 1);
+            this.CSVIntervalTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.CSVIntervalTxtBox.CustomButton.Name = "";
+            this.CSVIntervalTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.CSVIntervalTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.CSVIntervalTxtBox.CustomButton.TabIndex = 1;
+            this.CSVIntervalTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.CSVIntervalTxtBox.CustomButton.UseSelectable = true;
+            this.CSVIntervalTxtBox.CustomButton.Visible = false;
+            this.CSVIntervalTxtBox.Lines = new string[0];
+            this.CSVIntervalTxtBox.Location = new System.Drawing.Point(484, 136);
+            this.CSVIntervalTxtBox.MaxLength = 32767;
+            this.CSVIntervalTxtBox.Name = "CSVIntervalTxtBox";
+            this.CSVIntervalTxtBox.PasswordChar = '\0';
+            this.CSVIntervalTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.CSVIntervalTxtBox.SelectedText = "";
+            this.CSVIntervalTxtBox.SelectionLength = 0;
+            this.CSVIntervalTxtBox.SelectionStart = 0;
+            this.CSVIntervalTxtBox.ShortcutsEnabled = true;
+            this.CSVIntervalTxtBox.Size = new System.Drawing.Size(88, 23);
+            this.CSVIntervalTxtBox.TabIndex = 42;
+            this.CSVIntervalTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CSVIntervalTxtBox.UseSelectable = true;
+            this.CSVIntervalTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.CSVIntervalTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel67
+            // 
+            this.metroLabel67.AutoSize = true;
+            this.metroLabel67.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel67.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel67.Location = new System.Drawing.Point(478, 108);
+            this.metroLabel67.Name = "metroLabel67";
+            this.metroLabel67.Size = new System.Drawing.Size(104, 25);
+            this.metroLabel67.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel67.TabIndex = 41;
+            this.metroLabel67.Text = "Interval(ms)";
+            this.metroLabel67.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel67.UseStyleColors = true;
+            // 
+            // csvGrid
+            // 
+            this.csvGrid.AllowUserToResizeRows = false;
+            this.csvGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.csvGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.csvGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.csvGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.csvGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.csvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.csvGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.csvGrid.Dock = System.Windows.Forms.DockStyle.Left;
+            this.csvGrid.EnableHeadersVisualStyles = false;
+            this.csvGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.csvGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.csvGrid.Location = new System.Drawing.Point(0, 0);
+            this.csvGrid.Name = "csvGrid";
+            this.csvGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.csvGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.csvGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.csvGrid.RowTemplate.Height = 23;
+            this.csvGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.csvGrid.Size = new System.Drawing.Size(461, 248);
+            this.csvGrid.TabIndex = 40;
+            this.csvGrid.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // CSVOpenBtn
             // 
@@ -3267,17 +3397,18 @@
             this.CSVOpenBtn.UseSelectable = true;
             this.CSVOpenBtn.Click += new System.EventHandler(this.CSVOpenBtn_Click);
             // 
-            // metroButton4
+            // CSVRunBtn
             // 
-            this.metroButton4.DisplayFocus = true;
-            this.metroButton4.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton4.Location = new System.Drawing.Point(481, 37);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(91, 29);
-            this.metroButton4.TabIndex = 39;
-            this.metroButton4.Text = "RUN";
-            this.metroButton4.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroButton4.UseSelectable = true;
+            this.CSVRunBtn.DisplayFocus = true;
+            this.CSVRunBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.CSVRunBtn.Location = new System.Drawing.Point(481, 37);
+            this.CSVRunBtn.Name = "CSVRunBtn";
+            this.CSVRunBtn.Size = new System.Drawing.Size(91, 29);
+            this.CSVRunBtn.TabIndex = 39;
+            this.CSVRunBtn.Text = "RUN";
+            this.CSVRunBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CSVRunBtn.UseSelectable = true;
+            this.CSVRunBtn.Click += new System.EventHandler(this.CSVRunBtn_Click);
             // 
             // metroTabPage2
             // 
@@ -3899,51 +4030,18 @@
             this.consolemonitorChkBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.consolemonitorChkBox.UseSelectable = true;
             // 
-            // csvGrid
+            // CSVStopBtn
             // 
-            this.csvGrid.AllowUserToResizeRows = false;
-            this.csvGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.csvGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.csvGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.csvGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.csvGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.csvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.csvGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            this.csvGrid.Dock = System.Windows.Forms.DockStyle.Left;
-            this.csvGrid.EnableHeadersVisualStyles = false;
-            this.csvGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.csvGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.csvGrid.Location = new System.Drawing.Point(0, 0);
-            this.csvGrid.Name = "csvGrid";
-            this.csvGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.csvGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.csvGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.csvGrid.RowTemplate.Height = 23;
-            this.csvGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.csvGrid.Size = new System.Drawing.Size(461, 248);
-            this.csvGrid.TabIndex = 40;
-            this.csvGrid.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CSVStopBtn.DisplayFocus = true;
+            this.CSVStopBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.CSVStopBtn.Location = new System.Drawing.Point(481, 71);
+            this.CSVStopBtn.Name = "CSVStopBtn";
+            this.CSVStopBtn.Size = new System.Drawing.Size(91, 29);
+            this.CSVStopBtn.TabIndex = 45;
+            this.CSVStopBtn.Text = "STOP";
+            this.CSVStopBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CSVStopBtn.UseSelectable = true;
+            this.CSVStopBtn.Click += new System.EventHandler(this.CSVStopBtn_Click);
             // 
             // Form1
             // 
@@ -3998,6 +4096,8 @@
             this.metroTabPage4.ResumeLayout(false);
             this.metroTabPage4.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.csvGrid)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
@@ -4008,7 +4108,6 @@
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.csvGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4203,10 +4302,15 @@
         private MetroFramework.Controls.MetroButton AutobendStopBtn;
         private MetroFramework.Controls.MetroCheckBox consolemonitorChkBox;
         private MetroFramework.Controls.MetroTabPage metroTabPage4;
-        private MetroFramework.Controls.MetroButton metroButton4;
+        private MetroFramework.Controls.MetroButton CSVRunBtn;
         private MetroFramework.Controls.MetroButton CSVOpenBtn;
         private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroGrid csvGrid;
+        private MetroFramework.Controls.MetroLabel metroLabel69;
+        private MetroFramework.Controls.MetroToggle CSVmmconvToggle;
+        private MetroFramework.Controls.MetroTextBox CSVIntervalTxtBox;
+        private MetroFramework.Controls.MetroLabel metroLabel67;
+        private MetroFramework.Controls.MetroButton CSVStopBtn;
     }
 }
 
