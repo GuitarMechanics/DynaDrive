@@ -12,6 +12,8 @@ using System.Linq.Expressions;
 using MetroFramework.Controls;
 using System.CodeDom;
 using System.Runtime.InteropServices;
+using System.IO;
+using System.Drawing.Text;
 
 // 솔루션용 nuget 설치 필요: metroui
 // https://luckygg.tistory.com/302
@@ -105,6 +107,8 @@ namespace DynaDrive
 
             screwDrive = new leadscrew_drive(leadLength, openRB);
             dualBend = new DualbendCalc(bendSets);
+
+
         }
 
         private void updateSerialPort()
@@ -705,6 +709,60 @@ namespace DynaDrive
             BendingTimer.Stop();
             bendTimerCnt = 0;
             autoBendRunning = false;
+        }
+
+        private List<string[]> ReadCSV(string filePath)
+        {
+            var csvData = new List<string[]>();
+            try
+            {
+                using(StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while((line = sr.ReadLine()) != null)
+                    {
+                        string[] row = line.Split(',');
+                        csvData.Add(row);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return csvData;
+        }
+
+        private void DisplayDataInGrid(List<string[]> csvData)
+        {
+            csvGrid.Rows.Clear();
+            csvGrid.Columns.Clear();
+            string[] headers = csvData[0];
+            foreach (string header in headers) csvGrid.Columns.Add(header, header);
+            for (int i = 1; i < csvData.Count; i++) csvGrid.Rows.Add(csvData[i]);
+        }
+
+        private void CSVOpenBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "CSV Files (*.csv)|*.csv|All Files(*.*)|*.*",
+                Title = "Select a CSV File"
+            };
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                List<string[]> csvData = ReadCSV(filePath);
+                //console test
+                foreach (var row in csvData) Console.WriteLine(string.Join(",", row));
+                DisplayDataInGrid(csvData);
+            }
+
+        }
+
+        private void csvGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

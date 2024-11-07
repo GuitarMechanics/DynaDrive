@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             MetroFramework.Controls.MetroTabPage Setup;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroLabel37 = new MetroFramework.Controls.MetroLabel();
             this.SetupPresetComboBox = new MetroFramework.Controls.MetroComboBox();
             this.setApplyBtn = new MetroFramework.Controls.MetroButton();
@@ -182,6 +185,10 @@
             this.AutobendHoldBtn = new MetroFramework.Controls.MetroButton();
             this.AutobendRunBtn = new MetroFramework.Controls.MetroButton();
             this.AutobendStopBtn = new MetroFramework.Controls.MetroButton();
+            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CSVOpenBtn = new MetroFramework.Controls.MetroButton();
+            this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.distPosLabel = new MetroFramework.Controls.MetroLabel();
             this.distalAngleLabel = new MetroFramework.Controls.MetroLabel();
@@ -215,6 +222,7 @@
             this.bendCtrSetBtn = new MetroFramework.Controls.MetroButton();
             this.bendCtrCenterBtn = new MetroFramework.Controls.MetroButton();
             this.consolemonitorChkBox = new MetroFramework.Controls.MetroCheckBox();
+            this.csvGrid = new MetroFramework.Controls.MetroGrid();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -227,11 +235,14 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.AutoBend.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            this.metroTabPage4.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.csvGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Setup
@@ -1182,12 +1193,13 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.ProgramPage);
             this.metroTabControl1.Controls.Add(this.AutoBend);
+            this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Controls.Add(Setup);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(79, 320);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 4;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(586, 290);
             this.metroTabControl1.TabIndex = 25;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -3213,6 +3225,60 @@
             this.AutobendStopBtn.UseSelectable = true;
             this.AutobendStopBtn.Click += new System.EventHandler(this.AutobendStopBtn_Click);
             // 
+            // metroTabPage4
+            // 
+            this.metroTabPage4.BackColor = System.Drawing.Color.Transparent;
+            this.metroTabPage4.Controls.Add(this.panel1);
+            this.metroTabPage4.HorizontalScrollbarBarColor = true;
+            this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage4.HorizontalScrollbarSize = 2;
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage4.Name = "metroTabPage4";
+            this.metroTabPage4.Size = new System.Drawing.Size(578, 248);
+            this.metroTabPage4.TabIndex = 6;
+            this.metroTabPage4.Text = "CSV Plan";
+            this.metroTabPage4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabPage4.VerticalScrollbarBarColor = true;
+            this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage4.VerticalScrollbarSize = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.csvGrid);
+            this.panel1.Controls.Add(this.CSVOpenBtn);
+            this.panel1.Controls.Add(this.metroButton4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(578, 248);
+            this.panel1.TabIndex = 40;
+            // 
+            // CSVOpenBtn
+            // 
+            this.CSVOpenBtn.DisplayFocus = true;
+            this.CSVOpenBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.CSVOpenBtn.Location = new System.Drawing.Point(481, 3);
+            this.CSVOpenBtn.Name = "CSVOpenBtn";
+            this.CSVOpenBtn.Size = new System.Drawing.Size(91, 29);
+            this.CSVOpenBtn.TabIndex = 39;
+            this.CSVOpenBtn.Text = "CSV Open";
+            this.CSVOpenBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CSVOpenBtn.UseSelectable = true;
+            this.CSVOpenBtn.Click += new System.EventHandler(this.CSVOpenBtn_Click);
+            // 
+            // metroButton4
+            // 
+            this.metroButton4.DisplayFocus = true;
+            this.metroButton4.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton4.Location = new System.Drawing.Point(481, 37);
+            this.metroButton4.Name = "metroButton4";
+            this.metroButton4.Size = new System.Drawing.Size(91, 29);
+            this.metroButton4.TabIndex = 39;
+            this.metroButton4.Text = "RUN";
+            this.metroButton4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton4.UseSelectable = true;
+            // 
             // metroTabPage2
             // 
             this.metroTabPage2.BackColor = System.Drawing.Color.Transparent;
@@ -3833,6 +3899,52 @@
             this.consolemonitorChkBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.consolemonitorChkBox.UseSelectable = true;
             // 
+            // csvGrid
+            // 
+            this.csvGrid.AllowUserToResizeRows = false;
+            this.csvGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.csvGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.csvGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.csvGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.csvGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.csvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.csvGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.csvGrid.Dock = System.Windows.Forms.DockStyle.Left;
+            this.csvGrid.EnableHeadersVisualStyles = false;
+            this.csvGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.csvGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.csvGrid.Location = new System.Drawing.Point(0, 0);
+            this.csvGrid.Name = "csvGrid";
+            this.csvGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.csvGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.csvGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.csvGrid.RowTemplate.Height = 23;
+            this.csvGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.csvGrid.Size = new System.Drawing.Size(461, 248);
+            this.csvGrid.TabIndex = 40;
+            this.csvGrid.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -3883,6 +3995,9 @@
             this.AutoBend.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            this.metroTabPage4.ResumeLayout(false);
+            this.metroTabPage4.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
@@ -3893,6 +4008,7 @@
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.csvGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4086,6 +4202,11 @@
         private MetroFramework.Controls.MetroToggle AutobendDTPToggle;
         private MetroFramework.Controls.MetroButton AutobendStopBtn;
         private MetroFramework.Controls.MetroCheckBox consolemonitorChkBox;
+        private MetroFramework.Controls.MetroTabPage metroTabPage4;
+        private MetroFramework.Controls.MetroButton metroButton4;
+        private MetroFramework.Controls.MetroButton CSVOpenBtn;
+        private System.Windows.Forms.Panel panel1;
+        private MetroFramework.Controls.MetroGrid csvGrid;
     }
 }
 
