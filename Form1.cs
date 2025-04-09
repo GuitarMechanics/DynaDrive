@@ -31,6 +31,7 @@ namespace DynaDrive
 
 
         private int stepsize = 0;
+        private int maxtorque = 1023;
 
         // JHC
         private CtrMovementControl CtrMC;
@@ -382,6 +383,16 @@ namespace DynaDrive
         private void metroButton1_Click(object sender, EventArgs e)
         {
             CtrPos.CreateFile(this);
+        }
+
+        private void setMaxTorqueBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                maxtorque = Convert.ToInt32(MaxTorqueTxtBox.Text.ToString());
+            }
+            catch (Exception) { maxtorque = 1023; }
+
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Controls;
-//안녕
+
 namespace DynaDrive
 {
     public class ArrayMath

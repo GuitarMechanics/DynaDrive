@@ -18,6 +18,7 @@ namespace DynaDrive
         public int[] goalPos = new int[4];
         public int[] presPos = new int[4];
         public int[] pidPGains = new int[4];
+
         public int accMode = 0;
         public int maxSpd = 300;
 

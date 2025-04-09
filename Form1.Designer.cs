@@ -90,6 +90,10 @@ namespace DynaDrive
             this.targetLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.DirectControl = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel83 = new MetroFramework.Controls.MetroLabel();
+            this.setMaxTorqueBtn = new MetroFramework.Controls.MetroButton();
+            this.metroLabel82 = new MetroFramework.Controls.MetroLabel();
+            this.MaxTorqueTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
             this.stepSetBtn = new MetroFramework.Controls.MetroButton();
             this.stepSizeIndLabel = new MetroFramework.Controls.MetroLabel();
@@ -1201,7 +1205,7 @@ namespace DynaDrive
             this.metroTabControl1.Controls.Add(this.About);
             this.metroTabControl1.Location = new System.Drawing.Point(79, 320);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1105, 683);
             this.metroTabControl1.TabIndex = 3;
             this.metroTabControl1.TabStop = false;
@@ -1212,6 +1216,10 @@ namespace DynaDrive
             // 
             this.DirectControl.BackColor = System.Drawing.Color.Transparent;
             this.DirectControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DirectControl.Controls.Add(this.metroLabel83);
+            this.DirectControl.Controls.Add(this.setMaxTorqueBtn);
+            this.DirectControl.Controls.Add(this.metroLabel82);
+            this.DirectControl.Controls.Add(this.MaxTorqueTxtBox);
             this.DirectControl.Controls.Add(this.metroLabel24);
             this.DirectControl.Controls.Add(this.stepSetBtn);
             this.DirectControl.Controls.Add(this.stepSizeIndLabel);
@@ -1238,12 +1246,85 @@ namespace DynaDrive
             this.DirectControl.VerticalScrollbarHighlightOnWheel = false;
             this.DirectControl.VerticalScrollbarSize = 2;
             // 
+            // metroLabel83
+            // 
+            this.metroLabel83.AutoSize = true;
+            this.metroLabel83.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel83.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel83.Location = new System.Drawing.Point(576, 183);
+            this.metroLabel83.Name = "metroLabel83";
+            this.metroLabel83.Size = new System.Drawing.Size(134, 25);
+            this.metroLabel83.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel83.TabIndex = 38;
+            this.metroLabel83.Text = "default = 100%";
+            this.metroLabel83.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel83.UseStyleColors = true;
+            // 
+            // setMaxTorqueBtn
+            // 
+            this.setMaxTorqueBtn.DisplayFocus = true;
+            this.setMaxTorqueBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.setMaxTorqueBtn.Location = new System.Drawing.Point(496, 183);
+            this.setMaxTorqueBtn.Name = "setMaxTorqueBtn";
+            this.setMaxTorqueBtn.Size = new System.Drawing.Size(59, 29);
+            this.setMaxTorqueBtn.TabIndex = 37;
+            this.setMaxTorqueBtn.Text = "SET";
+            this.setMaxTorqueBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.setMaxTorqueBtn.UseSelectable = true;
+            this.setMaxTorqueBtn.Click += new System.EventHandler(this.setMaxTorqueBtn_Click);
+            // 
+            // metroLabel82
+            // 
+            this.metroLabel82.AutoSize = true;
+            this.metroLabel82.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel82.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel82.Location = new System.Drawing.Point(439, 152);
+            this.metroLabel82.Name = "metroLabel82";
+            this.metroLabel82.Size = new System.Drawing.Size(134, 25);
+            this.metroLabel82.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel82.TabIndex = 36;
+            this.metroLabel82.Text = "Max Torque (%)";
+            this.metroLabel82.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel82.UseStyleColors = true;
+            // 
+            // MaxTorqueTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.MaxTorqueTxtBox.CustomButton.Image = null;
+            this.MaxTorqueTxtBox.CustomButton.Location = new System.Drawing.Point(61, 1);
+            this.MaxTorqueTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.MaxTorqueTxtBox.CustomButton.Name = "";
+            this.MaxTorqueTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.MaxTorqueTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.MaxTorqueTxtBox.CustomButton.TabIndex = 1;
+            this.MaxTorqueTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.MaxTorqueTxtBox.CustomButton.UseSelectable = true;
+            this.MaxTorqueTxtBox.CustomButton.Visible = false;
+            this.MaxTorqueTxtBox.Lines = new string[0];
+            this.MaxTorqueTxtBox.Location = new System.Drawing.Point(380, 183);
+            this.MaxTorqueTxtBox.MaxLength = 32767;
+            this.MaxTorqueTxtBox.Name = "MaxTorqueTxtBox";
+            this.MaxTorqueTxtBox.PasswordChar = '\0';
+            this.MaxTorqueTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.MaxTorqueTxtBox.SelectedText = "";
+            this.MaxTorqueTxtBox.SelectionLength = 0;
+            this.MaxTorqueTxtBox.SelectionStart = 0;
+            this.MaxTorqueTxtBox.ShortcutsEnabled = true;
+            this.MaxTorqueTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.MaxTorqueTxtBox.TabIndex = 35;
+            this.MaxTorqueTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MaxTorqueTxtBox.UseSelectable = true;
+            this.MaxTorqueTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.MaxTorqueTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // metroLabel24
             // 
             this.metroLabel24.AutoSize = true;
             this.metroLabel24.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel24.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel24.Location = new System.Drawing.Point(380, 151);
+            this.metroLabel24.Location = new System.Drawing.Point(576, 84);
             this.metroLabel24.Name = "metroLabel24";
             this.metroLabel24.Size = new System.Drawing.Size(194, 25);
             this.metroLabel24.Style = MetroFramework.MetroColorStyle.White;
@@ -4242,7 +4323,7 @@ namespace DynaDrive
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(26, 80, 26, 27);
             this.Style = MetroFramework.MetroColorStyle.White;
-            this.Text = " ";
+            this.Text = "A";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -4476,6 +4557,10 @@ namespace DynaDrive
         public MetroFramework.Controls.MetroButton PcBrowseBtn;
         public MetroFramework.Controls.MetroTextBox ScRepetitionTxtbox;
         private MetroFramework.Controls.MetroLabel metroLabel81;
+        private MetroFramework.Controls.MetroLabel metroLabel82;
+        private MetroFramework.Controls.MetroTextBox MaxTorqueTxtBox;
+        private MetroFramework.Controls.MetroLabel metroLabel83;
+        private MetroFramework.Controls.MetroButton setMaxTorqueBtn;
     }
 }
 
