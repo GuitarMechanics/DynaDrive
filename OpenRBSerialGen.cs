@@ -32,10 +32,17 @@ namespace DynaDrive
 
         public void inputStrDecode(string inputStr)
         {
-            char[] splits = { ',' };
-            string[] strings = inputStr.Split(splits);
-            for (int i = 0; i < strings.Length; i++) parcedInts[i] = int.Parse(strings[i]);
-            for (int i = 1; i < 5; i++) presPos[i - 1] = parcedInts[i] - posCenter;
+            try
+            {
+                char[] splits = { ',' };
+                string[] strings = inputStr.Split(splits);
+                for (int i = 0; i < strings.Length; i++) parcedInts[i] = int.Parse(strings[i]);
+                for (int i = 1; i < 5; i++) presPos[i - 1] = parcedInts[i] - posCenter;
+            }
+            catch(Exception)
+            {
+
+            }
         }
         public string[] serialGen()
         {

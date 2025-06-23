@@ -839,6 +839,7 @@ namespace DynaDrive
 
                     _ = Task.Run(() => ReceiveLoop());
                     hapticSetBtn.Text = "DISCONNECT ";
+                    hapticStatusLabel.Text = "TCP Only";
                     setTransConvBtn.PerformClick();
                 }
                 catch (Exception ex)
@@ -912,6 +913,8 @@ namespace DynaDrive
                     int v2 = BitConverter.ToInt32(recvBuffer, 4);
                     int v3 = BitConverter.ToInt32(recvBuffer, 8);
 
+                    //hapticHoldToggle.Checked = (v3 == 1) ? true : false;
+
                     double mt1tdrecv = (double)v1 / 100.0 * Math.Cos((double)v2);
                     double mt2tdrecv = (double)v1 / 100.0 * Math.Sin((double)v2);
 
@@ -931,8 +934,16 @@ namespace DynaDrive
                         }
                     }));
 
+                    float[] mtpos = screwDrive.rot2trans(openRB.presPos);
+                    int sendTDL = (int) Math.Round(Math.Sqrt(Math.Pow(mtpos[0],2) + Math.Pow(mtpos[1],2)) * 100);
+                    int sendDIR = (int) Math.Round(Math.Atan2((double)mtpos[1], (double)mtpos[0]) * 100);
+                    int sendHLD = hapticHoldToggle.Checked ? 1 : 0;
 
-                    await stream.WriteAsync(recvBuffer, 0, recvBuffer.Length);
+                    byte[] sendbuffer = new byte[12];
+                    Array.Copy(BitConverter.GetBytes(sendTDL), 0, sendbuffer, 0, 4);
+                    Array.Copy(BitConverter.GetBytes(sendDIR), 0, sendbuffer, 4, 4);
+                    Array.Copy(BitConverter.GetBytes(sendHLD), 0, sendbuffer, 8, 4);
+                    await stream.WriteAsync(sendbuffer, 0, sendbuffer.Length);
 
                 }
             }
@@ -953,11 +964,13 @@ namespace DynaDrive
             {
                 hapticEnable = false;
                 hapticOnOffBtn.Text = "ON";
+                hapticStatusLabel.Text = (socketRunning) ? "TCP Only" : "OFF";
             }
             else
             {
                 hapticEnable = true;
                 hapticOnOffBtn.Text = "OFF";
+                hapticStatusLabel.Text = (socketRunning) ? "ON" : "CHK TCP";
             }
         }
     }

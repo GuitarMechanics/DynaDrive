@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             MetroFramework.Controls.MetroTabPage Setup;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroLabel37 = new MetroFramework.Controls.MetroLabel();
             this.SetupPresetComboBox = new MetroFramework.Controls.MetroComboBox();
             this.setApplyBtn = new MetroFramework.Controls.MetroButton();
@@ -204,7 +204,6 @@
             this.socketPortTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.hapticSetBtn = new MetroFramework.Controls.MetroButton();
             this.hapticOnOffBtn = new MetroFramework.Controls.MetroButton();
-            this.hapticESTOPBtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel83 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel81 = new MetroFramework.Controls.MetroLabel();
             this.hapticHoldToggle = new MetroFramework.Controls.MetroToggle();
@@ -3380,23 +3379,23 @@
             this.csvGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.csvGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.csvGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.csvGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.csvGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.csvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.csvGrid.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.csvGrid.DefaultCellStyle = dataGridViewCellStyle20;
             this.csvGrid.Dock = System.Windows.Forms.DockStyle.Left;
             this.csvGrid.EnableHeadersVisualStyles = false;
             this.csvGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -3404,14 +3403,14 @@
             this.csvGrid.Location = new System.Drawing.Point(0, 0);
             this.csvGrid.Name = "csvGrid";
             this.csvGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.csvGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.csvGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.csvGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.csvGrid.RowTemplate.Height = 23;
             this.csvGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -3471,7 +3470,6 @@
             this.tableLayoutPanel10.Controls.Add(this.socketPortTxtBox, 4, 1);
             this.tableLayoutPanel10.Controls.Add(this.hapticSetBtn, 5, 1);
             this.tableLayoutPanel10.Controls.Add(this.hapticOnOffBtn, 5, 2);
-            this.tableLayoutPanel10.Controls.Add(this.hapticESTOPBtn, 5, 3);
             this.tableLayoutPanel10.Controls.Add(this.metroLabel83, 3, 1);
             this.tableLayoutPanel10.Controls.Add(this.metroLabel81, 3, 3);
             this.tableLayoutPanel10.Controls.Add(this.hapticHoldToggle, 4, 3);
@@ -3609,18 +3607,6 @@
             this.hapticOnOffBtn.UseSelectable = true;
             this.hapticOnOffBtn.Click += new System.EventHandler(this.hapticOnOffBtn_Click);
             // 
-            // hapticESTOPBtn
-            // 
-            this.hapticESTOPBtn.DisplayFocus = true;
-            this.hapticESTOPBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.hapticESTOPBtn.Location = new System.Drawing.Point(478, 117);
-            this.hapticESTOPBtn.Name = "hapticESTOPBtn";
-            this.hapticESTOPBtn.Size = new System.Drawing.Size(91, 29);
-            this.hapticESTOPBtn.TabIndex = 39;
-            this.hapticESTOPBtn.Text = "STOP / CTR";
-            this.hapticESTOPBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.hapticESTOPBtn.UseSelectable = true;
-            // 
             // metroLabel83
             // 
             this.metroLabel83.AutoSize = true;
@@ -3652,14 +3638,12 @@
             // hapticHoldToggle
             // 
             this.hapticHoldToggle.AutoSize = true;
-            this.hapticHoldToggle.Checked = true;
-            this.hapticHoldToggle.CheckState = System.Windows.Forms.CheckState.Checked;
             this.hapticHoldToggle.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.hapticHoldToggle.Location = new System.Drawing.Point(383, 117);
             this.hapticHoldToggle.Name = "hapticHoldToggle";
             this.hapticHoldToggle.Size = new System.Drawing.Size(80, 20);
             this.hapticHoldToggle.TabIndex = 33;
-            this.hapticHoldToggle.Text = "On";
+            this.hapticHoldToggle.Text = "Off";
             this.hapticHoldToggle.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.hapticHoldToggle.UseSelectable = true;
             // 
@@ -4647,7 +4631,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel77;
         private MetroFramework.Controls.MetroTextBox socketPortTxtBox;
         private MetroFramework.Controls.MetroLabel metroLabel81;
-        private MetroFramework.Controls.MetroButton hapticESTOPBtn;
         private MetroFramework.Controls.MetroButton hapticSetBtn;
         private MetroFramework.Controls.MetroButton hapticOnOffBtn;
         private MetroFramework.Controls.MetroLabel metroLabel83;
