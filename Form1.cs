@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
@@ -14,6 +15,10 @@ using System.CodeDom;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Drawing.Text;
+using System.Net;
+using System.Net.Sockets;
+using winFormsTimer = System.Windows.Forms.Timer;
+using System.Net.Http;
 
 // 솔루션용 nuget 설치 필요: metroui
 // https://luckygg.tistory.com/302
@@ -48,9 +53,9 @@ namespace DynaDrive
 
         private DualbendCalc dualBend;
 
-        Timer SteppingTimer = new Timer();
-        Timer BendingTimer = new Timer();
-        Timer CSVTimer = new Timer();
+        winFormsTimer SteppingTimer = new winFormsTimer();
+        winFormsTimer BendingTimer = new winFormsTimer();
+        winFormsTimer CSVTimer = new winFormsTimer();
         private int stepTimerCnt = 0;
         private int stepRepeatTarget = 0;
         private int stepRepeatCurrent = 0;
@@ -62,6 +67,13 @@ namespace DynaDrive
         private int autobendsteps = 0;
         private int csvAutoRowIndex = 0;
 
+        private bool socketRunning = false;
+        Task socketTask;
+        TcpClient tcpClient;
+        NetworkStream stream;
+        Thread receiveThread;
+
+        private bool hapticEnable = false;
 
         public Form1()
         {
@@ -810,6 +822,143 @@ namespace DynaDrive
         private void CSVStopBtn_Click(object sender, EventArgs e)
         {
             CSVTimer.Stop();
+        }
+
+        private async void hapticSetBtn_Click(object sender, EventArgs e)
+        {
+            if (!socketRunning)
+            {
+                hapticSetBtn.Enabled = false; // 버튼 잠금 (중복 클릭 방지)
+
+                tcpClient = new TcpClient();  // ← 여기에서 인스턴스 생성 확실히!
+                try
+                {
+                    await tcpClient.ConnectAsync("localhost", 5000);
+                    stream = tcpClient.GetStream();
+                    socketRunning = true;
+
+                    _ = Task.Run(() => ReceiveLoop());
+                    hapticSetBtn.Text = "DISCONNECT ";
+                    setTransConvBtn.PerformClick();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("error", ex.Message);
+                    tcpClient?.Close();
+                }
+                finally
+                {
+                    hapticSetBtn.Enabled = true;
+                }
+            }
+
+            else
+            {
+                StopSocket();
+            }
+        }
+
+        private async Task StartSocket()
+        {
+            try
+            {
+                int portno = Convert.ToInt32(socketPortTxtBox.Text);
+                await tcpClient.ConnectAsync("localhost", 1234);
+                stream = tcpClient.GetStream();
+                socketRunning = true;
+                hapticStatusLabel.Text = "Running";
+                hapticSetBtn.Text = "DISCONNECT";
+                _ = Task.Run(() => ReceiveLoop());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Connection Failed");
+            }
+
+        }
+        private void StopSocket()
+        {
+            try
+            {
+                socketRunning = false;
+                stream?.Close();
+                tcpClient?.Close();
+                hapticStatusLabel.Text = "OFF";
+                hapticSetBtn.Text = "CONNECT";
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        private async Task ReceiveLoop()
+        {
+            try
+            {
+                byte[] recvBuffer = new byte[12];
+                while (socketRunning)
+                {
+                    int totalBytesRead = 0;
+                    while (totalBytesRead < 12)
+                    {
+                        int bytesRead = await stream.ReadAsync(recvBuffer, totalBytesRead, 12 - totalBytesRead);
+                        if (bytesRead == 0)
+                            throw new Exception("Server disconnected.");
+                        totalBytesRead += bytesRead;
+                    }
+
+                    int v1 = BitConverter.ToInt32(recvBuffer, 0);
+                    int v2 = BitConverter.ToInt32(recvBuffer, 4);
+                    int v3 = BitConverter.ToInt32(recvBuffer, 8);
+
+                    double mt1tdrecv = (double)v1 / 100.0 * Math.Cos((double)v2);
+                    double mt2tdrecv = (double)v1 / 100.0 * Math.Sin((double)v2);
+
+                    int mtgoal1 = screwDrive.trans2rot(mt1tdrecv);
+                    int mtgoal2 = screwDrive.trans2rot(mt2tdrecv);
+
+                    int[] mtgoalarr = new int[4] { mtgoal1, mtgoal2, 0, 0 };
+                    this.Invoke(new Action(() =>
+                    {
+                        socketRXTDLLabel.Text = v1.ToString() + "/100 mm";
+                        socketRXDIRLabel.Text = v2.ToString() + "/100 rad";
+                        socketRXMODELabel.Text = v3.ToString();
+                        if (hapticEnable)
+                        {
+                            openRB.writeGoalPos(mtgoalarr);
+                            serialSend();
+                        }
+                    }));
+
+
+                    await stream.WriteAsync(recvBuffer, 0, recvBuffer.Length);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    MessageBox.Show(ex.Message, "connection stopped");
+                    hapticSetBtn.Text = "CONNECT";
+                    socketRunning = false;
+                }));
+            }
+        }
+
+        private void hapticOnOffBtn_Click(object sender, EventArgs e)
+        {
+            if (hapticEnable)
+            {
+                hapticEnable = false;
+                hapticOnOffBtn.Text = "ON";
+            }
+            else
+            {
+                hapticEnable = true;
+                hapticOnOffBtn.Text = "OFF";
+            }
         }
     }
 }

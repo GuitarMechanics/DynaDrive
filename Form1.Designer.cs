@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             MetroFramework.Controls.MetroTabPage Setup;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroLabel37 = new MetroFramework.Controls.MetroLabel();
             this.SetupPresetComboBox = new MetroFramework.Controls.MetroComboBox();
             this.setApplyBtn = new MetroFramework.Controls.MetroButton();
@@ -187,6 +187,7 @@
             this.AutobendStopBtn = new MetroFramework.Controls.MetroButton();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CSVStopBtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel69 = new MetroFramework.Controls.MetroLabel();
             this.CSVmmconvToggle = new MetroFramework.Controls.MetroToggle();
             this.CSVIntervalTxtBox = new MetroFramework.Controls.MetroTextBox();
@@ -194,6 +195,25 @@
             this.csvGrid = new MetroFramework.Controls.MetroGrid();
             this.CSVOpenBtn = new MetroFramework.Controls.MetroButton();
             this.CSVRunBtn = new MetroFramework.Controls.MetroButton();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.metroLabel72 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel74 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel75 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel77 = new MetroFramework.Controls.MetroLabel();
+            this.socketPortTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.hapticSetBtn = new MetroFramework.Controls.MetroButton();
+            this.hapticOnOffBtn = new MetroFramework.Controls.MetroButton();
+            this.hapticESTOPBtn = new MetroFramework.Controls.MetroButton();
+            this.metroLabel83 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel81 = new MetroFramework.Controls.MetroLabel();
+            this.hapticHoldToggle = new MetroFramework.Controls.MetroToggle();
+            this.socketRXTDLLabel = new MetroFramework.Controls.MetroLabel();
+            this.socketRXDIRLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel73 = new MetroFramework.Controls.MetroLabel();
+            this.hapticStatusLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel78 = new MetroFramework.Controls.MetroLabel();
+            this.socketRXMODELabel = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.distPosLabel = new MetroFramework.Controls.MetroLabel();
             this.distalAngleLabel = new MetroFramework.Controls.MetroLabel();
@@ -227,7 +247,6 @@
             this.bendCtrSetBtn = new MetroFramework.Controls.MetroButton();
             this.bendCtrCenterBtn = new MetroFramework.Controls.MetroButton();
             this.consolemonitorChkBox = new MetroFramework.Controls.MetroCheckBox();
-            this.CSVStopBtn = new MetroFramework.Controls.MetroButton();
             Setup = new MetroFramework.Controls.MetroTabPage();
             Setup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -243,6 +262,8 @@
             this.metroTabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.csvGrid)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
@@ -1199,6 +1220,7 @@
             this.metroTabControl1.Controls.Add(this.ProgramPage);
             this.metroTabControl1.Controls.Add(this.AutoBend);
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
+            this.metroTabControl1.Controls.Add(this.tabPage1);
             this.metroTabControl1.Controls.Add(Setup);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
@@ -3264,6 +3286,19 @@
             this.panel1.Size = new System.Drawing.Size(578, 248);
             this.panel1.TabIndex = 40;
             // 
+            // CSVStopBtn
+            // 
+            this.CSVStopBtn.DisplayFocus = true;
+            this.CSVStopBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.CSVStopBtn.Location = new System.Drawing.Point(481, 71);
+            this.CSVStopBtn.Name = "CSVStopBtn";
+            this.CSVStopBtn.Size = new System.Drawing.Size(91, 29);
+            this.CSVStopBtn.TabIndex = 45;
+            this.CSVStopBtn.Text = "STOP";
+            this.CSVStopBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CSVStopBtn.UseSelectable = true;
+            this.CSVStopBtn.Click += new System.EventHandler(this.CSVStopBtn_Click);
+            // 
             // metroLabel69
             // 
             this.metroLabel69.AutoSize = true;
@@ -3345,23 +3380,23 @@
             this.csvGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.csvGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.csvGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.csvGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.csvGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.csvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.csvGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.csvGrid.DefaultCellStyle = dataGridViewCellStyle14;
             this.csvGrid.Dock = System.Windows.Forms.DockStyle.Left;
             this.csvGrid.EnableHeadersVisualStyles = false;
             this.csvGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -3369,14 +3404,14 @@
             this.csvGrid.Location = new System.Drawing.Point(0, 0);
             this.csvGrid.Name = "csvGrid";
             this.csvGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.csvGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.csvGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.csvGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.csvGrid.RowTemplate.Height = 23;
             this.csvGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -3409,6 +3444,308 @@
             this.CSVRunBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.CSVRunBtn.UseSelectable = true;
             this.CSVRunBtn.Click += new System.EventHandler(this.CSVRunBtn_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.tableLayoutPanel10);
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(578, 248);
+            this.tabPage1.TabIndex = 7;
+            this.tabPage1.Text = "Haptic";
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 6;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.36364F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.72028F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.643357F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.70629F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel10.Controls.Add(this.metroLabel72, 1, 0);
+            this.tableLayoutPanel10.Controls.Add(this.metroLabel74, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.metroLabel75, 0, 2);
+            this.tableLayoutPanel10.Controls.Add(this.metroLabel77, 4, 0);
+            this.tableLayoutPanel10.Controls.Add(this.socketPortTxtBox, 4, 1);
+            this.tableLayoutPanel10.Controls.Add(this.hapticSetBtn, 5, 1);
+            this.tableLayoutPanel10.Controls.Add(this.hapticOnOffBtn, 5, 2);
+            this.tableLayoutPanel10.Controls.Add(this.hapticESTOPBtn, 5, 3);
+            this.tableLayoutPanel10.Controls.Add(this.metroLabel83, 3, 1);
+            this.tableLayoutPanel10.Controls.Add(this.metroLabel81, 3, 3);
+            this.tableLayoutPanel10.Controls.Add(this.hapticHoldToggle, 4, 3);
+            this.tableLayoutPanel10.Controls.Add(this.socketRXTDLLabel, 1, 1);
+            this.tableLayoutPanel10.Controls.Add(this.socketRXDIRLabel, 1, 2);
+            this.tableLayoutPanel10.Controls.Add(this.metroLabel73, 3, 4);
+            this.tableLayoutPanel10.Controls.Add(this.hapticStatusLabel, 4, 4);
+            this.tableLayoutPanel10.Controls.Add(this.metroLabel78, 0, 3);
+            this.tableLayoutPanel10.Controls.Add(this.socketRXMODELabel, 1, 3);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 17);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 6;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(572, 214);
+            this.tableLayoutPanel10.TabIndex = 33;
+            // 
+            // metroLabel72
+            // 
+            this.metroLabel72.AutoSize = true;
+            this.metroLabel72.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel72.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel72.Location = new System.Drawing.Point(68, 0);
+            this.metroLabel72.Name = "metroLabel72";
+            this.metroLabel72.Size = new System.Drawing.Size(134, 25);
+            this.metroLabel72.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel72.TabIndex = 15;
+            this.metroLabel72.Text = "Socket Monitor";
+            this.metroLabel72.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel72.UseStyleColors = true;
+            // 
+            // metroLabel74
+            // 
+            this.metroLabel74.AutoSize = true;
+            this.metroLabel74.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel74.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel74.Location = new System.Drawing.Point(3, 38);
+            this.metroLabel74.Name = "metroLabel74";
+            this.metroLabel74.Size = new System.Drawing.Size(42, 25);
+            this.metroLabel74.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel74.TabIndex = 17;
+            this.metroLabel74.Text = "TDL";
+            this.metroLabel74.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel74.UseStyleColors = true;
+            // 
+            // metroLabel75
+            // 
+            this.metroLabel75.AutoSize = true;
+            this.metroLabel75.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel75.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel75.Location = new System.Drawing.Point(3, 76);
+            this.metroLabel75.Name = "metroLabel75";
+            this.metroLabel75.Size = new System.Drawing.Size(41, 25);
+            this.metroLabel75.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel75.TabIndex = 19;
+            this.metroLabel75.Text = "DIR";
+            this.metroLabel75.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel75.UseStyleColors = true;
+            // 
+            // metroLabel77
+            // 
+            this.metroLabel77.AutoSize = true;
+            this.metroLabel77.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel77.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel77.Location = new System.Drawing.Point(383, 0);
+            this.metroLabel77.Name = "metroLabel77";
+            this.metroLabel77.Size = new System.Drawing.Size(65, 25);
+            this.metroLabel77.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel77.TabIndex = 16;
+            this.metroLabel77.Text = "Socket";
+            this.metroLabel77.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel77.UseStyleColors = true;
+            // 
+            // socketPortTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.socketPortTxtBox.CustomButton.Image = null;
+            this.socketPortTxtBox.CustomButton.Location = new System.Drawing.Point(52, 1);
+            this.socketPortTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.socketPortTxtBox.CustomButton.Name = "";
+            this.socketPortTxtBox.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.socketPortTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.socketPortTxtBox.CustomButton.TabIndex = 1;
+            this.socketPortTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.socketPortTxtBox.CustomButton.UseSelectable = true;
+            this.socketPortTxtBox.CustomButton.Visible = false;
+            this.socketPortTxtBox.Lines = new string[] {
+        "5000"};
+            this.socketPortTxtBox.Location = new System.Drawing.Point(383, 41);
+            this.socketPortTxtBox.MaxLength = 32767;
+            this.socketPortTxtBox.Name = "socketPortTxtBox";
+            this.socketPortTxtBox.PasswordChar = '\0';
+            this.socketPortTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.socketPortTxtBox.SelectedText = "";
+            this.socketPortTxtBox.SelectionLength = 0;
+            this.socketPortTxtBox.SelectionStart = 0;
+            this.socketPortTxtBox.ShortcutsEnabled = true;
+            this.socketPortTxtBox.Size = new System.Drawing.Size(89, 23);
+            this.socketPortTxtBox.TabIndex = 39;
+            this.socketPortTxtBox.Text = "5000";
+            this.socketPortTxtBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.socketPortTxtBox.UseSelectable = true;
+            this.socketPortTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.socketPortTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // hapticSetBtn
+            // 
+            this.hapticSetBtn.DisplayFocus = true;
+            this.hapticSetBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.hapticSetBtn.Location = new System.Drawing.Point(478, 41);
+            this.hapticSetBtn.Name = "hapticSetBtn";
+            this.hapticSetBtn.Size = new System.Drawing.Size(91, 29);
+            this.hapticSetBtn.TabIndex = 38;
+            this.hapticSetBtn.Text = "CONNECT";
+            this.hapticSetBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.hapticSetBtn.UseSelectable = true;
+            this.hapticSetBtn.Click += new System.EventHandler(this.hapticSetBtn_Click);
+            // 
+            // hapticOnOffBtn
+            // 
+            this.hapticOnOffBtn.DisplayFocus = true;
+            this.hapticOnOffBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.hapticOnOffBtn.Location = new System.Drawing.Point(478, 79);
+            this.hapticOnOffBtn.Name = "hapticOnOffBtn";
+            this.hapticOnOffBtn.Size = new System.Drawing.Size(91, 29);
+            this.hapticOnOffBtn.TabIndex = 39;
+            this.hapticOnOffBtn.Text = "ON";
+            this.hapticOnOffBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.hapticOnOffBtn.UseSelectable = true;
+            this.hapticOnOffBtn.Click += new System.EventHandler(this.hapticOnOffBtn_Click);
+            // 
+            // hapticESTOPBtn
+            // 
+            this.hapticESTOPBtn.DisplayFocus = true;
+            this.hapticESTOPBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.hapticESTOPBtn.Location = new System.Drawing.Point(478, 117);
+            this.hapticESTOPBtn.Name = "hapticESTOPBtn";
+            this.hapticESTOPBtn.Size = new System.Drawing.Size(91, 29);
+            this.hapticESTOPBtn.TabIndex = 39;
+            this.hapticESTOPBtn.Text = "STOP / CTR";
+            this.hapticESTOPBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.hapticESTOPBtn.UseSelectable = true;
+            // 
+            // metroLabel83
+            // 
+            this.metroLabel83.AutoSize = true;
+            this.metroLabel83.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel83.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel83.Location = new System.Drawing.Point(276, 38);
+            this.metroLabel83.Name = "metroLabel83";
+            this.metroLabel83.Size = new System.Drawing.Size(44, 25);
+            this.metroLabel83.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel83.TabIndex = 15;
+            this.metroLabel83.Text = "Port";
+            this.metroLabel83.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel83.UseStyleColors = true;
+            // 
+            // metroLabel81
+            // 
+            this.metroLabel81.AutoSize = true;
+            this.metroLabel81.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel81.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel81.Location = new System.Drawing.Point(276, 114);
+            this.metroLabel81.Name = "metroLabel81";
+            this.metroLabel81.Size = new System.Drawing.Size(90, 25);
+            this.metroLabel81.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel81.TabIndex = 15;
+            this.metroLabel81.Text = "POS Hold";
+            this.metroLabel81.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel81.UseStyleColors = true;
+            // 
+            // hapticHoldToggle
+            // 
+            this.hapticHoldToggle.AutoSize = true;
+            this.hapticHoldToggle.Checked = true;
+            this.hapticHoldToggle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hapticHoldToggle.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.hapticHoldToggle.Location = new System.Drawing.Point(383, 117);
+            this.hapticHoldToggle.Name = "hapticHoldToggle";
+            this.hapticHoldToggle.Size = new System.Drawing.Size(80, 20);
+            this.hapticHoldToggle.TabIndex = 33;
+            this.hapticHoldToggle.Text = "On";
+            this.hapticHoldToggle.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.hapticHoldToggle.UseSelectable = true;
+            // 
+            // socketRXTDLLabel
+            // 
+            this.socketRXTDLLabel.AutoSize = true;
+            this.socketRXTDLLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.socketRXTDLLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.socketRXTDLLabel.Location = new System.Drawing.Point(68, 38);
+            this.socketRXTDLLabel.Name = "socketRXTDLLabel";
+            this.socketRXTDLLabel.Size = new System.Drawing.Size(19, 25);
+            this.socketRXTDLLabel.Style = MetroFramework.MetroColorStyle.White;
+            this.socketRXTDLLabel.TabIndex = 15;
+            this.socketRXTDLLabel.Text = "-";
+            this.socketRXTDLLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.socketRXTDLLabel.UseStyleColors = true;
+            // 
+            // socketRXDIRLabel
+            // 
+            this.socketRXDIRLabel.AutoSize = true;
+            this.socketRXDIRLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.socketRXDIRLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.socketRXDIRLabel.Location = new System.Drawing.Point(68, 76);
+            this.socketRXDIRLabel.Name = "socketRXDIRLabel";
+            this.socketRXDIRLabel.Size = new System.Drawing.Size(19, 25);
+            this.socketRXDIRLabel.Style = MetroFramework.MetroColorStyle.White;
+            this.socketRXDIRLabel.TabIndex = 15;
+            this.socketRXDIRLabel.Text = "-";
+            this.socketRXDIRLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.socketRXDIRLabel.UseStyleColors = true;
+            // 
+            // metroLabel73
+            // 
+            this.metroLabel73.AutoSize = true;
+            this.metroLabel73.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel73.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel73.Location = new System.Drawing.Point(276, 152);
+            this.metroLabel73.Name = "metroLabel73";
+            this.metroLabel73.Size = new System.Drawing.Size(72, 25);
+            this.metroLabel73.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel73.TabIndex = 15;
+            this.metroLabel73.Text = "STATUS";
+            this.metroLabel73.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel73.UseStyleColors = true;
+            // 
+            // hapticStatusLabel
+            // 
+            this.hapticStatusLabel.AutoSize = true;
+            this.hapticStatusLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.hapticStatusLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.hapticStatusLabel.Location = new System.Drawing.Point(383, 152);
+            this.hapticStatusLabel.Name = "hapticStatusLabel";
+            this.hapticStatusLabel.Size = new System.Drawing.Size(44, 25);
+            this.hapticStatusLabel.Style = MetroFramework.MetroColorStyle.White;
+            this.hapticStatusLabel.TabIndex = 15;
+            this.hapticStatusLabel.Text = "OFF";
+            this.hapticStatusLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.hapticStatusLabel.UseStyleColors = true;
+            // 
+            // metroLabel78
+            // 
+            this.metroLabel78.AutoSize = true;
+            this.metroLabel78.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel78.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel78.Location = new System.Drawing.Point(3, 114);
+            this.metroLabel78.Name = "metroLabel78";
+            this.metroLabel78.Size = new System.Drawing.Size(59, 25);
+            this.metroLabel78.Style = MetroFramework.MetroColorStyle.White;
+            this.metroLabel78.TabIndex = 19;
+            this.metroLabel78.Text = "Mode";
+            this.metroLabel78.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel78.UseStyleColors = true;
+            // 
+            // socketRXMODELabel
+            // 
+            this.socketRXMODELabel.AutoSize = true;
+            this.socketRXMODELabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.socketRXMODELabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.socketRXMODELabel.Location = new System.Drawing.Point(68, 114);
+            this.socketRXMODELabel.Name = "socketRXMODELabel";
+            this.socketRXMODELabel.Size = new System.Drawing.Size(19, 25);
+            this.socketRXMODELabel.Style = MetroFramework.MetroColorStyle.White;
+            this.socketRXMODELabel.TabIndex = 15;
+            this.socketRXMODELabel.Text = "-";
+            this.socketRXMODELabel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.socketRXMODELabel.UseStyleColors = true;
             // 
             // metroTabPage2
             // 
@@ -4030,19 +4367,6 @@
             this.consolemonitorChkBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.consolemonitorChkBox.UseSelectable = true;
             // 
-            // CSVStopBtn
-            // 
-            this.CSVStopBtn.DisplayFocus = true;
-            this.CSVStopBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.CSVStopBtn.Location = new System.Drawing.Point(481, 71);
-            this.CSVStopBtn.Name = "CSVStopBtn";
-            this.CSVStopBtn.Size = new System.Drawing.Size(91, 29);
-            this.CSVStopBtn.TabIndex = 45;
-            this.CSVStopBtn.Text = "STOP";
-            this.CSVStopBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.CSVStopBtn.UseSelectable = true;
-            this.CSVStopBtn.Click += new System.EventHandler(this.CSVStopBtn_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -4098,6 +4422,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.csvGrid)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
@@ -4311,6 +4638,25 @@
         private MetroFramework.Controls.MetroTextBox CSVIntervalTxtBox;
         private MetroFramework.Controls.MetroLabel metroLabel67;
         private MetroFramework.Controls.MetroButton CSVStopBtn;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private MetroFramework.Controls.MetroToggle hapticHoldToggle;
+        private MetroFramework.Controls.MetroLabel metroLabel72;
+        private MetroFramework.Controls.MetroLabel metroLabel74;
+        private MetroFramework.Controls.MetroLabel metroLabel75;
+        private MetroFramework.Controls.MetroLabel metroLabel77;
+        private MetroFramework.Controls.MetroTextBox socketPortTxtBox;
+        private MetroFramework.Controls.MetroLabel metroLabel81;
+        private MetroFramework.Controls.MetroButton hapticESTOPBtn;
+        private MetroFramework.Controls.MetroButton hapticSetBtn;
+        private MetroFramework.Controls.MetroButton hapticOnOffBtn;
+        private MetroFramework.Controls.MetroLabel metroLabel83;
+        private MetroFramework.Controls.MetroLabel socketRXTDLLabel;
+        private MetroFramework.Controls.MetroLabel socketRXDIRLabel;
+        private MetroFramework.Controls.MetroLabel metroLabel73;
+        private MetroFramework.Controls.MetroLabel hapticStatusLabel;
+        private MetroFramework.Controls.MetroLabel metroLabel78;
+        private MetroFramework.Controls.MetroLabel socketRXMODELabel;
     }
 }
 
