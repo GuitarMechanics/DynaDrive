@@ -19,6 +19,8 @@ using System.Net;
 using System.Net.Sockets;
 using winFormsTimer = System.Windows.Forms.Timer;
 using System.Net.Http;
+using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
 
 // 솔루션용 nuget 설치 필요: metroui
 // https://luckygg.tistory.com/302
@@ -73,7 +75,14 @@ namespace DynaDrive
         NetworkStream stream;
         Thread receiveThread;
 
+        private ConcurrentQueue<(int v1, int v2, int v3)> receivedDataQueue = new ConcurrentQueue<(int, int, int)>();
+        private CancellationTokenSource cts;
+
         private bool hapticEnable = false;
+
+        private ConcurrentQueue<string> serialSendQueue = new ConcurrentQueue<string>();
+        private ConcurrentQueue<string> serialReceiveQueue = new ConcurrentQueue<string>();
+        private string serialReceiveBuffer = "";
 
         public Form1()
         {
@@ -123,7 +132,31 @@ namespace DynaDrive
             screwDrive = new leadscrew_drive(leadLength, openRB);
             dualBend = new DualbendCalc(bendSets);
 
+            var uitimer = new System.Windows.Forms.Timer();
+            uitimer.Interval = 50;
+            uitimer.Tick += UiTimer_Tick;
+            uitimer.Start();
+        }
 
+        private void UiTimer_Tick(object sender, EventArgs e)
+        {
+            while (receivedDataQueue.TryDequeue(out var data))
+            {
+                int v1 = data.v1;
+                int v2 = data.v2;
+                int v3 = data.v3;
+
+                socketRXTDLLabel.Text = (v1 / 100.0).ToString("F2") + " mm";
+                socketRXDIRLabel.Text = (v2 / 100.0).ToString("F2") + " rad";
+                socketRXMODELabel.Text = v3.ToString();
+            }
+
+            while (serialReceiveQueue.TryDequeue(out string serialPacket))
+            {
+                metroTextBox1.AppendText(serialPacket + Environment.NewLine);
+                openRB.inputStrDecode(serialPacket);
+                posUpdate();
+            }
         }
 
         private void updateSerialPort()
@@ -153,7 +186,7 @@ namespace DynaDrive
 
         private void serialOpenBtn_Click(object sender, EventArgs e)
         {
-            if (!mySerial.IsOpen)
+            if (mySerial == null || !mySerial.IsOpen)
             {
                 mySerial.PortName = metroComboBox1.SelectedItem.ToString();
                 mySerial.BaudRate = Convert.ToInt32(metroComboBox2.SelectedItem.ToString());
@@ -161,11 +194,65 @@ namespace DynaDrive
                 mySerial.StopBits = StopBits.One;
                 mySerial.DataBits = 8;
                 mySerial.ReadBufferSize = 20000000;
-                mySerial.DataReceived += PortDataReceived;
+                //mySerial.DataReceived += PortDataReceived;
                 try { mySerial.Open(); }
                 catch(Exception ex) { MessageBox.Show(ex.Message, "Falied to open"); }
             }
         }
+
+        private async Task SerialSendLoop(CancellationToken token)
+        {
+            while (!token.IsCancellationRequested)
+            {
+                if (serialSendQueue.TryDequeue(out string serialCmd))
+                {
+                    try
+                    {
+                        mySerial.WriteLine(serialCmd);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Serial write failed: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    await Task.Delay(1);
+                }
+            }
+        }
+
+        // 시리얼 수신 루프 (수신 쓰레드)
+        private async Task SerialReceiveLoop(CancellationToken token)
+        {
+            while (!token.IsCancellationRequested)
+            {
+                try
+                {
+                    string incoming = mySerial.ReadExisting(); // ★ string 그대로 수신
+
+                    if (!string.IsNullOrEmpty(incoming))
+                    {
+                        serialReceiveBuffer += incoming;
+
+                        int newlineIndex;
+                        while ((newlineIndex = serialReceiveBuffer.IndexOf('\n')) >= 0)
+                        {
+                            string packet = serialReceiveBuffer.Substring(0, newlineIndex).Trim();
+                            serialReceiveBuffer = serialReceiveBuffer.Substring(newlineIndex + 1);
+                            serialReceiveQueue.Enqueue(packet);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Serial receive error: " + ex.Message);
+                }
+
+                await Task.Delay(1); // CPU 과점유 방지
+            }
+        }
+
         private void PortDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try {if(mySerial.IsOpen) ReceiveData = mySerial.ReadLine(); }
@@ -836,8 +923,9 @@ namespace DynaDrive
                     await tcpClient.ConnectAsync("localhost", 5000);
                     stream = tcpClient.GetStream();
                     socketRunning = true;
+                    cts = new CancellationTokenSource();
 
-                    _ = Task.Run(() => ReceiveLoop());
+                    _ = Task.Run(() => CommunicationLoop(cts.Token));
                     hapticSetBtn.Text = "DISCONNECT ";
                     hapticStatusLabel.Text = "TCP Only";
                     setTransConvBtn.PerformClick();
@@ -859,29 +947,12 @@ namespace DynaDrive
             }
         }
 
-        private async Task StartSocket()
-        {
-            try
-            {
-                int portno = Convert.ToInt32(socketPortTxtBox.Text);
-                await tcpClient.ConnectAsync("localhost", 1234);
-                stream = tcpClient.GetStream();
-                socketRunning = true;
-                hapticStatusLabel.Text = "Running";
-                hapticSetBtn.Text = "DISCONNECT";
-                _ = Task.Run(() => ReceiveLoop());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Connection Failed");
-            }
-
-        }
         private void StopSocket()
         {
             try
             {
                 socketRunning = false;
+                cts?.Cancel();
                 stream?.Close();
                 tcpClient?.Close();
                 hapticStatusLabel.Text = "OFF";
@@ -892,14 +963,75 @@ namespace DynaDrive
                 
             }
         }
+        private async Task CommunicationLoop(CancellationToken token)
+        {
+            try
+            {
+                byte[] recvBuffer = new byte[12];
+                byte[] sendBuffer = new byte[12];
 
+                while (!token.IsCancellationRequested)
+                {
+                    // 수신 먼저
+                    int totalBytesRead = 0;
+                    while (totalBytesRead < 12)
+                    {
+                        int bytesRead = await stream.ReadAsync(recvBuffer, totalBytesRead, 12 - totalBytesRead, token);
+                        if (bytesRead == 0)
+                            throw new Exception("Server disconnected.");
+                        totalBytesRead += bytesRead;
+                    }
+
+                    int v1 = BitConverter.ToInt32(recvBuffer, 0);
+                    int v2 = BitConverter.ToInt32(recvBuffer, 4);
+                    int v3 = BitConverter.ToInt32(recvBuffer, 8);
+
+                    // 수신된 데이터를 UI 큐에 넣기
+                    receivedDataQueue.Enqueue((v1, v2, v3));
+                    double mt1tdrecv = v1 / 100.0 * Math.Cos(v2 / 100.0);
+                    double mt2tdrecv = v1 / 100.0 * Math.Sin(v2 / 100.0);
+
+                    int mtgoal1 = screwDrive.trans2rot(mt1tdrecv);
+                    int mtgoal2 = screwDrive.trans2rot(mt2tdrecv);
+
+                    int[] mtgoalarr = new int[4] { mtgoal1, mtgoal2, 0, 0 };
+
+                    if (hapticEnable)
+                    {
+                        openRB.writeGoalPos(mtgoalarr);
+                        serialSend();
+                    }
+
+                    // 송신 준비
+                    int sendTDL = v1;  // 여기서는 echo만 예시
+                    int sendDIR = v2;
+                    int sendHLD = v3;
+
+                    Array.Copy(BitConverter.GetBytes(sendTDL), 0, sendBuffer, 0, 4);
+                    Array.Copy(BitConverter.GetBytes(sendDIR), 0, sendBuffer, 4, 4);
+                    Array.Copy(BitConverter.GetBytes(sendHLD), 0, sendBuffer, 8, 4);
+                    await stream.WriteAsync(sendBuffer, 0, sendBuffer.Length, token);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    MessageBox.Show(ex.Message, "Connection stopped");
+                    StopSocket();
+                }));
+            }
+        }
         private async Task ReceiveLoop()
         {
             try
             {
                 byte[] recvBuffer = new byte[12];
+                byte[] sendBuffer = new byte[12];
+
                 while (socketRunning)
                 {
+                    // 1. 서버가 먼저 보내므로 수신 먼저
                     int totalBytesRead = 0;
                     while (totalBytesRead < 12)
                     {
@@ -913,10 +1045,8 @@ namespace DynaDrive
                     int v2 = BitConverter.ToInt32(recvBuffer, 4);
                     int v3 = BitConverter.ToInt32(recvBuffer, 8);
 
-                    //hapticHoldToggle.Checked = (v3 == 1) ? true : false;
-
-                    double mt1tdrecv = (double)v1 / 100.0 * Math.Cos((double)v2);
-                    double mt2tdrecv = (double)v1 / 100.0 * Math.Sin((double)v2);
+                    double mt1tdrecv = v1 / 100.0 * Math.Cos(v2 / 100.0);
+                    double mt2tdrecv = v1 / 100.0 * Math.Sin(v2 / 100.0);
 
                     int mtgoal1 = screwDrive.trans2rot(mt1tdrecv);
                     int mtgoal2 = screwDrive.trans2rot(mt2tdrecv);
@@ -924,9 +1054,10 @@ namespace DynaDrive
                     int[] mtgoalarr = new int[4] { mtgoal1, mtgoal2, 0, 0 };
                     this.Invoke(new Action(() =>
                     {
-                        socketRXTDLLabel.Text = v1.ToString() + "/100 mm";
-                        socketRXDIRLabel.Text = v2.ToString() + "/100 rad";
+                        socketRXTDLLabel.Text = (v1 / 100.0).ToString("F2") + " mm";
+                        socketRXDIRLabel.Text = (v2 / 100.0).ToString("F2") + " rad";
                         socketRXMODELabel.Text = v3.ToString();
+
                         if (hapticEnable)
                         {
                             openRB.writeGoalPos(mtgoalarr);
@@ -934,26 +1065,27 @@ namespace DynaDrive
                         }
                     }));
 
+                    // 2. 수신 후 바로 송신 (현재 상태 보내기)
                     float[] mtpos = screwDrive.rot2trans(openRB.presPos);
-                    int sendTDL = (int) Math.Round(Math.Sqrt(Math.Pow(mtpos[0],2) + Math.Pow(mtpos[1],2)) * 100);
-                    int sendDIR = (int) Math.Round(Math.Atan2((double)mtpos[1], (double)mtpos[0]) * 100);
+                    int sendTDL = (int)Math.Round(Math.Sqrt(mtpos[0] * mtpos[0] + mtpos[1] * mtpos[1]) * 100);
+                    int sendDIR = (int)Math.Round(Math.Atan2(mtpos[1], mtpos[0]) * 100);
                     int sendHLD = hapticHoldToggle.Checked ? 1 : 0;
 
-                    byte[] sendbuffer = new byte[12];
-                    Array.Copy(BitConverter.GetBytes(sendTDL), 0, sendbuffer, 0, 4);
-                    Array.Copy(BitConverter.GetBytes(sendDIR), 0, sendbuffer, 4, 4);
-                    Array.Copy(BitConverter.GetBytes(sendHLD), 0, sendbuffer, 8, 4);
-                    await stream.WriteAsync(sendbuffer, 0, sendbuffer.Length);
+                    Array.Copy(BitConverter.GetBytes(sendTDL), 0, sendBuffer, 0, 4);
+                    Array.Copy(BitConverter.GetBytes(sendDIR), 0, sendBuffer, 4, 4);
+                    Array.Copy(BitConverter.GetBytes(sendHLD), 0, sendBuffer, 8, 4);
 
+                    await stream.WriteAsync(sendBuffer, 0, sendBuffer.Length);
                 }
             }
             catch (Exception ex)
             {
                 this.Invoke(new Action(() =>
                 {
-                    MessageBox.Show(ex.Message, "connection stopped");
-                    hapticSetBtn.Text = "CONNECT";
+                    MessageBox.Show(ex.Message, "Connection stopped");
                     socketRunning = false;
+                    hapticSetBtn.Text = "CONNECT";
+                    hapticStatusLabel.Text = "OFF";
                 }));
             }
         }
