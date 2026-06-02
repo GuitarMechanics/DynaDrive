@@ -16,7 +16,6 @@ using System.Runtime.InteropServices;
 // 솔루션용 nuget 설치 필요: metroui
 // https://luckygg.tistory.com/302
 
-// hello kdj
 
 namespace DynaDrive
 {
